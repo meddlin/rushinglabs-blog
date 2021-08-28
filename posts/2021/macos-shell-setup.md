@@ -1,32 +1,28 @@
 ---
-date: "2021-07-05"
+date: "2021-08-28"
 title: "MacOS - Setup and Shell"
 section: 'software'
 ---
 
-So...I just made the switch to an M1 MacBook Air. _Much like many others._ _Unlike_ many others, I don't have much experience with zsh, or configuring it. Or even how it compares to bash, or any other shell.
+So...I just made the switch to an M1 MacBook Air. _Like many others._ And it's been about 6 years since I last personally used a Mac. So, I started my reintroduction to Mac OS and getting acquainted with my shiny new laptop.
 
-I've always just used the CLI in a get in, do the job, and get out manner.
+However, I've never needed to configure any terminal application. The default functionality has always been enough to get my work done. Trying to use Node.js on M1--and running into a need for zsh--has changed that for me.
+
+So, I'm hoping to share a little about that experience here.
 
 
 ## Bombarded: Drowning in Tools
 
-It had been a while since my last foray with Mac OS, so I figured a little searching around would suit me well before installing tools and possibly mucking up my environment. 
+As I said, it's been a while since my last foray with Mac OS, so I figured a quick Google search was in order before installing random tools and possibly mucking up my environment. 
 
 _I was wrong._
 
-Immediately, I was hit with:
-
-- homebrew
-- iTerm2
-- zsh (as opposed to bash?)
-- OhMyZsh
-- nvm (for managing `npm`)
+Immediately, I ran into dozens of recommendations for varying combinations of: homebrew, iTerm2, zsh (as opposed to bash?), OhMyZsh, _and of course_ nvm (for managing `npm`).
 
 **_Cue flashbacks to the explosion of JS tools in 2015 web development._**
 
 
-## So, what's the shortest, smartest path to running `npm`?
+## Shortest path to running `npm`?
 
 - Answer: which shell am I running?
 - zsh (default) -> may as well install OhMyZsh then
@@ -83,6 +79,7 @@ To learn more:
 
 [https://github.com/ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
 
+
 ## Works Now
 
 Recap; I'm using zsh, install Oh My Zsh, and restarted the terminal now. So any PATH variables changes have been loaded into the current session.
@@ -98,3 +95,11 @@ Then we can install `npm`. Just note, this command will take a few minutes to ru
 ```bash
 nvm install v15
 ```
+
+
+
+### References
+
+- Sourabh Bajaj, zsh info: [https://sourabhbajaj.com/mac-setup/iTerm/zsh.html](https://sourabhbajaj.com/mac-setup/iTerm/zsh.html)
+
+- Installing Node, nvm, npm on M1 Mac: [https://justinwride.medium.com/install-node-and-npm-natively-on-apple-silicon-mac-m1-7432c826389b](https://justinwride.medium.com/install-node-and-npm-natively-on-apple-silicon-mac-m1-7432c826389b)
