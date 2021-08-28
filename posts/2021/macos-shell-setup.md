@@ -1,6 +1,6 @@
 ---
 date: "2021-08-28"
-title: "MacOS - Setup and Shell"
+title: "What's my shell again?"
 section: 'software'
 ---
 
