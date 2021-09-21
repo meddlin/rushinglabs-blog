@@ -37,6 +37,11 @@ export default function Layout({ children, home }) {
 
           <div className={styles.navbarLinks}>
             <h2>
+              <Link href="/projects">
+                <a className={utilStyles.colorInherit}>Projects</a>
+              </Link>
+            </h2>
+            <h2>
               <Link href="/about">
                 <a className={utilStyles.colorInherit}>About</a>
               </Link>
