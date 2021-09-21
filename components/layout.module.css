@@ -46,6 +46,9 @@
 .navbarLinks {
     font-family: 'Palanquin', sans-serif;
 }
+.navbarLinks > h2 {
+    margin: 0 0.7em 0 0.7em;
+}
 .navbarLinks > a {
     margin: 1em;
     color: black;
