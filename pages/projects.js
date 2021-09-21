@@ -29,12 +29,22 @@ function Projects() {
                     </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                    <div style={{ width: '80%' }}>
+                    <div style={{ width: '60%' }}>
                         <h2>Rushing Labs (website)</h2>
                         (picture)
                     </div>
                     <div>
-                        <p>blurb</p>
+                        <p>
+                            Originally, I was just playing around with hosting a blog,
+                            and over time it has ballooned into a happy little place
+                            to share some of the <i>developery stuff</i> I do.
+                        </p>
+                        <p>
+                            Built with Next.js
+                            <br />
+                            <i>It's this site!</i> &#128521;
+                        </p>
+                        <a href="https://github.com/meddlin/rushinglabs-blog-nextjs">Check the code on GitHub!</a>
                     </div>
                 </div>
             </div>
