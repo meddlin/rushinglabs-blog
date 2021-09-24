@@ -1,13 +1,15 @@
 ---
 date: "2021-09-22"
-title: "Built In a Weekend"
+title: "Build It In a Weekend"
 ---
 
 Have you ever had one of those "simple" ideas you wanted to build? Something not too crazy, but just a fun idea...or maybe something you just hadn't found _quite_ the solution you're looking for? Then suddenly the perfect weekend for it comes up and you decide to pounce. Let's do this. I'm starting with nothing, and not quitting until there's something to show.
 
-I finally did that.
+_I finally did that._
 
-The project itself wasn't too exciting. I've been shopping around for a house lately, and I needed an amortization calculator. Nothing crazy. Plenty of them exist online, but I couldn't find one that fit the bill (no pun intended) the way I needed it to. And I've also been looking for an excuse to experiment with the AppSec tools available for hobby projects.
+The project itself wasn't too exciting. I've been shopping around for a house lately, and I needed an amortization calculator. Nothing crazy. Plenty of them exist online, but I couldn't find one that fit the bill (no pun intended) the way I needed it to. And I've also been looking for an excuse to experiment with the CI/CD tools built into GitHub.
+
+<img src="https://meddlin-web.s3.us-east-2.amazonaws.com/post_2021-09-24/pexels-jean-van-der-meulen-1457842.jpg" />
 
 ## What to build?
 
@@ -24,14 +26,20 @@ _Ultimately, the main goal here is be able to plug in some numbers and get a ful
 
 ## Tools + Tech Stack
 
+The most straightforward way I knew to create this was to create a two distinct applications: a .NET Core REST API for the backend calculations, and React app for the front-end using [`create-react-app`](https://reactjs.org/docs/create-a-new-react-app.html).
+
 Development
-- .NET Core
+- .NET Core 3.1
 - React
 - Docker
+
+Again, with the theme of efficient solutions, I'm using GitHub not only for code but some extra features have almost made it a built-in CI platform. Then, Heroku. I've been using their services for a while, so I'm more familiar with them than others, but also (since it's PaaS) there's _much_ less distraction.
 
 Platform
 - GitHub
 - Heroku
+
+
 
 Extra Tools
 - CodeQL
@@ -57,4 +65,19 @@ Second to this, I would say reflect on what features/aspect you're willing to cu
 
 ## Now What?
 
-The main goal I had set was accomplished. The app was built, and the basic functionality is there.
+The main goal I had set was accomplished. The app was built, and the basic functionality is there. But then what?
+
+I'm interested to see how I can setup a full CI/CD pipeline from my workspace in VS Code, through GitHub, and onto deploying on Heroku. Also now that I'm in a role as an AppSec Engineer, I also would like to see what kind of security tooling can be incorporated into this. The idea of being able to deploy to production, while receiving direct feedback on security, just seems incredible.
+
+If you want to see it, check out [this link](https://amortize-client.herokuapp.com/). I'm running this on one of Heroku's free dynos, so it may take about 20-30s to load if the container is asleep.
+
+[https://amortize-client.herokuapp.com/](https://amortize-client.herokuapp.com/)
+
+_I will be continuing to work on this over time, so here's a screenshot to show what I had after this single weekend of work._
+
+<img src="https://meddlin-web.s3.us-east-2.amazonaws.com/post_2021-09-24/amortize-demo-screenshot.png" />
+
+**Credits**
+
+
+Header photo by [Jean van der Meulen from Pexels](https://www.pexels.com/photo/photo-of-living-room-1457842/)
