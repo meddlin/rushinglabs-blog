@@ -3,13 +3,15 @@ date: "2021-09-22"
 title: "Build It In a Weekend"
 ---
 
-Have you ever had one of those "simple" ideas you wanted to build? Something not too crazy, but just a fun idea...or maybe something you just hadn't found _quite_ the solution you're looking for? Then suddenly the perfect weekend for it comes up and you decide to pounce. Let's do this. I'm starting with nothing, and not quitting until there's something to show.
+Have you ever had one of those little ideas for something to build "real quick"? Something not too crazy, but just a fun idea...or maybe something you just hadn't found _quite_ the solution you're looking for? Then suddenly the perfect weekend for it comes up and you decide to pounce. Let's do this. I'm starting with nothing, and not quitting until there's something to show.
 
 _I finally did that._
 
 The project itself wasn't too exciting. I've been shopping around for a house lately, and I needed an amortization calculator. Nothing crazy. Plenty of them exist online, but I couldn't find one that fit the bill (no pun intended) the way I needed it to. And I've also been looking for an excuse to experiment with the CI/CD tools built into GitHub.
 
 <img src="https://meddlin-web.s3.us-east-2.amazonaws.com/post_2021-09-24/pexels-jean-van-der-meulen-1457842.jpg" />
+
+_Not my house pictured. Just a house. [Credit below](https://www.pexels.com/photo/photo-of-living-room-1457842/) for image ;)_
 
 ## What to build?
 
@@ -33,21 +35,21 @@ Development
 - React
 - Docker
 
-Again, with the theme of efficient solutions, I'm using GitHub not only for code but some extra features have almost made it a built-in CI platform. Then, Heroku. I've been using their services for a while, so I'm more familiar with them than others, but also (since it's PaaS) there's _much_ less distraction.
+Again, with the theme of efficient solutions, I'm using GitHub to host the code, but also some extra features have almost made it a default CI platform. Then, Heroku. I've been using their services for a while, so I'm more familiar with them than something like AWS or Azure. I knew that if I could get a Docker container to be agreeable for Heroku, then it was going to be a simple deployment and configuration.
 
 Platform
 - GitHub
 - Heroku
 
+Finally, I'll be enabling these two tools on the repo to see how they can introduce some application security to the project. I won't be focusing on nailing these down entirely during the first pass of the project. Instead, I would like to see what value there is in enabling them early, and reviewing the findings and workflow later on.
 
-
-Extra Tools
+AppSec Tools
 - CodeQL
 - GitHub Dependabot
 
 ## Lessons Learned
 
-An aspect of all this I didn't expect to find was some hidden lessons. Stepping back after this is done though, it makes sense--placing yourself under pressure (even manufactured) will highlight efficiencies (to save time) while causing deficiencies to fall flat.
+An aspect of all this I didn't expect to find was some hidden lessons. Stepping back after it's all done though, it makes sense--placing yourself under pressure (even manufactured) will highlight efficiencies and deficiencies in your habits. 
 
 ### "Done is better than perfect"
 
@@ -57,17 +59,17 @@ I can't count how many times I had to remind myself, "No, this isn't perfect; of
 
 ### Expose Weaknesses
 
-Working through this showed me where I was weakest in producing a full-stack solution. (Definitions of "full-stack" and the absence of data retention notwithstanding) ...and that was around deployment, specifically containerizing the front-end and backend portions with Docker and successfully deploying to Heroku.
+Working through this showed me where I was weakest in producing a full-stack solution. (Definitions of "full-stack" and the absence of data retention, notwithstanding) My greatest weaknesses were around deployment, specifically containerizing the front-end and backend portions with Docker, and successfully deploying to Heroku. Much of this just wasn't clear to me, and I found myself relying mostly on Google searches and StackOverflow answers.
 
-For me, "weakness" was synonymous with which aspects took the most time to implement. If you're walking through this exercise, also watch out for what you're able to document, or explain, the least. 
+For me, "weakness" was synonymous with which aspects took the most time to implement. However another indicator to look for is, watch out for what you're able to document, or explain, the least. I _definitely_ would struggle to fully explain those Dockerfiles, and what makes them work vs. not work.
 
-Second to this, I would say reflect on what features/aspect you're willing to cut from the beginning. For me, this was styling and UI. I knew it was going to look ugly. Small caveat here though, sometimes we cut things because we don't have time--even if we know exactly how to implement them.
+Second to this, I would say reflect on what features/aspect you're willing to cut from the beginning. Are you cutting them because they take too long or because they're difficult? For me, this was styling and UI. I knew it was going to look ugly, and even though I could eventually get it done it would take up too much time.
 
 ## Now What?
 
 The main goal I had set was accomplished. The app was built, and the basic functionality is there. But then what?
 
-I'm interested to see how I can setup a full CI/CD pipeline from my workspace in VS Code, through GitHub, and onto deploying on Heroku. Also now that I'm in a role as an AppSec Engineer, I also would like to see what kind of security tooling can be incorporated into this. The idea of being able to deploy to production, while receiving direct feedback on security, just seems incredible.
+I'm interested to see how I can setup a full CI/CD pipeline from my workspace in VS Code, through GitHub, and onto deploying on Heroku. Also now that I'm in a role as an AppSec Engineer, I also would like to see what kind of security tooling can be incorporated into this. The idea of being able to deploy to production, while receiving direct feedback on security, just seems incredible. Especially for hobbyist projects like this where you rarely have the budget and architecture for complete testing and scanning suites.
 
 If you want to see it, check out [this link](https://amortize-client.herokuapp.com/). I'm running this on one of Heroku's free dynos, so it may take about 20-30s to load if the container is asleep.
 
@@ -80,4 +82,4 @@ _I will be continuing to work on this over time, so here's a screenshot to show 
 **Credits**
 
 
-Header photo by [Jean van der Meulen from Pexels](https://www.pexels.com/photo/photo-of-living-room-1457842/)
+Living room photo by [Jean van der Meulen from Pexels](https://www.pexels.com/photo/photo-of-living-room-1457842/)
