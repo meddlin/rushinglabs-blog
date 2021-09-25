@@ -17,7 +17,7 @@ function Projects() {
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                         <p>
-                            While shopping for a house, I needed an Amortization
+                            While shopping for a house, I needed an amortization
                             calculator that was more helpful to my budget than
                             what I was finding online. So, I made one.
                         </p>
@@ -25,7 +25,7 @@ function Projects() {
                             I also took the opportunity to test what kind of CI/CD
                             pipeline&mdash;with security tests&mdash;can be created (for free)
                             with the built-in tools available on GitHub. The demo 
-                            is hosted on Heroku, via Docker containers.
+                            is hosted on Heroku via Docker containers.
                         </p>
                         <div>
                             <a href="https://github.com/meddlin/amortize">Check the code on GitHub!</a> &nbsp; | &nbsp;
