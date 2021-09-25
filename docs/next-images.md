@@ -16,7 +16,9 @@ _So, how to accomplish it with externally hosted images?_
 
 ## External Images
 
-A simple change, with an extra config in `next.config.js`.
+A simple change, with an extra config in `next.config.js`. Without this addition to the config, you'll run into an "Un-configured Host" error, as described [here](https://nextjs.org/docs/messages/next-image-unconfigured-host). 
+
+Ref: [https://nextjs.org/docs/messages/next-image-unconfigured-host](https://nextjs.org/docs/messages/next-image-unconfigured-host)
 
 _`some-component.js`_
 
