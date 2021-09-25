@@ -1,4 +1,5 @@
 import Layout from '../components/layout';
+import Image from 'next/image';
 import SocialsHorizontal from '../components/socials-horizontal';
 import styles from '../styles/about.module.css';
 
@@ -9,7 +10,11 @@ function Projects() {
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <div style={{ width: '80%' }}>
                         <h2>Amortization Calculator</h2>
-                        (picture)
+                        <Image src="https://meddlin-web.s3.us-east-2.amazonaws.com/post_2021-09-24/amortize-demo-screenshot.png"
+                            alt="Boring screenshot of an amortization table" height={300} width={450} />
+
+                        {/* <Image src="/images/amortize-demo-screenshot.png"
+                            alt="Boring screenshot of an amortization table" height={300} width={450} /> */}
                     </div>
                     <div>
                         <p>
