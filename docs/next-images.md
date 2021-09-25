@@ -1,0 +1,40 @@
+# Next Images (`next/image`)
+
+Taken from [this link](https://welearncode.com/isr/), and other tutorials I've tried to work through, it appears that we only need two lines to use images with the new Next.js component.
+
+Ref: [https://welearncode.com/isr/](https://welearncode.com/isr/)
+
+```js
+import Image from 'next/image'
+
+<Image src='/blair.jpeg' alt='Fluffy white dog lying on a couch' height={200} width={150} />
+```
+
+However, doing it this way looks like we're required to include images locally, in the resulting site build. So, over time, this would inflate the bundle size for something like a blog, where we need another image with almost every post. 
+
+_So, how to accomplish it with externally hosted images?_
+
+## External Images
+
+A simple change, with an extra config in `next.config.js`. Without this addition to the config, you'll run into an "Un-configured Host" error, as described [here](https://nextjs.org/docs/messages/next-image-unconfigured-host). 
+
+Ref: [https://nextjs.org/docs/messages/next-image-unconfigured-host](https://nextjs.org/docs/messages/next-image-unconfigured-host)
+
+_`some-component.js`_
+
+```js
+import Image from 'next/image'
+
+<Image src="https://your-domain-here.com/2021/some-screenshot.png"
+    alt="My special screenshot" height={300} width={450} />
+```
+
+_`next.config.js`_
+
+```js
+module.exports = {
+    images: {
+        domains: ['your-domain-here.com']
+    }
+}
+```
