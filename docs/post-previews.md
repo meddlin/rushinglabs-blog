@@ -1,0 +1,41 @@
+# Post Previews
+
+How were the preview sections, for each post on the index page, created?
+
+
+- Determine where the "main page" is generated/created from
+    - This is `/index.js`
+
+- Then find how `index.js` pulls the data for the posts
+    - `/lib/posts.js` -> `getSortedPostsData()`
+
+- In the method, `getSortedPostsData()`, we'll need to make sure it returns all the contents of each post. It's already returning the formatted "frontmatter" (this is used for title, date, etc.)...we just need to also return some of the post contents, so we can abbreviate it to "preview" the post.
+
+### Markdown vs. HTML Content
+
+Be careful here though...
+
+Returning `fileContents` in `getSortedPostsData()` is literally the Markdown content, _not yet converted to HTML_.
+
+
+## Pseudocode
+
+In `getSortedPostsData()`, this...
+
+```js
+return {
+    id,
+    fileContents,
+    ...matterResult.data
+}
+```
+
+...needs to become
+
+```js
+return {
+    id,
+    convertToHtml( fileContents.grabFirstParagraph() ),
+    ...matterResult.data
+}
+```
