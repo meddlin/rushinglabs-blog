@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import MenuIcon from './menu-icon';
 
 const name = 'Rushing Labs';
 export const siteTitle = 'Rushing Labs';
@@ -29,6 +30,8 @@ export default function Layout({ children, home }) {
         </Head>
 
         <header className={styles.header}>
+          <MenuIcon />
+
           <h1 className={utilStyles.heading2Xl}>
             <Link href="/">
               <a className={utilStyles.colorInherit}>{name}</a>

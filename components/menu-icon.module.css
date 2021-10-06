@@ -1,0 +1,53 @@
+.menuIcon {
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.list {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    overflow: hidden;
+    max-width: 290px;
+    color: black;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.listItem {
+    background: lightgray;
+    padding: 10px 40px;
+}
+.listItem:first-child {
+    margin-top: 5rem;
+}
+
+@media (max-width: 399px),
+    screen and (orientation: portrait) {
+        .menuIcon > div {
+            width: 35px;
+            height: 5px;
+            background-color: whitesmoke;
+            margin: 6px 0;
+        }
+}
+
+@media (min-width: 400px), 
+    screen and (orientation: portrait) {
+        .menuIcon > div {
+            width: 35px;
+            height: 5px;
+            background-color: whitesmoke;
+            margin: 6px 0;
+        }
+}
+
+@media only screen and (min-width: 1200px) {
+    .menuIcon {
+        display: none;
+    }
+}
