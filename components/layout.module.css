@@ -3,18 +3,46 @@
     justify-content: center;
     margin: 0 25% 0 25%;
 }
-@media (max-width: 399px),
-    screen and (orientation: portrait) {
+
+
+
+/*
+ * Mobile view media queries
+*/
+@media only screen and (max-width: 399px) {
         .container {
             margin: 0 7% 0 7%;
         }
+
+        .navbarLinks > h2 {
+            display: none;
+        }
     }
 
-@media (min-width: 400px), screen and (orientation: portrait) {
+
+@media only screen and (max-width: 450px) {
     .container {
         margin: 0 7% 0 7%;
     }
+
+    .navbarLinks > h2 {
+        display: none;
+    }
 }
+
+@media only screen, (orientation: portrait) and (min-width: 768px) {
+    .container {
+        margin: 0 7% 0 7%;
+    }
+
+    /* .navbarLinks > h2 {
+        display: none;
+    } */
+}
+
+
+
+
 /*
 * keeps the article content from overflowing the margins
 * (especially when very wide, code snippets are being converted into <pre> blocks in Markdown)
@@ -37,9 +65,8 @@
     font-family: 'Palanquin Dark', sans-serif;
 }
 
-.header > div {
+.header > .navbarLinks {
     margin: 0;
-
     display: flex;
 }
 
