@@ -5,6 +5,13 @@
 }
 
 
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /*
  * Mobile view media queries
