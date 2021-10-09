@@ -52,17 +52,22 @@ export default function Layout({ children, home }) {
           </div>
         </header>
 
-        <div className={styles.container}>
-          {children}
-        </div>
+        <div className={styles.mainContent}>
 
-        {!home && (
-          <div className={styles.backToHome}>
-            <Link href="/">
-              <a>← Back to home</a>
-            </Link>
+          <div className={styles.container}>
+            {children}
           </div>
-        )}
+
+          {!home && (
+            <div className={styles.backToHome}>
+              <Link href="/">
+                <a>← Back to home</a>
+              </Link>
+            </div>
+          )}
+
+          <a href="https://plausible.io/rushinglabs.com">RushingLabs - Analytics</a>
+        </div>
       </div>
     )
   }
