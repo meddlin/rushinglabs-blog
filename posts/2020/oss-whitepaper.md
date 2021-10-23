@@ -2,6 +2,8 @@
 date: "2020-07-28"
 title: "Open-source Supply Chain Attacks"
 section: 'security'
+preview: |-
+    Over the past five years open-source software, web development, and JavaScript have gone through quite a change. While not a new attack technique, targeted supply-chain attacks are proving to be effective when applied in new ways, specifically within these spaces. Before discussing the individual incidents it's worthwhile to understand why tools like NPM (Node Package Manager from npm, Inc.) and GitHub are becoming commonplace.
 ---
 
 # NPM, Open-source software modules Security
