@@ -45,7 +45,7 @@ export default function Home({ allPostsData, categoriesList, prevPosts, nextPost
 
 				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
 					<ul className={utilStyles.list}>
-						{allPostsData.map( ({ id, date, title, contentHtml }) => (
+						{allPostsData.map( ({ id, date, title, preview, contentHtml }) => (
 							<li className={utilStyles.listItem} key={id}>
 								<Link href={`/blog/${id}`}>
 									<a>{title}</a>
@@ -54,7 +54,8 @@ export default function Home({ allPostsData, categoriesList, prevPosts, nextPost
 								<small className={utilStyles.lightText}>
 									<Date dateString={date} />
 								</small>
-								<p dangerouslySetInnerHTML={{ __html: contentHtml.slice(0, 300) }}></p>
+								<p>{preview}</p>
+								{/* <p dangerouslySetInnerHTML={{ __html: contentHtml.slice(0, 100) }}></p> */}
 							</li>
 						))}
 					</ul>
