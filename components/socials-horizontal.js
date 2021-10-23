@@ -10,6 +10,11 @@ export default function SocialsHorizontal() {
                 <Image src="/icons/YouTube_SVG-icon.svg" width="30" height="30" />
             </a>
 
+            {/* TikTok */}
+            <a href="https://www.tiktok.com/@rushinglabs">
+                <Image src="/icons/tiktok_SVG-icon.svg" width="30" height="30" />
+            </a>
+
             {/* GitHub */}
             <a href="https://github.com/meddlin">
                 <Image src="/icons/GitHub_SVG-icon.svg" width="30" height="30" />
