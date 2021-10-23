@@ -2,6 +2,8 @@
 date: "2021-05-26"
 title: "Run Mongo + Express + React + Node with a Single Command"
 section: 'software'
+preview: |-
+  Almost two years ago, I posted a video covering a niche use-case of running a React and Express development environment from a single command. The video turned out to be the most successful video of my new YouTube channel, and still continues to push things forward. Considering the previous video automated React & Express (and a touch of Node.js) behind a single command, the next step would seem to be...to add Mongo DB to the mix.
 ---
 
 Almost two years ago, I posted a [video covering a niche use-case](https://youtu.be/TTZOoWfGjCo) of running a React and Express development environment from a single command. The video turned out to be the most successful video of my new YouTube channel, and still continues to push things forward.

@@ -2,6 +2,8 @@
 date: "2021-06-14"
 title: "JavaScript: An Intro - the little language that could"
 section: 'javascript'
+preview: |-
+    Much of the modern internet is impacted by one programming language—and it provides a level of interactivity and finesse that used to not exist—yes, Javascript.
 ---
 
 Much of the modern internet is impacted by one programming language—and it provides a level of interactivity and finesse that used to not exist—yes, **Javascript.**
