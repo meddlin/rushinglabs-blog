@@ -74,7 +74,7 @@ const PostsPage = ({ posts, categoriesList, prevPosts, nextPosts }) => {
 
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
                     <ul className={utilStyles.list}>
-                        {posts.map( ({ id, date, title }) => (
+                        {posts.map( ({ id, date, title, preview }) => (
                             <li className={utilStyles.listItem} key={id}>
                                 <Link href={`/blog/${id}`}>
                                     <a>{title}</a>
@@ -83,6 +83,7 @@ const PostsPage = ({ posts, categoriesList, prevPosts, nextPosts }) => {
                                 <small className={utilStyles.lightText}>
                                     <Date dateString={date} />
                                 </small>
+                                <p>{preview}</p>
                             </li>
                         ))}
                     </ul>
