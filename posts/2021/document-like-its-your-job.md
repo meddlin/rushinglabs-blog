@@ -1,6 +1,8 @@
 ---
 date: "2021-03-30"
 title: "Document Like You Mean It"
+preview: |-
+    When I started working as a software engineer, documentation was the first major problem that jumped out at me. Or rather, the lack of it. Further, most of the team docs hadn't been updated in several years--decades for some of it. So docs were outdated for new hires, and forgotten by people who had memorized the chunks they needed. The rest was delegated to tribal knowledge.
 ---
 
 _Document like you want to use it, **because you will**._

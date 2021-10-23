@@ -2,6 +2,8 @@
 date: "2019-02-07"
 title: "Automating Metagoofil with Python"
 section: 'software'
+preview: |-
+    I recently needed to automate metagoofil searches using Python, and thought I'd share the "proof of concept" script that got it working. I'll apologize ahead of time for any errors--I'm still only just beginning to learn Python.
 ---
 
 I recently needed to automate [metagoofil](http://www.edge-security.com/metagoofil.php) searches using Python, and thought I'd share the "proof of concept" script that got it working. I'll apologize ahead of time for any errors--I'm still only just beginning to learn Python.

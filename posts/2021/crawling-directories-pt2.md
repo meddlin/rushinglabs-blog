@@ -2,6 +2,8 @@
 date: "2021-02-04"
 title: "Crawling Directories in Node.js, Pt. 2"
 section: 'software'
+preview: |-
+    The last post I wrote on refactoring this blog for subdirectories made an assumption I didn't realize was such a weak point, for generating article routes, based on crawling directories. When deploying after finishing the code for supporting directories, the deployment builds started failing, and the main error reported was confusing.
 ---
 
 

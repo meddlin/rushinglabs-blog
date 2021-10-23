@@ -9,14 +9,14 @@ import CategoryListing from '../components/category-listing';
 
 export async function getStaticProps() {
 	const allPostsData = getSortedPostsData();
-	const categoriesList = getAllCategories();	
+	const categoriesList = getAllCategories();
 
 	// Paging information
 	const startIndex = 0;
 	const endIndex = config.postsPerPage;
 	const prevPosts = null;
 	const nextPosts = (endIndex >= allPostsData.length) ? null : 2;
-	
+
 	return {
 		props: {
 			allPostsData: allPostsData.slice(startIndex, endIndex),
@@ -43,7 +43,7 @@ export default function Home({ allPostsData, categoriesList, prevPosts, nextPost
 
 				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
 					<ul className={utilStyles.list}>
-						{allPostsData.map( ({ id, date, title }) => (
+						{allPostsData.map( ({ id, date, title, preview }) => (
 							<li className={utilStyles.listItem} key={id}>
 								<Link href={`/blog/${id}`}>
 									<a>{title}</a>
@@ -52,6 +52,7 @@ export default function Home({ allPostsData, categoriesList, prevPosts, nextPost
 								<small className={utilStyles.lightText}>
 									<Date dateString={date} />
 								</small>
+								<p>{preview}</p>
 							</li>
 						))}
 					</ul>

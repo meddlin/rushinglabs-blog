@@ -2,6 +2,8 @@
 title: "Cockroach DB Distributed Schema Changes"
 date: "2020-05-18"
 tags: 'cpat'
+preview: |-
+    I threw this on Twitter pretty quickly when it happened. Now that I've sat on it for a little bit I think it deserves a longer post here. Schema changes in Cockroach DB are distributed by design--the same as the data. This is inherently difficult to maintain.
 ---
 
 I threw this on [Twitter](https://twitter.com/meddlin_dev/status/1259240663666896898) pretty quickly when it happened. Now that I've sat on it for a little bit I think it deserves a longer post here.

@@ -2,6 +2,8 @@
 date: "2021-08-28"
 title: "What's my shell again?"
 section: 'software'
+preview: |-
+    So...I just made the switch to an M1 MacBook Air. Like many others. And it's been about 6 years since I last personally used a Mac. So, I started my reintroduction to Mac OS and getting acquainted with my shiny new laptop. However, I've never needed to configure any terminal application. The default functionality has always been enough to get my work done. Trying to use Node.js on M1--and running into a need for zsh--has changed that for me.
 ---
 
 So...I just made the switch to an M1 MacBook Air. _Like many others._ And it's been about 6 years since I last personally used a Mac. So, I started my reintroduction to Mac OS and getting acquainted with my shiny new laptop.

@@ -1,6 +1,8 @@
 ---
 date: "2021-05-13"
 title: "Why Start a YouTube Channel?"
+preview: |-
+    As I move further along in my career, I'm finding more instances where I wished I could've looked to others for simple answers on things. Whether it be: advice on skills to focus on, how to start working on something, or what "progress" looks like.
 ---
 
 ## To Share My Progress

@@ -2,6 +2,8 @@
 date: "2020-07-28"
 title: "CPAT Concept is Proven"
 section: 'cpat'
+preview: |-
+    It works! Well, sorta...I've been working on my CPAT project for a while now. Quite honestly, I've grown tired of looking at ideas instead of code. So, I felt I needed to push for the inflection point where it was either proven, or failed in spectacular over-ambition.
 ---
 
 _It works! ...well, sorta_
