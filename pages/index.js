@@ -53,7 +53,6 @@ export default function Home({ allPostsData, categoriesList, prevPosts, nextPost
 									<Date dateString={date} />
 								</small>
 								<p>{preview}</p>
-								{/* <p dangerouslySetInnerHTML={{ __html: contentHtml.slice(0, 100) }}></p> */}
 							</li>
 						))}
 					</ul>
