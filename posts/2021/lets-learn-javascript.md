@@ -78,7 +78,7 @@ Wanna see it? :D
 
 ### References
 
-- ES6 Spec, Can I Use?: [https://caniuse.com/?search=es6](https://caniuse.com/?search=es6)
+- "ES6", Can I Use?: [https://caniuse.com/?search=es6](https://caniuse.com/?search=es6)
 
 - "Memoization", BetterDev: [https://www.better.dev/understanding-memoization-in-javascript](https://www.better.dev/understanding-memoization-in-javascript)
 
