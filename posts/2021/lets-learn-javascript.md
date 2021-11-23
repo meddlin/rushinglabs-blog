@@ -7,21 +7,21 @@ preview: |-
 
 _Aren't there enough?_
 
-I recently started creating a new series for others looking to learn JavaScript. Why? Because after 6 years with the language, I discovered that I didn't really **know** it, and I know it's because I only ever learned what I needed in the moment. I never stopped to really focus on the fundamentals, just regular vanilla JavaScript. And after 5 minutes focusing on that idea about fundamentals...I'm wondering, "Can JavaScript be learned with _just a browser and text editor?_"
+I recently started creating a new series for others looking to learn JavaScript. Why? Because after 6 years with the language, I discovered that I didn't really **know** it, and I know it's because I only ever learned what I needed in the moment. I never stopped to really focus on the fundamentals, just regular vanilla JavaScript. And after 5 minutes focusing on that idea about fundamentals...I'm left wondering, "Can JavaScript be learned with _just a browser and text editor?_"
 
 ## How Did I Learn JavaScript
 
 I briefly played with JavaScript back in college, but it wasn't the best experience. Nothing seemed defined, it was weirdly tossed around in a browser, and I was deep into the CS curriculum learning more interesting things with C# and other languages.
 
-Then, it was 2014--I had just finished a major responsive site design project at work, I stumbled across Meteor.js. Shortly after, ES6 hit. My head was swirling in JavaScript; everything I wrote was a webapp. "JS fatigue" seemed to be what every developer was discussing.
+Then, it was 2014--I had just finished a major responsive site design project at work, and I stumbled across Meteor.js for some other work. Shortly after, ES6 hit. My head was swirling in JavaScript; everything I wrote was a webapp. "JS fatigue" seemed to be what every developer was discussing.
 
-Soon after I was diving headfirst into React, and pulling together some large projects. Honestly, it felt great. My opinion of JavaScript was completely reversed. I was still growing my skills with C# on the back-end, and it seemed like I could really become a competent full-stack engineer! Then while integrating a UI library with React I came across memoization and higher-order components. Suddenly, I realized I didn't truly know this language; I was just figuring stuff out.
+Soon after I was diving headfirst into React, and pulling together some large projects. Honestly, it felt great. My opinion of JavaScript was completely reversed. I was still growing my skills with C# on the back-end, and it seemed like I could really become a competent full-stack engineer! Then while integrating a UI library with React I came across [memoization](https://www.better.dev/understanding-memoization-in-javascript) and [higher-order components](https://reactjs.org/docs/higher-order-components.html). Suddenly, I realized I didn't truly know this language; I was just figuring stuff out.
 
 I've since moved into an AppSec role, but I miss being elbow-deep in code every day...it's leading me to revisit some of these pieces.
 
 ## JavaScript's Quirk
 
-Later, considering writing a [video series for learning JavaScript](https://www.youtube.com/playlist?list=PLMZaWgPMReBC91zB8JdZbbTcrT9Tv3_8y), I figured it would be good to target a more novice audience. Afterall, JavaScript could easily be someone's first language with the state of web development and modern tooling. But how would they want to learn? I wanted to make sure they didn't make the wrong turns I did.
+Later, while considering writing a [video series for learning JavaScript](https://www.youtube.com/playlist?list=PLMZaWgPMReBC91zB8JdZbbTcrT9Tv3_8y), I figured it would be good to target a more novice audience. Afterall, JavaScript could easily be someone's first language with the state of web development and modern tooling. But how would they want to learn? I wanted to make sure they didn't make the wrong turns I did.
 
 I've seen several JavaScript courses/tutorials go down this path starting with Node.js. To me, this unnecessarily muddies the waters. Node is wonderful, but why potentially confuse beginners with a server-side runtime, npm, and the weird history of JavaScript being created for the browser.
 
@@ -35,7 +35,7 @@ Why not stick with "_just vanilla JavaScript_"? Y'know, K.I.S.S. method and all.
 But what about all of that ES6 ([and other](https://medium.com/engineered-publicis-sapient/javascript-es6-es7-es10-where-are-we-8ac044dfd964)) fancy-ness? 
 - It's pretty [well-supported in browsers](https://caniuse.com/?search=es6) these days. No need for extras if we're focusing on the core language.
 
-Okay...so, no extras needed; good. That leaves...an HTML + JS file?
+Okay...so, no extras needed; good. That leaves...an HTML and a JS file?
 - Yes. And a text editor.
 - _Which there are plenty_...just like browsers
 
@@ -72,11 +72,18 @@ Wanna see it? :D
 - See the code: [https://github.com/RushingLabs/javascript-series](https://github.com/RushingLabs/javascript-series)
 - See the video series: [https://www.youtube.com/playlist?list=PLMZaWgPMReBC91zB8JdZbbTcrT9Tv3_8y](https://www.youtube.com/playlist?list=PLMZaWgPMReBC91zB8JdZbbTcrT9Tv3_8y)
 
+<br />
+<hr />
+<br />
 
-## References
+### References
 
-- ES6 Spec, Can I Use?: https://caniuse.com/?search=es6
+- ES6 Spec, Can I Use?: [https://caniuse.com/?search=es6](https://caniuse.com/?search=es6)
 
-- Medium article, ES6/ES7 Features: https://medium.com/engineered-publicis-sapient/javascript-es6-es7-es10-where-are-we-8ac044dfd964
+- "Memoization", BetterDev: [https://www.better.dev/understanding-memoization-in-javascript](https://www.better.dev/understanding-memoization-in-javascript)
 
-- TechBeacon, Top Languages Every Application Security Pro Should Know: https://techbeacon.com/security/top-languages-every-application-security-pro-should-know
+- "Higher-order Components", React Docs: [https://reactjs.org/docs/higher-order-components.html](https://reactjs.org/docs/higher-order-components.html)
+
+- "JavaScript, ES6, ES7, ES10 where are we?", Medium, Yann s: [https://medium.com/engineered-publicis-sapient/javascript-es6-es7-es10-where-are-we-8ac044dfd964](https://medium.com/engineered-publicis-sapient/javascript-es6-es7-es10-where-are-we-8ac044dfd964)
+
+- "Top Languages Every Application Security Pro Should Know", TechBeacon: [https://techbeacon.com/security/top-languages-every-application-security-pro-should-know](https://techbeacon.com/security/top-languages-every-application-security-pro-should-know)
