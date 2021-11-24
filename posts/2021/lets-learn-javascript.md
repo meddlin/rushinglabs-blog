@@ -9,6 +9,8 @@ _Aren't there enough?_
 
 I recently started creating a new series for others looking to learn JavaScript. Why? Because after 6 years with the language, I discovered that I didn't really **know** it, and I know it's because I only ever learned what I needed in the moment. I never stopped to really focus on the fundamentals, just regular vanilla JavaScript. And after 5 minutes focusing on that idea about fundamentals...I'm left wondering, "Can JavaScript be learned with _just a browser and text editor?_"
 
+<img src="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-11_javascript-series/pexels-paras-katwal-4218883.jpg" />
+
 ## How Did I Learn JavaScript
 
 I briefly played with JavaScript back in college, but it wasn't the best experience. Nothing seemed defined, it was weirdly tossed around in a browser, and I was deep into the CS curriculum learning more interesting things with C# and other languages.
@@ -69,14 +71,15 @@ Further, I work in AppSec now. It's this uncanny valley between Software Develop
 
 Wanna see it? :D
 
-- See the code: [https://github.com/RushingLabs/javascript-series](https://github.com/RushingLabs/javascript-series)
-- See the video series: [https://www.youtube.com/playlist?list=PLMZaWgPMReBC91zB8JdZbbTcrT9Tv3_8y](https://www.youtube.com/playlist?list=PLMZaWgPMReBC91zB8JdZbbTcrT9Tv3_8y)
+[View the code](https://github.com/RushingLabs/javascript-series) &mdash; [Check out the video series](https://www.youtube.com/playlist?list=PLMZaWgPMReBC91zB8JdZbbTcrT9Tv3_8y)
 
 <br />
 <hr />
 <br />
 
 ### References
+
+- Image credit, Paras Katwal: [https://www.pexels.com/photo/computer-with-code-4218883/](https://www.pexels.com/photo/computer-with-code-4218883/)
 
 - "ES6", Can I Use?: [https://caniuse.com/?search=es6](https://caniuse.com/?search=es6)
 
