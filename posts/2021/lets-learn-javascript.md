@@ -1,6 +1,7 @@
 ---
 date: "2021-11-21"
 title: "Why create a new course to learn JavaScript?"
+section: 'software'
 preview: |-
    I recently started creating a new series for others looking to learn JavaScript. Why? Because after 6 years with the language, I discovered that I didn't really know it, and I know it's because I only ever learned what I needed in the moment. I never stopped to really focus on the fundamentals, just regular vanilla JavaScript. And after 5 minutes focusing on that idea about fundamentals...I'm wondering, "Can JavaScript be learned with just a browser and text editor?"
 ---
