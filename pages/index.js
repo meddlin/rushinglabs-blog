@@ -55,7 +55,7 @@ export default function Home({ allPostsData, categoriesList, prevPosts, nextPost
 								<p>{preview}</p>
 
 								<Link href={`/blog/${id}`}>
-									<a>Read More &mdash;&gt;</a>	
+									<a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
 								</Link>
 							</li>
 						))}
