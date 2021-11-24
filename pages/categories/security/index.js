@@ -51,7 +51,7 @@ export default function SecuritySection({ posts, prevPosts, nextPosts, categorie
                                     </Link>
                                     <br />
                                     <small className={utilStyles.subpreview}>
-                                        {section ? (<text>{section}&nbsp;&mdash;&nbsp;</text>) 
+                                    {section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
                                             : ''}
                                         <Date dateString={date} />
                                     </small>
