@@ -44,7 +44,7 @@ export default function SecuritySection({ posts, prevPosts, nextPosts, categorie
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
                     <ul className={utilStyles.list}>
                         {(posts && posts.length > 0) ? (
-                            posts.map( ({ id, year, date, title }) => (
+                            posts.map( ({ id, year, date, title, preview }) => (
                                 <li className={utilStyles.listItem} key={id}>
                                     <Link href={`/blog/${year}/${id}`}>
                                         <a>{title}</a>
@@ -53,6 +53,11 @@ export default function SecuritySection({ posts, prevPosts, nextPosts, categorie
                                     <small className={utilStyles.lightText}>
                                         <Date dateString={date} />
                                     </small>
+                                    <p>{preview}</p>
+
+                                    <Link href={`/blog/${id}`}>
+                                        <a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
+                                    </Link>
                                 </li>
                             ))
                         ) : ''}
