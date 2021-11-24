@@ -53,6 +53,10 @@ export default function Home({ allPostsData, categoriesList, prevPosts, nextPost
 									<Date dateString={date} />
 								</small>
 								<p>{preview}</p>
+
+								<Link href={`/blog/${id}`}>
+									<a>Read More &mdash;&gt;</a>	
+								</Link>
 							</li>
 						))}
 					</ul>
