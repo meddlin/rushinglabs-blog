@@ -60,6 +60,10 @@
   .lightText {
     color: #999;
   }
+  .subpreview {
+    color: #999;
+    font-style: italic;
+  }
 
   .readMoreLink {
     font-size: 0.8em;
