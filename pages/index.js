@@ -43,13 +43,15 @@ export default function Home({ allPostsData, categoriesList, prevPosts, nextPost
 
 				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
 					<ul className={utilStyles.list}>
-						{allPostsData.map( ({ id, date, title, preview }) => (
+						{allPostsData.map( ({ id, date, title, preview, section }) => (
 							<li className={utilStyles.listItem} key={id}>
 								<Link href={`/blog/${id}`}>
 									<a>{title}</a>
 								</Link>
 								<br />
-								<small className={utilStyles.lightText}>
+								<small className={utilStyles.subpreview}>
+									{section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
+										: ''}
 									<Date dateString={date} />
 								</small>
 								<p>{preview}</p>

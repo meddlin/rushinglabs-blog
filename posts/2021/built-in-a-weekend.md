@@ -1,6 +1,7 @@
 ---
 date: "2021-09-22"
 title: "Build It In a Weekend"
+section: 'software'
 preview: |-
     Have you ever had one of those little ideas for something to build "real quick"? Something not too crazy, but just a fun idea...or maybe something you just hadn't found quite the solution you're looking for? Then suddenly the perfect weekend for it comes up and you decide to pounce. Let's do this. I'm starting with nothing, and not quitting until there's something to show. I finally did that.
 ---
