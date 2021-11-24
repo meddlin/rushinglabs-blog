@@ -2,6 +2,8 @@
 date: "2018-06-07"
 title: "One Step at a Time"
 section: 'cpat'
+preview: |-
+    My biggest problem so far has been myself. My ideas for this project take it into being something  huge. Here's the hard work that often stumps me: relishing in those ideas; writing them down; and reigning the scope back into actionable items. Items that are actionable and reasonable for working in the evenings. That is tough.
 ---
 
 *There's something to be learned in walking before you attempt tearing through a marathon of code.* Bad memories of exhaustion aside, I have progress to present again.
