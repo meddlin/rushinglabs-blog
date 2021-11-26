@@ -12,7 +12,7 @@ preview: |-
 
 _A word to the wise...remember your fundamentals._
 
-<hr>
+<hr />
 
 The [last post I wrote on refactoring this blog for subdirectories](https://rushinglabs.com/blog/2021/crawling-directories-nodejs) made an assumption I didn't realize was such a weak point, for generating article routes, based on crawling directories. 
 
