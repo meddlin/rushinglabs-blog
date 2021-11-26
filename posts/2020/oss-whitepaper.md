@@ -31,7 +31,7 @@ So, in modern software development, using tools and services like GitHub and NPM
 In March 2016, developer Azer Koçulu and messaging service Kik had a disagreement about the chosen name for one of Azer's published NPM packages, aptly named "kik". Kik requested Azer change the name of the package (to not collide with their own name), but Azer contested and resolved to abruptly remove not only the offending "kik" package but also the other 272 packages he had also published. 
  
 One of the removed packages was "left-pad", an unsuspecting package--it merely added whitespace padding on the left side of a string. This was a non-descript unsuspecting package until its removal started breaking thousands of software builds. At the time, NPM had very few mitigations in place for this type of scenario. So even though Cameron Westland, another npm package author, realized what happened and published a solution within 10 minutes, the interruption lasted roughly 2.5 hours. The interruption lasted longer than 10-15 minutes because NPM had to make decisions around republishing a package and working with package authors in a new way.
-Ref: https://blog.npmjs.org/post/141577284765/kik-left-pad-and-npm
+Ref: [https://blog.npmjs.org/post/141577284765/kik-left-pad-and-npm](https://blog.npmjs.org/post/141577284765/kik-left-pad-and-npm)
 
 ### event-stream incident
 
@@ -80,7 +80,7 @@ Pretending to be a contributor/maintainer, and then switching to malicious contr
  
 ### Typo-squatting
 
-This is the same idea as using slight misspellings to lure people into illegitimate websites. The "npm install" command will work if the package exists--regardless of the author or intent of the underlying code. However, in order to mitigate against this attack vector, npm has released a package [<>] to help validate packages before install and some naming rules (listed below).
+This is the same idea as using slight misspellings to lure people into illegitimate websites. The "npm install" command will work if the package exists--regardless of the author or intent of the underlying code. However, in order to mitigate against this attack vector, npm has released a package [`<>`] to help validate packages before install and some naming rules (listed below).
 
 1.	Can’t start with a “.” (period)
 2.	Can’t start with a _ (underscore)

@@ -12,19 +12,19 @@ section: 'software'
 
 I'm calling mine `TestWebApi`, you can do whatever you want.
 
-<img src="https://dqobpw7zfy84b.cloudfront.net/post_04-20-2019/01-choose-web-api.png" height=500 width=700 />
+<img src="https://dqobpw7zfy84b.cloudfront.net/post_04-20-2019/01-choose-web-api.png" height="500" width="700" />
 
 Then select an "API" specifically, and denote which version of .NET Core to use. Here, I'm using .NET Core 2.2. Finally, click "**Create**".
 
 > NOTE: *For now, I'm leaving "Configure for HTTPS" selected, and **not** enabling Docker support.*
 
-<img src="https://dqobpw7zfy84b.cloudfront.net/post_04-20-2019/02-choose-api-version.png" height=500 width=700 />
+<img src="https://dqobpw7zfy84b.cloudfront.net/post_04-20-2019/02-choose-api-version.png" height="500" width="700" />
 
 ## First Run
 
 At this point, we technically have a functional REST API. So...post over! We're done! Nah, let's make it intereting.
 
-<img src="https://dqobpw7zfy84b.cloudfront.net/post_04-20-2019/03-first-build-view-actions.png" height=500 width=850 />
+<img src="https://dqobpw7zfy84b.cloudfront.net/post_04-20-2019/03-first-build-view-actions.png" height="500" width="850" />
 
 ## Looking at Controller Actions
 
@@ -83,7 +83,7 @@ public ActionResult<string> Get(int id)
 }
 ```
 
-<img src="https://dqobpw7zfy84b.cloudfront.net/post_04-20-2019/04-api-endpoint-parameter.png" height=385 width=874 />
+<img src="https://dqobpw7zfy84b.cloudfront.net/post_04-20-2019/04-api-endpoint-parameter.png" height="385" width="874" />
 
 ## A Few Additions
 
@@ -94,7 +94,7 @@ This is largely unnecessary, but I prefer for my code to be clear even if that s
 Ref: [https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/formatting?view=aspnetcore-2.2](https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/formatting?view=aspnetcore-2.2)
 
 
-<img src="https://s3.us-east-2.amazonaws.com/meddlin-web/post_04-20-2019/05-json-formatting.png" height=376 width=972 />
+<img src="https://s3.us-east-2.amazonaws.com/meddlin-web/post_04-20-2019/05-json-formatting.png" height="376" width="972" />
 
 <br />
 <br />
