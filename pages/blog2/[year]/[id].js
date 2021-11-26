@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Layout from '../../../components/layout';
 import { MDX_fetchPostIds } from '../../../lib/posts';
@@ -40,10 +41,14 @@ export default function Post({ postId, metadata }) {
 
     return (
         <Layout>
-            <h1>Blog 2 - MDX testing</h1>
+            <Head>
+                <h1>Blog 2 - MDX testing</h1>
+            </Head>
 
-            <h2>{metadata.title}</h2>
-            <Mdx />
+            <article>
+                <h2>{metadata.title}</h2>
+                <Mdx />
+            </article>
         </Layout>
     );
 }
