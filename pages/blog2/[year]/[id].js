@@ -1,29 +1,32 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Layout from '../../../components/layout';
-import { MDX_fetchPostIds } from '../../../lib/posts';
+import { MDX_fetchPostIds, getAllPostIds } from '../../../lib/posts';
 
 export async function getStaticPaths() {
-    const postIds = await MDX_fetchPostIds();
-    let year = '2021';
+    const postIds =  MDX_fetchPostIds();
+    const paths = getAllPostIds();
+    /* let year = '2021'; */
 
-    console.log(`getStaticPaths`);
-    console.log(postIds);
+    console.log(`getStaticPaths -- getAllPostIds()`)
+    console.log(paths);
 
-    /* let posts = postIds.map(p => {
-        return p.split('.mdx')[0]
-    });
-    console.log(posts); */
 
-    return {
-        paths: postIds.map((id) => ({
+    /* console.log(`getStaticPaths -- MDX_fetchPostIds()`);
+    console.log(postIds); */
+
+    /* paths: postIds.map((id) => ({
             params: { id, year }
+        })), */
+    return {
+        paths: paths.map( (path) => ({
+            params: { id: path.params.id, year: path.params.year }
         })),
         fallback: false, // in a static-only build, we don't need fallback rendering
     };
 }
 
-export const getStaticProps = (ctx) => {
+export async function getStaticProps(ctx) { // did making this async fix it?
     const postId = ctx.params.id;
     const year = ctx.params.year;
     console.log(`getStaticProps: ${year}`);
@@ -31,23 +34,37 @@ export const getStaticProps = (ctx) => {
     return {
         props: {
             postId,
-            metadata: require(`../../../posts/2021/${postId}`).metadata, // watch for .mdx extension
+            year,
+            metadata: require(`../../../posts/${year}/${postId}.mdx`).metadata, // watch for .mdx extension
         },
     };
 };
 
-export default function Post({ postId, metadata }) {
-    const Mdx = dynamic(() => import(`../../../posts/2021/${postId}`)); // watch for .mdx extension
+export default function Post({ postId, year, metadata }) {
+    let mdx;
+
+    const Mdx = dynamic(() => import(`../../../posts/${year}/${postId}.mdx`)); // watch for .mdx extension
+    mdx = <Mdx />
+
+    /* if (process.browser) {
+        const Mdx = dynamic(() => import(`../../../posts/2021/${postId}`)); // watch for .mdx extension
+        mdx = <Mdx />
+    } else {
+        const Component = require(`../../../posts/2021/${postId}`).default;
+        const ReactDOMServer = require("react-dom/server");
+        const ssr = ReactDOMServer.renderToString(<Component />);
+        mdx = <div dangerouslySetInnerHTML={{ __html: ssr }} />;
+    } */
 
     return (
         <Layout>
             <Head>
-                <h1>Blog 2 - MDX testing</h1>
+                <title>Blog 2 - {metadata.title}</title>
             </Head>
 
             <article>
                 <h2>{metadata.title}</h2>
-                <Mdx />
+                {mdx}
             </article>
         </Layout>
     );

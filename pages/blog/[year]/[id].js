@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import Layout from '../../../components/layout';
 import Head from 'next/head';
 import Date from '../../../components/date';
@@ -15,7 +16,9 @@ export async function getStaticPaths() {
 
     // The params building happens in /lib/posts.getAllPostIds()
     return {
-        paths: paths,
+        paths: paths.map( (path) => ({
+            params: { id: path.params.id, year: path.params.year }
+        })),
         fallback: false
     }
 }
@@ -30,26 +33,45 @@ export async function getStaticProps({ params }) {
     // For this route we have the directory structure /blog/[year]/[id].js
     // --> So, `year` and `id` are part of the params object <--
     
-    const postData = await getPostData(params.year, params.id);
-    return {
+    const postId = params.id;
+    const year = params.year;
+    console.log(`getStaticProps: ${year}`);
+    console.log(`getStaticProps: ${postId}`)
+
+    /* const postData = await getPostData(params.year, params.id); */
+    /* return {
         props: {
             postData
         }
-    }
+    } */
+    const postData = require(`../../../posts/${year}/${postId}.mdx`);
+    console.log(postData);
+
+    return {
+        props: {
+            postId,
+            year,
+            metadata: require(`../../../posts/${year}/${postId}.mdx`).metadata, // watch for .mdx extension
+        },
+    };
 }
 
-export default function Post({ postData }) {
+export default function Post({ postId, year, metadata }) {
+    let mdx;
+    const Mdx = dynamic(() => import(`../../../posts/${year}/${postId}.mdx`)); // watch for .mdx extension
+    mdx = <Mdx />
 
     return (
         <Layout>
             <Head>
-                <title>{postData.title}</title>
+                <title>{metadata.title}</title>
             </Head>
             
             <article className={postStyles.content}>
-                <h1 className={utilStyles.headingX1}>{postData.title}</h1>
-                <Date dateString={postData.date} />
-                <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+                <h1 className={utilStyles.headingX1}>{metadata.title}</h1>
+                <Date dateString={metadata.date} />
+                {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
+                {mdx}
             </article>
         </Layout>
     );
