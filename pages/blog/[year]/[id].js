@@ -10,8 +10,9 @@ import postStyles from '../../../styles/post.module.css';
  * Importing the components which will be used in our MDX posts
  */
 import Image from 'next/image';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 import Button from '../../../components/button';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 
 /**
  * getStaticPaths is required by Next.js
@@ -53,13 +54,6 @@ export const getStaticProps = async ({ params }) => {
 }
 
 const Post = (props) => {
-
-    // console.log(`Post - props: ${JSON.stringify(props)}`);
-
-    // console.log(`Post - id: ${props.postData.id}`);
-    // console.log(`Post - postData: ${JSON.stringify(props.postData)}`);
-    // console.log(`Post - mdxSource: ${JSON.stringify(props.postData.mdxSource)}`);
-
     let mdx = props.postData.mdxSource;
     let title = props.postData.title;
     let date = props.postData.date;
@@ -68,7 +62,7 @@ const Post = (props) => {
     return (
         <Layout>
             <Head>
-                {/* <title>{metadata.title}</title> */}
+                <title>{title}</title>
             </Head>
             
             <article className={postStyles.content}>
