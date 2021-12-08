@@ -6,6 +6,8 @@ preview: |-
     So...I just made the switch to an M1 MacBook Air. Like many others. And it's been about 6 years since I last personally used a Mac. So, I started my reintroduction to Mac OS and getting acquainted with my shiny new laptop. However, I've never needed to configure any terminal application. The default functionality has always been enough to get my work done. Trying to use Node.js on M1--and running into a need for zsh--has changed that for me.
 ---
 
+
+
 So...I just made the switch to an M1 MacBook Air. _Like many others._ And it's been about 6 years since I last personally used a Mac. So, I started my reintroduction to Mac OS and getting acquainted with my shiny new laptop.
 
 However, I've never needed to configure any terminal application. The default functionality has always been enough to get my work done. Trying to use Node.js on M1--and running into a need for zsh--has changed that for me.
@@ -39,21 +41,25 @@ Ref: [https://stackoverflow.com/questions/43417162/which-shell-i-am-using-in-mac
 
 Of course, StackOverflow has the answer. Short answer is, `zsh` is likely your default. To verify, you can check from Terminal's menubar by Terminal -> Preferences -> General, or running the following:
 
-```bash
-// for currently running
+<SyntaxHighlighter language="bash">
+{`
+# for currently running
 ps -o comm= $$
-// for default
+# for default
 echo $SHELL
-```
+`}
+</SyntaxHighlighter>
 
 
 ### False Start, need a profile
 
 After determining my shell, I then attempted to install `nvm` (to better manage `npm`).
 
-```bash
+<SyntaxHighlighter language="bash">
+{`
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-```
+`}
+</SyntaxHighlighter>
 
 However, this is where I received an error stating I didn't have a shell profile available.
 
