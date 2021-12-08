@@ -10,6 +10,7 @@ import postStyles from '../../../styles/post.module.css';
  * Importing the components which will be used in our MDX posts
  */
 import Image from 'next/image';
+import CenteredImage from '../../../components/CenteredImage';
 import Button from '../../../components/button';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
@@ -65,7 +66,7 @@ const Post = (props) => {
             <article className={postStyles.content}>
                 <h1 className={utilStyles.headingX1}>{title}</h1>
                 <Date dateString={date} />
-                <MDXRemote {...mdx} components={{ Button, Image, SyntaxHighlighter }} />
+                <MDXRemote {...mdx} components={{ Button, Image, CenteredImage, SyntaxHighlighter }} />
             </article>
         </Layout>
     );
