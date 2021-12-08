@@ -52,7 +52,7 @@ export default function Home({ allPostsData, categoriesList, prevPosts, nextPost
 								<small className={utilStyles.subpreview}>
 									{section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
 										: ''}
-									<Date dateString={date} />
+									{date ? (<Date dateString={date} />) : ''}
 								</small>
 								<p>{preview}</p>
 
