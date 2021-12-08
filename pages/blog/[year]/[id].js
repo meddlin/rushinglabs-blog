@@ -41,9 +41,6 @@ export const getStaticProps = async ({ params }) => {
     
     const postId = params.id;
     const year = params.year;
-    console.log(`getStaticProps: ${year}`);
-    console.log(`getStaticProps: ${postId}`)
-
     const postData = await getPostData(year, postId);
 
     return {
