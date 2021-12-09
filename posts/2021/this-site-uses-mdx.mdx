@@ -1,0 +1,185 @@
+---
+date: "2021-12-08"
+title: "This site (now) uses MDX"
+section: 'software'
+preview: |-
+    And it's been a long time coming.
+---
+
+Some time last year I stumbled across MDX while looking for way too much tooling around Markdown-to-HTML conversion, to 
+run in a React app.
+
+## What is MDX?
+
+Quite simply, it is a superset syntax to make Markdown support JSX. Read [here](https://mdxjs.com/) for more. At first, 
+this might seem superfluous since Markdown already is decently capable.
+
+[https://mdxjs.com/](https://mdxjs.com/)
+
+## Why bother? (the priorities)
+
+Why even bother with such a heavy complexity for a personal blog? 
+
+> I mean, isn't MDX such a heavy departure from plain Markdown that you're now pigeon-holed 
+into Next.js + React, until they inevitably fall out of vogue?
+
+Not really. Other tools like Gatsby or Remix, either have a healthy enough plugin ecosystem, or support JSX well-enough,
+that there is ample flexibility.
+
+<CenteredImage 
+    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-12_site-uses-mdx/logan-weaver-unsplash_small.jpg"
+    height="640"
+    width="430"
+    alt="fancy window w/ rather pertinent text"
+    imageCredit="Logan Weaver"
+    imageCreditLink="https://unsplash.com/photos/LHDQawgNS_I"
+/>
+
+### Optimized images & syntax highlighting support
+
+`<Image>`
+
+Docs: [https://nextjs.org/docs/api-reference/next/image](https://nextjs.org/docs/api-reference/next/image)
+
+`<SyntaxHighlighter>`
+
+GitHub: [https://github.com/react-syntax-highlighter/react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+
+### Brief examples
+
+For instance, I can do stuff like this now. The whole reason I wanted a Markdown-driven blog was because
+writing directly in HTML gets tedious. Then, adding images brought me back to writing `<img />` directly in my 
+Markdown. _And then_...wanting to center or style those images (or anything else)...and we're suddenly 
+precariously close to writing straight HTML again!
+
+I was able to start with the component from [`next/image`](https://nextjs.org/docs/api-reference/next/image), and wrap 
+a few things of my own around it. Doing all of this in a React component means I can use this while authoring posts
+just as easily as the `<Image />`.
+
+<SyntaxHighlighter language="javascript">
+{`
+import Image from 'next/image';
+export default function CenteredImage({ srcUrl, height, width, alt, caption, imageCredit, imageCreditLink }) {
+    return (
+        <div className={utils.center}>
+            <div>
+                <Image src={srcUrl}
+                    height={height}
+                    width={width}
+                    alt={alt} />
+            </div>
+            {caption ? (<p>
+                <i>
+                    This is a caption - {caption}
+                </i>
+            </p>) : ''}
+            <p>
+                <i>Credit: <a href={imageCreditLink}>{imageCredit}</a></i>
+            </p>
+        </div>
+    );
+}
+`}
+</SyntaxHighlighter>
+
+## How is it setup?
+
+_Note: Not a full tutorial; just an explanation of what I landed on and some of the other options._
+
+### I landed on `next-mdx-remote` + `@next/mdx`
+
+I followed this [blog post from Ebenezer Don](https://blog.jetbrains.com/webstorm/2021/10/building-a-blog-with-next-js-and-mdx/)
+for setting up [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote), and [this one](https://nextjs.org/blog/markdown)
+from the Next.js blog to integrate `@next/mdx`. 
+
+<SyntaxHighlighter language="js">
+{`
+npx create-next-app --example with-mdx with-mdx-app
+`}
+</SyntaxHighlighter>
+
+### A slight difference
+
+I'm using `@next/mdx` and `next-mdx-remote`. Many tutorials just choose one option or another and leave it at that.
+Since I couldn't find a single package to provide everything I wanted in a nice, simple well..._package_...I took a shot
+and ran with both.
+
+_An extra dependency isn't great, but it beats extra config code I'm going to forget in 6 months._ 🤷‍♂️
+
+If you want to read a play-by-play of my issues, see here: [GH issue]
+
+- Images aren't showing in posts anymore: [https://github.com/meddlin/rushinglabs-blog-nextjs/issues/59](https://github.com/meddlin/rushinglabs-blog-nextjs/issues/59)
+- Convert posts...dynamic routing: [https://github.com/meddlin/rushinglabs-blog-nextjs/issues/60](https://github.com/meddlin/rushinglabs-blog-nextjs/issues/60)
+- broken "successful" deploy: [https://github.com/meddlin/rushinglabs-blog-nextjs/pull/65](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/65)
+
+
+
+### Autoring tools, potential issues
+
+MDX doesn't come without snags, so I want to briefly share some issues that have popped up early on.
+
+**SyntaxHighlighter**
+
+The `<SyntaxHighlighter>` component often has issues around the caret mark (`) and newline/carriage returns. There's
+also some extra complication introduced by trying to use different themes for this highlighting. And this isn't a 
+detriment to the package, any sort of syntax parsing is a complicated feature.
+
+**Components can be weird**
+
+Using components in MDX is great, but will still require me to reference component's code until I get used
+to using them. Things like: "Am I using this correctly?", "Am I missing a prop?", and _components used in
+the MDX_ need to _first be registered in the parent component_ before they are available. But I think these
+are more adjustments to be aware of rather than true long-term issues.
+
+**MDX Preview extensions (in VSCode)**
+
+While everything can work completely fine between your Next.js app and MDX, that doesn't mean the "MDX preview"
+extensions in the VSCode marketplace understand how your app is structured. Since I'm using `<CenteredImage>`
+in my `.mdx`, but the actual component is passed in via the parent component the extension doesn't know about it.
+Thus, if I want a preview open while I write blog posts, I need the site running locally with a browser window 
+open to see it.
+
+<CenteredImage 
+    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-12_site-uses-mdx/mdx-preview-problem.png"
+    height="599"
+    width="579"
+/>
+
+
+## Why bother? (the nice-to-haves)
+
+- Better media embeds
+    - I would like to have more pre-made options for off-setting images to the left and right of text,
+    and enabling text wrapping. (insert image of it here)
+    - It would also be nice to have a little more control around embedding YouTube videos, and other media 
+    on the site.
+
+- Better references
+    - I often do a bit of research while writing my blog posts, and I try to share as much of the material I come
+    across in a "References" section below the post. I've done this with plain Markdown, and it's fine but a little
+    plain. So, I'd really like to build component to display these in a consistent way across each post.
+
+- Interactive spaces via Sandpack (from Code Sandbox)
+    - [https://codesandbox.io/post/sandpack-announcement](https://codesandbox.io/post/sandpack-announcement)
+    - The only thing better than syntax highlighting (_IMO_) is adding interactivity directly into the explanations.
+
+- Future projects
+    - There are some ideas I want to experiment with on this blog, and I feel MDX is the good foundation needed to
+    get them done.
+    - Interactive code tutorials for self-made programming courses
+    - Software project documentation with animations and code examples built-in
+    - Textbooks as MDX
+    - Integrated data visualizations through tools like Pyodide
+    - Experiment with transforming application threat models, stored as text, and converted to MDX
+
+
+<hr />
+
+### References
+
+- Image credit&mdash;Logan Weaver: [https://unsplash.com/photos/LHDQawgNS_I](https://unsplash.com/photos/LHDQawgNS_I)
+
+- `next-mdx-remote` tutorial, Ebenezer Don: [https://blog.jetbrains.com/webstorm/2021/10/building-a-blog-with-next-js-and-mdx/](https://blog.jetbrains.com/webstorm/2021/10/building-a-blog-with-next-js-and-mdx/)
+- Example app for `@next/mdx`: [https://github.com/vercel/next.js/tree/canary/examples/with-mdx](https://github.com/vercel/next.js/tree/canary/examples/with-mdx)
+- `@next/mdx` package: [https://www.npmjs.com/package/@next/mdx](https://www.npmjs.com/package/@next/mdx)
+- `next-mdx-remote` package: [https://github.com/hashicorp/next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
