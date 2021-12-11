@@ -1,5 +1,16 @@
 # Syntax Highlighting - MDX
 
+<hr />
+
+_**Inspiration**_
+
+This is how someone got this working in Gatsby with MDXProvider and `prism-react-renderer`. I used a similar idea to pull things together with Next.js and `react-syntax-highlighter`.
+
+[https://malikgabroun.com/blog/syntax-highlighting-in-gatsby-mdx/](https://malikgabroun.com/blog/syntax-highlighting-in-gatsby-mdx/)
+
+<hr />
+
+
 Here's how I made use of `<SyntaxHighlighter>` in the MDX configuration, for rendering blog posts.
 
 Pull in the `react-syntax-highlighter` package, and dependencies.
@@ -46,3 +57,11 @@ const Post = (props) => {
     );
 }
 ```
+
+<hr />
+
+## References
+
+- React, Composition vs. Inheritance - [https://reactjs.org/docs/composition-vs-inheritance.html](https://reactjs.org/docs/composition-vs-inheritance.html)
+- GH Issue, Unexpected token export: [https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/230](https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/230)
+- Syntax highlighting, Gatsby, MDX, prism: [https://malikgabroun.com/blog/syntax-highlighting-in-gatsby-mdx/](https://malikgabroun.com/blog/syntax-highlighting-in-gatsby-mdx/)
