@@ -99,7 +99,7 @@ as easily as the `<Image />`.
 _Then_ I'm able to share the code here, using the 
 `<SyntaxHighlighter/>` 😎
 
-<SyntaxHighlighter language="javascript">
+<MyHighlighter language="javascript">
 {`
 import Image from 'next/image';
 export default function CenteredImage({ srcUrl, height, width, alt, caption, imageCredit, imageCreditLink }) {
@@ -123,7 +123,7 @@ export default function CenteredImage({ srcUrl, height, width, alt, caption, ima
     );
 }
 `}
-</SyntaxHighlighter>
+</MyHighlighter>
 
 ## How is it setup?
 
@@ -144,11 +144,11 @@ from the Next.js blog to integrate [`@next/mdx`](https://www.npmjs.com/package/@
 The blog post from Next.js doesn't quite cover everything 
 for `@next/mdx` so check out the example app by running the command below.
 
-<SyntaxHighlighter language="js">
+<MyHighlighter language="js">
 {`
 npx create-next-app --example with-mdx with-mdx-app
 `}
-</SyntaxHighlighter>
+</MyHighlighter>
 
 ### A slight difference
 
@@ -178,7 +178,7 @@ we're tightly coupled and need to make boilerplate updates for new component
 functionality. It isn't the end of the world though, and I'm sure playing with 
 a few things can alleviate some of this.
 
-<SyntaxHighlighter language="js">
+<MyHighlighter language="js">
 {`
 const Post = (props) => {
     return (
@@ -192,7 +192,7 @@ const Post = (props) => {
     );
 }
 `}
-</SyntaxHighlighter>
+</MyHighlighter>
 
 If you want to read a play-by-play of my issues, see here: [GH issue]
 

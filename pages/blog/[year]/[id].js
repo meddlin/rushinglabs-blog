@@ -12,7 +12,16 @@ import postStyles from '../../../styles/post.module.css';
 import Image from 'next/image';
 import CenteredImage from '../../../components/CenteredImage';
 import Button from '../../../components/button';
+import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter';
+
+const MyHighlighter = ({ language, children }) => {
+    return (
+        <SyntaxHighlighter language={language} style={a11yDark}>
+            {children}
+        </SyntaxHighlighter>
+    );
+}
 
 
 /**
@@ -66,7 +75,7 @@ const Post = (props) => {
             <article className={postStyles.content}>
                 <h1 className={utilStyles.headingX1}>{title}</h1>
                 <Date dateString={date} />
-                <MDXRemote {...mdx} components={{ Button, Image, CenteredImage, SyntaxHighlighter }} />
+                <MDXRemote {...mdx} components={{ Button, Image, CenteredImage, SyntaxHighlighter, MyHighlighter }} />
             </article>
         </Layout>
     );
