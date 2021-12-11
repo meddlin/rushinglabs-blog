@@ -179,13 +179,10 @@ functionality. It isn't the end of the world though, and I'm sure playing with
 a few things can alleviate some of this.
 
 <MyHighlighter language="js">
-{`
-const Post = (props) => {
+{`const Post = (props) => {
     return (
         <Layout>
-            
             <article className={postStyles.content}>
-                {/* removed for brevity */}
                 <MDXRemote {...mdx} components={{ Button, Image, CenteredImage, SyntaxHighlighter }} />
             </article>
         </Layout>
