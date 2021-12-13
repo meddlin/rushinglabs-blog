@@ -17,7 +17,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 
 const MyHighlighter = ({ language, children }) => {
     return (
-        <SyntaxHighlighter language={language} style={a11yDark}>
+        <SyntaxHighlighter 
+            language={language} 
+            style={a11yDark}>
             {children}
         </SyntaxHighlighter>
     );
