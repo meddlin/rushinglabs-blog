@@ -1,6 +1,6 @@
 ---
 date: "2021-12-17"
-title: "Website Vlog Update - 03"
+title: "Website Vlog Update - 03 // Blog previews, GitHub Code QL"
 section: ''
 preview: |-
     Tracking progress, learning quite a bit.
@@ -8,19 +8,25 @@ preview: |-
 
 _A running progress track of how I'm building this site._
 
-### TikTok link & Readme.md
+## TikTok link & Readme.md
 
 [PR #34](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/34) / [PR #44](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/44)
 
-TikTok &mdash; Feels a little weird to write about adding a link, but it was the right time to bring TikTok to 
+**TikTok** &mdash; Feels a little weird to write about adding a link, but it was the right time to bring TikTok to 
 the About page. Good things are happening over there. &mdash; [@rushinglabs](https://www.tiktok.com/@rushinglabs?lang=en)
 
-Readme &mdash; I hope I can remember to continue keeping the [README](https://github.com/meddlin/rushinglabs-blog-nextjs#readme) 
+**Readme** &mdash; I hope I can remember to continue keeping the [README](https://github.com/meddlin/rushinglabs-blog-nextjs#readme) 
 updated. Not much to say here; _it's all [over there](https://github.com/meddlin/rushinglabs-blog-nextjs#readme)_ 😅
 
-[_insert image of social links w/ TikTok icon_]
+<CenteredImage 
+    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-12_site-vlog-03/screenshot_tiktok-icon.png"
+    height="175"
+    width="674"
+    alt="social icons with TikTok circled"
+    caption="Check the About page!"
+/>
 
-### Blog preview
+## Blog preview
 
 [PR #55](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/55)
 
@@ -30,7 +36,10 @@ I am using [gray-matter](https://www.npmjs.com/package/gray-matter) to parse the
 with each post. _Which means this frontmatter is a block of YAML._
 
 I quickly figured out that line breaks aren't valid in YAML properties by themselves. However, with a little 
-bit of special syntax 
+bit of special syntax (see the `|-` next to `preview`) the line breaks are completely fine. This 
+[StackOverflow](https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210) 
+post has a good reference for multi-line YAML: 
+[https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210](https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210)
 
 <MyHighlighter language="bash">
 {`---
@@ -42,27 +51,43 @@ preview: |-
 ---`}
 </MyHighlighter>
 
-[_insert image of preview_]
 
-In addition to this "preview", there's also a new "Read More" link below the preview for each post.
+In addition to this "preview", there's also a new "Read More" link below the preview for each post. This is the 
+same link that the post title has, but it felt like it made sense to include a call to action here.
 
-[_insert image of read more link_]
+<CenteredImage 
+    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-12_site-vlog-03/screenshot_blog-preview.png"
+    height="376"
+    width="793"
+    alt="screenshot of blog post with pen marking"
+    caption="The preview and 'Read More' link are on every post listing now."
+/>
 
-
-This [StackOverflow](https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210) post has a good reference for multi-line YAML
-
-[https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210](https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210)
-
-### Code QL
+## Code QL
 
 [PR #41](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/41)
 
-Code QL is a free SAST tool from GitHub, completely free, and available to integrate directly within your projects. I 
-haven't started to truly use it yet, but I made sure to incorporate it into the site so it's there. 
-
 Code QL &mdash; [https://codeql.github.com/](https://codeql.github.com/)
 
-[_insert image of Code QL workflow on "Security" tab_]
+Code QL is a free SAST tool from GitHub, and available to integrate directly within your repo(s). I 
+haven't started to dive into it yet, but I made sure to incorporate it into the site so it's there. Integrating it 
+is easy too, just head to the "Security" tab on your GitHub repo, click "Set up this workflow", and the commit 
+is already written for you.
+
+The Code QL workflow runs automatically on every pull request, although depending on what language and how much 
+code, it could take some time to complete the scan.
+
+_Expect to see more of this in later posts_ 😊
+
+<CenteredImage 
+    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-12_site-vlog-03/screenshot_codeql.png"
+    height="344"
+    width="882"
+    alt="screenshot of Code QL workflow on GitHub"
+    caption="You can find this on the 'Security' tab for GitHub repos."
+/>
+
+### Check out the video to see more
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UBrNO4va02M" title="YouTube video player" 
 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
