@@ -1,0 +1,77 @@
+---
+date: "2021-12-17"
+title: "Website Vlog Update - 03"
+section: ''
+preview: |-
+    Tracking progress, learning quite a bit.
+---
+
+_A running progress track of how I'm building this site._
+
+### TikTok link & Readme.md
+
+[PR #34](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/34) / [PR #44](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/44)
+
+TikTok &mdash; Feels a little weird to write about adding a link, but it was the right time to bring TikTok to 
+the About page. Good things are happening over there. &mdash; [@rushinglabs](https://www.tiktok.com/@rushinglabs?lang=en)
+
+Readme &mdash; I hope I can remember to continue keeping the [README](https://github.com/meddlin/rushinglabs-blog-nextjs#readme) 
+updated. Not much to say here; _it's all [over there](https://github.com/meddlin/rushinglabs-blog-nextjs#readme)_ 😅
+
+[_insert image of social links w/ TikTok icon_]
+
+### Blog preview
+
+[PR #55](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/55)
+
+I wanted to be able to show a preview of the post's content directly inline with the list of blog posts. This is 
+commonly done on blogs, but I just hadn't taken the time to finish this feature. A slight quirk though,
+I am using [gray-matter](https://www.npmjs.com/package/gray-matter) to parse the frontmatter metadata packaged 
+with each post. _Which means this frontmatter is a block of YAML._
+
+I quickly figured out that line breaks aren't valid in YAML properties by themselves. However, with a little 
+bit of special syntax 
+
+<MyHighlighter language="bash">
+{`---
+date: "2021-12-17"
+title: "Website Vlog Update - 03"
+section: ''
+preview: |-
+    Tracking progress, learning quite a bit.
+---`}
+</MyHighlighter>
+
+[_insert image of preview_]
+
+In addition to this "preview", there's also a new "Read More" link below the preview for each post.
+
+[_insert image of read more link_]
+
+
+This [StackOverflow](https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210) post has a good reference for multi-line YAML
+
+[https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210](https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210)
+
+### Code QL
+
+[PR #41](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/41)
+
+Code QL is a free SAST tool from GitHub, completely free, and available to integrate directly within your projects. I 
+haven't started to truly use it yet, but I made sure to incorporate it into the site so it's there. 
+
+Code QL &mdash; [https://codeql.github.com/](https://codeql.github.com/)
+
+[_insert image of Code QL workflow on "Security" tab_]
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UBrNO4va02M" title="YouTube video player" 
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
+
+<hr />
+
+### References
+
+- gray-matter: [https://www.npmjs.com/package/gray-matter](https://www.npmjs.com/package/gray-matter)
+- StackOverflow, YAML multi-lines: [https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210](https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines/21699210)
+- CodeQL: [https://codeql.github.com/](https://codeql.github.com/)
