@@ -4,7 +4,7 @@ export default function CenteredImage({ srcUrl, height, width, alt, caption, ima
 
     return (
         <div style={{ display: `flex`, justifyContent: `center`, alignItems: `center`, flexDirection: `column` }}>
-            <div>
+            <div style={{ filter: `drop-shadow(0.15rem 0.25rem 0.45rem darkgrey)` }}>
                 <Image src={srcUrl}
                     height={height}
                     width={width}
@@ -12,7 +12,7 @@ export default function CenteredImage({ srcUrl, height, width, alt, caption, ima
             </div>
             {caption ? (<p>
                 <i>
-                    This is a caption - {caption}
+                    {caption}
                 </i>
             </p>) : ''}
             {imageCredit || imageCreditLink ? (
