@@ -1,0 +1,76 @@
+---
+date: "2021-12-16"
+title: "OWASP Top 10 Vulns & Examples"
+section: 'security'
+preview: |-
+    An overview of the OWASP Top 10 (2021) listing, explaining the vulnerabilities and throwing in examples 
+    where possible.
+---
+
+This article starts with the definitions and recommendations from OWASP and includes 
+more examples relating OWASP’s listed vulnerabilities to the specific programming 
+frameworks we use. While this (lengthy) document covers similar material to OWASP’s Top 
+10 list, it is intended to expand on their work with direct and practical examples—not 
+a simple re-copy. Visit the OWASP site for the official list.
+
+For more on the top 10 vulnerabilities, check out this link:
+
+[https://owasp.org/Top10/](https://owasp.org/Top10/)
+
+## The Overlap of OWASP Top 10 Guidance
+
+This can be found here, where OWASP discusses how their data is gathered. Technically speaking, 
+if we’re defining vulnerability categories by CWE then there is no overlap. However, for 
+conceptual understanding of how these things operate practically, the “overlap” is helpful to 
+visualize.
+
+This distinction helps explain why the “top 10” and the proactive controls do not line up 1-to-1.
+
+[https://www.owasptopten.org/thedata](https://www.owasptopten.org/thedata)
+
+
+## A01:2021 &mdash; Broken Access Control
+
+Ref: [https://owasp.org/Top10/A01_2021-Broken_Access_Control/](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
+
+Access control is all about making sure a user cannot act outside of their intended permissions.
+
+### Common vulnerabilities in this category look like
+
+- Violation of principle of least privilege (i.e. deny by default)
+    - Access should only be granted for particular users, roles, capabilities but it's open to anyone
+- Bypassing access control checks by modifying the URL (i.e. parameter tampering)
+    - Also, via modifying application state, HTML page, or some attack tool to modify API requests
+- Viewing, editing other user accounts by providing unique identifiers (insecure direct object references)
+- API access with missing access controls for POST, PUT and DELETE
+- Elevation of privilege
+    - Ex: Act as user without being logged on
+- Metadata manipulation
+    - Abusing JWT invalidation, replaying/tampering with a JWT, or some other access control token or cookie
+- CORS misconfiguration allowing API access from unauthorized/untrusted origins
+- Force browsing to authenticated pages as unauthenticated user (or to privileged pages as standard user)
+
+### Defensive Design & Prevention
+
+
+## A02:2021 &mdash; Cryptographic Failures
+
+Ref: [https://owasp.org/Top10/A02_2021-Cryptographic_Failures/](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
+
+## A03:2021 &mdash; Injection
+
+Ref: [https://owasp.org/Top10/A03_2021-Injection/](https://owasp.org/Top10/A03_2021-Injection/)
+
+## A04:2021 &mdash; Insecure Design
+
+## A05:2021 &mdash; Security Misconfiguration
+
+## A06:2021 &mdash; Vulnerable and Outdated Components
+
+## A07:2021 &mdash; Identification and Authentication Failures
+
+## A08:2021 &mdash; Software and Data Integrity Failures
+
+## A09:2021 &mdash; Security Logging and Monitoring Failures
+
+## A10:2021 &mdash; Server Side Request Forgery (SSRF)
