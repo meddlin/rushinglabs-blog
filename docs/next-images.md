@@ -1,3 +1,13 @@
+---
+date: "2021-12-16"
+title: "How to change an audio clip from mono to stereo"
+published: 'false'
+section: 'davinci resolve'
+preview: |-
+    How to change an audio clip from mono to stereo
+---
+
+
 # Next Images (`next/image`)
 
 Taken from [this link](https://welearncode.com/isr/), and other tutorials I've tried to work through, it appears that we only need two lines to use images with the new Next.js component.

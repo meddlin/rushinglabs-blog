@@ -1,3 +1,12 @@
+---
+date: "2021-12-16"
+title: "How to change an audio clip from mono to stereo"
+published: 'false'
+section: 'davinci resolve'
+preview: |-
+    How to change an audio clip from mono to stereo
+---
+
 # MDX Support
 
 Notes about MDX support (what worked, what didn't go here...)

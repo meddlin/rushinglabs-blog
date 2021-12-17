@@ -1,3 +1,12 @@
+---
+date: "2021-12-16"
+title: "How to change an audio clip from mono to stereo"
+published: 'false'
+section: 'davinci resolve'
+preview: |-
+    How to change an audio clip from mono to stereo
+---
+
 # Code Highlighting
 
 I can't remember how each of these links were used, I just know they had useful info.
