@@ -45,6 +45,11 @@ export default function Layout({ children, home }) {
               </Link>
             </h2>
             <h2>
+              <Link href="/docs">
+                <a className={utilStyles.colorInherit}>Docs</a>
+              </Link>
+            </h2>
+            <h2>
               <Link href="/about">
                 <a className={utilStyles.colorInherit}>About</a>
               </Link>
