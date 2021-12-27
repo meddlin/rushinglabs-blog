@@ -7,6 +7,8 @@
     "test": "jest",
     "lint": "next lint",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "debug-test-unix": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "debug-test-windows": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "build": "next build",
     "start": "next start -p $PORT",
     "export": "next export"
