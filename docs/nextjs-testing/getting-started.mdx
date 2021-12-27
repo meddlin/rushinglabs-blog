@@ -1,0 +1,60 @@
+
+# Setup Testing with Next.js
+
+## Links, Resources, and Where I Landed
+
+_Note: A note on developer experience: I've been developing a Next.js 
+site for a while, and I have a bit of experience with JavaScript but I've 
+never setup JS testing before. So, the experience setting this up was a 
+little disjointed._
+
+
+Start with Next.js docs. They show how to install the dependencies,
+and some basics but it's not complete setup instructions.
+
+[https://nextjs.org/docs/testing#jest-and-react-testing-library](https://nextjs.org/docs/testing#jest-and-react-testing-library)
+
+
+This is a beginner friendly article for getting started with Jest.
+
+[https://www.valentinog.com/blog/jest/](https://www.valentinog.com/blog/jest/)
+
+**Small Note on Config files**
+
+From the `jest.config.js` snippet we got from the Next.js docs, we have 
+the following little piece.
+
+```js
+const customJestConfig = {
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  moduleDirectories: ['node_modules', '<rootDir>/'],
+  testEnvironment: 'jest-environment-jsdom',
+}
+```
+
+But we haven't created a `jest.setup.js` yet! Only `jest.config.js`.
+
+Review this article for more in-depth explanation of the Jest config 
+files.
+
+This is the important part that explains the config files:
+
+> Creating a setup file allows you to use it in all your tests 
+> without needing to import jest-dom into every test file directly. 
+> You can just add it once and forget about it.
+> 
+> It's also important to note that there is nothing special about 
+> the jest.setup.js file name. In other projects, you'll see that 
+> it's called setupTests.js, but you can call it whatever you like. 
+> Just make sure that the file name matches what you add to 
+> setupFilesAfterEnv.
+
+## Debugging the tests
+
+Sometimes you need to debug the unit tests because they fail for 
+weird reasons.
+
+[https://jestjs.io/docs/troubleshooting](https://jestjs.io/docs/troubleshooting)
+
+Also, check the `package.json` for quick access to the scripts 
+defined in the Jest docs.
