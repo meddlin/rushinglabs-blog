@@ -2,7 +2,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import Layout from '../../../components/layout';
 import Head from 'next/head';
 import Date from '../../../components/date';
-import { getAllDocsIds, getDocsData } from '../../../lib/posts'; //  '../../../../lib/posts';
+import { getAllDocsIds, getDocsData } from '../../../lib/docs';
 import utilStyles from '../../../styles/utils.module.css';
 import postStyles from '../../../styles/post.module.css';
 
@@ -28,11 +28,8 @@ const MyDocHighlighter = ({ language, children }) => {
  * See: https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation
  */
  export async function getStaticPaths() {
-    // const paths = getAllPostIds();
     const paths = getAllDocsIds();
-    // console.log(`getStaticPaths - ${JSON.stringify(paths)}`)
 
-    // The params building happens in /lib/posts.getAllPostIds()
     return {
         paths: paths,
         fallback: false
@@ -48,12 +45,9 @@ export const getStaticProps = async ({ params }) => {
     // `params` contains the router parameters for pages using dynamic routes
     // For this route we have the directory structure /docs/[section]/[id].js
     // --> So, `section` and `id` are part of the params object <--
-
-    console.log(`getStaticProps params - ${JSON.stringify(params)}`)
     
     const postId = params.id;
     const section = params.section;
-    // const postData = await getPostData(year, postId);
     const postData = await getDocsData(section, postId);
 
     return {
@@ -62,7 +56,6 @@ export const getStaticProps = async ({ params }) => {
         }
     }
 }
-
 
 const Doc = (props) => {
     let mdx = props.postData.mdxSource;

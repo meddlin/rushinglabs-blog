@@ -3,37 +3,51 @@ import Link from 'next/link';
 import Layout, { siteTitle } from '../../components/layout';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
-import { getAllDocsSections, getSortedDocsPostsData } from '../../lib/docs';
+import { getAllDocsSections, getPostsFromDocsSubdir, getSortedDocsPostsData } from '../../lib/docs';
 import config from '../../blogConfig';
 
 export async function getStaticProps() {
     const docsData = getSortedDocsPostsData();
     const sections = getAllDocsSections();
 
-    // Paging information
-	const startIndex = 0;
-	const endIndex = config.postsPerPage;
-	const prevPosts = null;
-	const nextPosts = (endIndex >= docsData.length) ? null : 2;
+    const data = [];
+    sections.forEach(section => {
+        data.push({
+            section: section,
+            docs: getPostsFromDocsSubdir(section)
+        })
+    });
+
+    /**
+     * [
+     *   {
+     *     section: 'owasp',
+     *     docs: ['01.mdx', '02.mdx']
+     *   },
+     *   {
+     *     section: 'general',
+     *     docs: ['stuff', 'asdf', 'what']
+     *   }
+     * ]
+     */
 
 	return {
 		props: {
-			docs: docsData.slice(startIndex, endIndex),
-			sections,
-			prevPosts,
-			nextPosts
+			docs: docsData,
+            chunks: data,
+			sections
 		}
 	}
 }
 
-function Docs({ docs, sections, prevPosts, nextPosts }) {
+function Docs({ docs, chunks, sections }) {
     return (
         <Layout>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
 
-            <sections>
+            {/* <section>
                 <ul className={utilStyles.list}>
                     {sections.map( section => (
                         <li className={utilStyles.listItem} key={section}>
@@ -43,12 +57,35 @@ function Docs({ docs, sections, prevPosts, nextPosts }) {
                         </li>
                     ))}
                 </ul>
-            </sections>
+            </section> */}
+
+
 
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
                 <h1>Docs is a space under active development.</h1>
 
-                <ul className={utilStyles.list}>
+                <ul>
+                    {chunks.map( ({section, docs}) => (
+                        <li key={section}>
+                            <Link href={`/docs/${section}`}>
+                                <a><h3>{section}</h3></a>
+                            </Link>
+                            {docs && docs.length > 0 ? (
+                                <ul>
+                                    {docs.map( doc => (
+                                        <li key={doc.id}>
+                                            <Link href={`/docs/${section}/${doc.id}`}>
+                                                <a>{doc.title}</a>
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : ''}
+                        </li>
+                    ))}
+                </ul>
+
+                {/* <ul className={utilStyles.list}>
                     {docs.map( ({ id, date, title, preview }) => (
                         <li className={utilStyles.listItem} key={id}>
                             <Link href={`/docs/${id}`}>
@@ -60,20 +97,7 @@ function Docs({ docs, sections, prevPosts, nextPosts }) {
                             <p>{preview}</p>
                         </li>
                     ))}
-                </ul>
-            </section>
-
-            <section className={`${utilStyles.centeredButtons}`}>
-                {prevPosts !== null && (
-                    <Link href={"/docs/pages/" + prevPosts} passHref>
-                        <a>« newer</a>
-                    </Link>
-                )}
-                {nextPosts !== null && (
-                    <Link href={"/docs/pages/" + nextPosts} passHref>
-                    <a>older »</a>
-                    </Link>
-                )}
+                </ul> */}
             </section>
         </Layout>
     );
