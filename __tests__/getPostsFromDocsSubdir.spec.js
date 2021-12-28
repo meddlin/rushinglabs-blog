@@ -1,32 +1,31 @@
-import { test } from "gray-matter";
-import { docsDirectory, getPostsFromDocsSubdir } from "../lib/docs";
-
 
 /**
  * getPostsFromDocsSubdir
  */
- describe("Docs - Retrieve docs from subdir", () => {
-    test("it should return a data object for each post", () => {
-        const input = getPostsFromDocsSubdir(`${docsDirectory}/general`);
-
-        const expectedOutput = [{
-            id: 'asdf',
-            directory: '/docs/general',
-        }];
-
-        // Need a general check, make sure an object for each post
-        // is represented.
-        expect(getPostsFromDocsSubdir()).toEqual(expectedOutput);
+describe("Docs - Get all docs underneath a specific /docs subdir", () => {
+    test("it should return each section with its corresoponding posts", () => {
+        // Test for this structure to return
+        /**
+     * [
+     *   {
+     *     section: 'owasp',
+     *     docs: ['01.mdx', '02.mdx']
+     *   },
+     *   {
+     *     section: 'general',
+     *     docs: ['stuff', 'asdf', 'what']
+     *   }
+     * ]
+     */
     });
 
-    // Retrieving all posts from top-level /docs directory
-    // should still work.
-    test("it should include all sections' posts", () => {
-        
+    test("it should return the posts for one section", () => {
+        const input = 'owasp';
+        // or... const input = getSubdirs()[0] // the first subdir
+
+        // This structure should come back
+        /**
+         * [{ section: '', docs: ['', '']}]
+         */
     })
-
-    // Metadata for each post should be standardized
-    test("it should have a standard metadata structure", () => {
-
-    });
-});
+})
