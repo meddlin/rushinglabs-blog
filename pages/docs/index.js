@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Layout, { siteTitle } from '../../components/layout';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
-import { getAllDocsSections, getSortedDocsPostsData } from '../../lib/posts';
+import { getAllDocsSections, getSortedDocsPostsData } from '../../lib/docs';
 import config from '../../blogConfig';
 
 export async function getStaticProps() {
@@ -33,10 +33,6 @@ function Docs({ docs, sections, prevPosts, nextPosts }) {
                 <title>{siteTitle}</title>
             </Head>
 
-            <section>
-                <h1>Docs is a space under active development.</h1>
-            </section>
-
             <sections>
                 <ul className={utilStyles.list}>
                     {sections.map( section => (
@@ -50,6 +46,8 @@ function Docs({ docs, sections, prevPosts, nextPosts }) {
             </sections>
 
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
+                <h1>Docs is a space under active development.</h1>
+
                 <ul className={utilStyles.list}>
                     {docs.map( ({ id, date, title, preview }) => (
                         <li className={utilStyles.listItem} key={id}>
