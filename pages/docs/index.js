@@ -62,7 +62,6 @@ function Docs({ docs, chunks, sections }) {
 
 
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
-                <h1>Docs is a space under active development.</h1>
 
                 <ul>
                     {chunks.map( ({section, docs}) => (
