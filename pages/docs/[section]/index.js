@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Layout from '../../../components/layout';
+import utilStyles from '../../../styles/utils.module.css';
 import { getAllDocsSections, getPostsFromDocsSubdir } from '../../../lib/docs';
 
 export async function getStaticProps({ params }) {
@@ -37,15 +38,17 @@ function DocsSection({ docs, section }) {
         <Layout>
             <h1>Docs: {section}</h1>
 
-            <ul>
-                {docs && docs.length > 0 ? docs.map( doc => (
-                    <li key={doc.id}>
-                        <Link href={`/docs/${section}/${doc.id}`}>
-                            <a>{doc.id}</a>
-                        </Link>
-                    </li>
-                )) : 'No docs to show' }
-            </ul>
+            <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
+                <ul>
+                    {docs && docs.length > 0 ? docs.map( doc => (
+                        <li key={doc.id}>
+                            <Link href={`/docs/${section}/${doc.id}`}>
+                                <a>{doc.id}</a>
+                            </Link>
+                        </li>
+                    )) : 'No docs to show' }
+                </ul>
+            </section>
         </Layout>
     );
 }
