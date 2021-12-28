@@ -47,22 +47,7 @@ function Docs({ docs, chunks, sections }) {
                 <title>{siteTitle}</title>
             </Head>
 
-            {/* <section>
-                <ul className={utilStyles.list}>
-                    {sections.map( section => (
-                        <li className={utilStyles.listItem} key={section}>
-                            <Link href={`/docs/${section}`}>
-                                <a>{section}</a>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </section> */}
-
-
-
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
-
                 <ul>
                     {chunks.map( ({section, docs}) => (
                         <li key={section}>
@@ -70,12 +55,15 @@ function Docs({ docs, chunks, sections }) {
                                 <a><h3>{section}</h3></a>
                             </Link>
                             {docs && docs.length > 0 ? (
-                                <ul>
+                                <ul className={utilStyles.list}>
                                     {docs.map( doc => (
-                                        <li key={doc.id}>
+                                        <li className={utilStyles.listItem} key={doc.id}>
                                             <Link href={`/docs/${section}/${doc.id}`}>
                                                 <a>{doc.title}</a>
                                             </Link>
+                                            <small className={utilStyles.subpreview}>
+                                                {doc.date ? (<Date dateString={doc.date} />) : ''}
+                                            </small>
                                         </li>
                                     ))}
                                 </ul>
@@ -83,20 +71,6 @@ function Docs({ docs, chunks, sections }) {
                         </li>
                     ))}
                 </ul>
-
-                {/* <ul className={utilStyles.list}>
-                    {docs.map( ({ id, date, title, preview }) => (
-                        <li className={utilStyles.listItem} key={id}>
-                            <Link href={`/docs/${id}`}>
-                                <a>{title}</a>
-                            </Link>
-                            <small className={utilStyles.subpreview}>
-                                {date ? (<Date dateString={date} />) : ''}
-                            </small>
-                            <p>{preview}</p>
-                        </li>
-                    ))}
-                </ul> */}
             </section>
         </Layout>
     );
