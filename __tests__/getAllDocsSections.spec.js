@@ -6,17 +6,12 @@ import { getAllDocsSections } from "../lib/docs";
  */
 describe("Docs - Retrieve sections", () => {
     test("it should return an array of strings", () => {
-
-        // read all files under /docs
-        const input = [];
+        const input = getAllDocsSections();
 
         // Array of strings representing the names of each
         // subdir under /docs
         const expectedOutput = ['owasp', 'general', 'nextjs-testing'];
 
-        debugger;
-        expect(
-            getAllDocsSections()
-        ).toEqual(expect.arrayContaining(expectedOutput));
+        expect(input).toEqual(expect.arrayContaining(expectedOutput));
     })
 });
