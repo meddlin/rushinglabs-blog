@@ -1,3 +1,12 @@
+---
+date: "2021-12-28"
+title: "Setup unit testing with Jest, Next.js"
+published: 'true'
+section: 'nextjs-testing'
+preview: |-
+    Start with Next.js docs. They show how to install the dependencies,
+    and some basics but it's not complete setup instructions.
+---
 
 # Setup Testing with Next.js
 
@@ -24,13 +33,15 @@ This is a beginner friendly article for getting started with Jest.
 From the `jest.config.js` snippet we got from the Next.js docs, we have 
 the following little piece.
 
-```js
+<MyDocHighlighter language="bash">
+{`
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
 }
-```
+`}
+</MyDocHighlighter>
 
 But we haven't created a `jest.setup.js` yet! Only `jest.config.js`.
 
