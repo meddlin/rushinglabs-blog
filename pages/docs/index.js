@@ -4,7 +4,6 @@ import Layout, { siteTitle } from '../../components/layout';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 import { getAllDocsSections, getPostsFromDocsSubdir, getSortedDocsPostsData } from '../../lib/docs';
-import config from '../../blogConfig';
 
 export async function getStaticProps() {
     const docsData = getSortedDocsPostsData();
