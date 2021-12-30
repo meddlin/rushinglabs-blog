@@ -1,16 +1,14 @@
 ---
-date: "2021-12-16"
+date: "2021-12-29"
 title: "A01:2021 Broken Access Control"
 preview: |-
-    An overview of the OWASP Top 10 (2021) listing, explaining the vulnerabilities and throwing in examples 
-    where possible.
+    Broken access control
 ---
-
-# A01:2021 &mdash; Broken Access Control
 
 Ref: [https://owasp.org/Top10/A01_2021-Broken_Access_Control/](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
 
-Access control is all about making sure a user cannot act outside of their intended permissions.
+Access control is all about making sure a user cannot act outside of their intended permissions. Or in 
+other words, make sure a user can't do what they aren't supposed to do.
 
 ### Common vulnerabilities in this category look like
 
@@ -28,3 +26,18 @@ Access control is all about making sure a user cannot act outside of their inten
 - Force browsing to authenticated pages as unauthenticated user (or to privileged pages as standard user)
 
 ### Defensive Design & Prevention
+
+- Except for public resources, deny by default
+- Implement access control mechanisms once and re-use them throughout the application,
+including minimizing Cross-Origin Resource Sharing (CORS) usage.
+- Model access controls should enforce record ownership rather than accepting
+that the user can create, read, update, or delete any record.
+- Unique application business limit requirements should be enforced by domain models.
+- Disable web server directory listing and ensure file metadata (e.g., .git) and backup files 
+are not present within web roots.
+- Log access control failures, alert admins when appropriate (e.g., repeated failures).
+- Rate limit API and controller access to minimize the harm from automated
+attack tooling.
+- Stateful session identifiers should be invalidated on the server after logout. Stateless JWT tokens 
+should rather be short-lived so that the window of opportunity for an attacker is minimized. For longer 
+lived JWTs it's highy recommended to follow the OAuth standards to revoke access.
