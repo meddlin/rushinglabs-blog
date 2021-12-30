@@ -1,0 +1,43 @@
+---
+date: "2021-12-29"
+title: 'Intro: Why Bother "Explaning" the Top 10?'
+preview: |-
+    Why do this? Because vulns, code, proactive defenses, and an explanation to
+    wrap it all up needs to be connected.
+---
+
+OWASP's reporting on the Top 10 vulnerabilities for software applications is a great 
+piece. However, it's written for a large audience: governance-writers, policy-makers,
+...oh, and _developers_. So it's wonderful information, but requires a little more 
+to see how it applies to making our code secure.
+
+I'll do my best to start with definitions and recommendations straight from OWASP, 
+and then expand with code samples. 
+
+For more on the top 10 vulnerabilities, check out this link:
+
+[https://owasp.org/Top10/](https://owasp.org/Top10/)
+
+## The Overlap of OWASP Top 10 Guidance
+
+A cool little note, OWASP also publishes a lits of proactive controls for how to defend 
+against the "Top 10" vulnerabilities. It's important to note though, the top 10 vulns 
+and controls _do not line up one-to-one_. So this sense of overlap begins to surface, 
+and I'll try to cover that as well.
+
+Technically speaking, if we’re defining vulnerability categories by CWE then there is no 
+overlap. However, for conceptual understanding of how these things operate practically, 
+the “overlap” is helpful to visualize.
+
+This distinction helps explain why the “top 10” and the proactive controls do not line 
+up one-to-one.
+
+<CenteredImage
+    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2021_owasp/Screen+Shot+2021-12-30+at+2.10.45+AM.png"
+    width="1146"
+    height="982"
+    alt="Venn-diagram of category relationships in the OWASP Top 10"
+    caption="Overlapping relationships between the Top 10 vulns"
+    imageCredit="https://www.owasptopten.org/thedata"
+    imageCreditLink="https://www.owasptopten.org/thedata"
+/>
