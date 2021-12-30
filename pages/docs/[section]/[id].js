@@ -9,6 +9,7 @@ import postStyles from '../../../styles/post.module.css';
 /**
  * Importing the components which will be used in our MDX posts
  */
+import Link from 'next/link';
 import Image from 'next/image';
 import CenteredImage from '../../../components/CenteredImage';
 import Button from '../../../components/button';
@@ -72,7 +73,7 @@ const Doc = (props) => {
             <article className={postStyles.content}>
                 <h1 className={utilStyles.headingX1}>{title}</h1>
                 <Date dateString={date} />
-                <MDXRemote {...mdx} components={{ Button, Image, CenteredImage, SyntaxHighlighter, MyDocHighlighter }} />
+                <MDXRemote {...mdx} components={{ Button, Image, Link, CenteredImage, SyntaxHighlighter, MyDocHighlighter }} />
             </article>
         </Layout>
     );

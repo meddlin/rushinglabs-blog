@@ -10,6 +10,7 @@ import { getAllProjectIds, getProjectPage } from '../../../lib/projects';
  * Importing the components which will be used in our MDX posts
  */
  import Image from 'next/image';
+ import Link from 'next/link';
  import CenteredImage from '../../../components/CenteredImage';
  import Button from '../../../components/button';
  import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
@@ -57,7 +58,7 @@ const ProjectPage = (props) => {
             <article className={postStyles.content}>
                 <h1 className={utilStyles.headingX1}>{title}</h1>
                 <Date dateString={date} />
-                <MDXRemote {...mdx} components={{ Button, Image, CenteredImage, SyntaxHighlighter, MyDocHighlighter }} />
+                <MDXRemote {...mdx} components={{ Button, Image, Link, CenteredImage, SyntaxHighlighter, MyDocHighlighter }} />
             </article>
         </Layout>
     );
