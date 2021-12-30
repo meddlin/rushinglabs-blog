@@ -41,26 +41,23 @@ const Projects = ({ metadata, projects }) => {
                 <ul>
                     {metadata && metadata.length > 0 ? (metadata.map( meta => (
                         <li key={meta.title}>
-                            <p>from meta: {meta.title}</p>
+                            <p>
+                                <a href={`/projects/${meta.title}`}>
+                                    {meta.title}
+                                </a>
+                            </p>
                             <p>{meta.summary}</p>
                             <p>
                                 {meta.links.map( link => (
                                     <a href={link.url}>{link.text}</a>
                                 ))}
                             </p>
+                            <p>
+
+                            </p>
                         </li>
                     ))) : ''}
                 </ul>
-
-                {/* <ul>
-                    {projects && projects.length > 0 ? (
-                        projects.map( proj => (
-                            <li key={proj}>
-                                {proj}
-                            </li>
-                        ))
-                    ) : ''}
-                </ul> */}
 
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
