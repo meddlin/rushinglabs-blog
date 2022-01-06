@@ -9,3 +9,16 @@ preview: |-
 # A10:2021 &mdash; Server Side Request Forgery (SSRF)
 
 Ref: [https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/)
+
+
+### Common vulnerabilities in this category look like
+
+
+### Defensive Design & Prevention
+
+- Segment remote resource access functionality in separate networks to reduce the impact of SSRF
+- Enforce “deny by default” firewall policies or network access control rules to block all but essential intranet traffic.
+    - Hints:
+        - Establish an ownership and a lifecycle for firewall rules based on applications.
+        - Log all accepted and blocked network flows on firewalls 
+        (see [A09:2021-Security Logging and Monitoring Failures](https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/)).
