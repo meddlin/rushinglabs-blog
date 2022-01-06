@@ -9,3 +9,26 @@ preview: |-
 # A04:2021 &mdash; Insecure Design
 
 Ref: [https://owasp.org/Top10/A04_2021-Insecure_Design/](https://owasp.org/Top10/A04_2021-Insecure_Design/)
+
+### Common vulnerabilities in this category look like
+
+"Insecure Design" is a broad idea, not a specific vulnerability category. This is more 
+a feeling that can be seen as anti-patterns, bad code smells, or insecure _patterns_ producing 
+vulnerabilities in other categories.
+
+Still unsure? Try asking your developers, security team, and any architects for their opinion 
+on the design of your code. May be best to lead the conversation with curious and _probing_ 
+questions, but let them do the talking.
+
+### Defensive Design & Prevention
+
+- Establish and use a secure development lifecycle with AppSec professionals to help evaluate and design security and privacy-related controls
+- Establish and use a library of secure design patterns or paved road ready to use components
+- Use threat modeling for critical authentication, access control, business logic, and key flows
+- Integrate security language and controls into user stories
+- Integrate plausibility checks at each tier of your application (from frontend to backend)
+- Write unit and integration tests to validate that all critical flows are resistant to the threat model. Compile use-cases and misuse-cases for each tier of your application.
+- Segregate tier layers on the system and network layers depending on the exposure and protection needs
+- Segregate tenants robustly by design throughout all tiers
+- Limit resource consumption by user or service
+- Limit resource consumption by user or service
