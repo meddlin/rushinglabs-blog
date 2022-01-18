@@ -2,7 +2,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import Layout from '../../../components/layout';
 import Head from 'next/head';
 import Date from '../../../components/date';
-import { getAllPostIds, getPostData } from '../../../lib/posts'; //  '../../../../lib/posts';
+import { getAllDocsIds, getDocsData } from '../../../lib/docs';
 import utilStyles from '../../../styles/utils.module.css';
 import postStyles from '../../../styles/post.module.css';
 
@@ -15,8 +15,7 @@ import CenteredImage from '../../../components/CenteredImage';
 import Button from '../../../components/button';
 import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter';
-
-const MyHighlighter = ({ language, children }) => {
+const MyDocHighlighter = ({ language, children }) => {
     return (
         <SyntaxHighlighter language={language} style={a11yDark}>
             {children}
@@ -24,16 +23,14 @@ const MyHighlighter = ({ language, children }) => {
     );
 }
 
-
 /**
  * getStaticPaths is required by Next.js
  * 
  * See: https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation
  */
-export async function getStaticPaths() {
-    const paths = getAllPostIds();
+ export async function getStaticPaths() {
+    const paths = getAllDocsIds();
 
-    // The params building happens in /lib/posts.getAllPostIds()
     return {
         paths: paths,
         fallback: false
@@ -47,12 +44,12 @@ export async function getStaticPaths() {
  */
 export const getStaticProps = async ({ params }) => {
     // `params` contains the router parameters for pages using dynamic routes
-    // For this route we have the directory structure /blog/[year]/[id].js
-    // --> So, `year` and `id` are part of the params object <--
+    // For this route we have the directory structure /docs/[section]/[id].js
+    // --> So, `section` and `id` are part of the params object <--
     
     const postId = params.id;
-    const year = params.year;
-    const postData = await getPostData(year, postId);
+    const section = params.section;
+    const postData = await getDocsData(section, postId);
 
     return {
         props: {
@@ -61,7 +58,7 @@ export const getStaticProps = async ({ params }) => {
     }
 }
 
-const Post = (props) => {
+const Doc = (props) => {
     let mdx = props.postData.mdxSource;
     let title = props.postData.title;
     let date = props.postData.date;
@@ -76,10 +73,10 @@ const Post = (props) => {
             <article className={postStyles.content}>
                 <h1 className={utilStyles.headingX1}>{title}</h1>
                 <Date dateString={date} />
-                <MDXRemote {...mdx} components={{ Button, Image, Link, CenteredImage, SyntaxHighlighter, MyHighlighter }} />
+                <MDXRemote {...mdx} components={{ Button, Image, Link, CenteredImage, SyntaxHighlighter, MyDocHighlighter }} />
             </article>
         </Layout>
     );
 }
 
-export default Post;
+export default Doc;

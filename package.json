@@ -4,8 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "test": "jest",
     "lint": "next lint",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "debug-test-unix": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "debug-test-windows": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "build": "next build",
     "start": "next start -p $PORT",
     "export": "next export"
@@ -25,8 +28,11 @@
     "react-syntax-highlighter": "^15.4.5"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
+    "jest": "^27.4.5",
     "next-mdx-remote": "^3.0.8"
   }
 }
