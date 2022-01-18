@@ -37,7 +37,6 @@ const Projects = ({ metadata, projects }) => {
             </Head>
 
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
-                <h3>New projects view</h3>
                 <ul>
                     {metadata && metadata.length > 0 ? 
                         (metadata.map( meta => (
