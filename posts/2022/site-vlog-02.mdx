@@ -1,0 +1,74 @@
+---
+date: "2022-01-18"
+title: "Website Vlog Update - 02 // Plausible analytics"
+section: ''
+preview: |-
+    Making a decision on analytics.
+---
+
+I've integrated Plausible analytics to the site. And I want to be transparent about it.
+
+[https://plausible.io/rushinglabs.com](https://plausible.io/rushinglabs.com)
+
+## Why?
+
+Google Analytics is a really cool product...through a specific lens. Outside of that, it 
+leaves me with a sour taste. It's a level of user-behavior tracking I'm not sure we need,
+and IMO _definitely unnecessary_ for little hobbyist sites like this one. I see 
+[where the internet is](https://medium.com/swlh/the-web-is-becoming-unusable-e7aec886402f) 
+with advertising, CTRs, ad blockers, auto-plays, a new era of pop-ups, confusing cookie 
+notifications, and downright dark UI/UX patterns. 
+
+I don't claim to have an answer for it, so I'm doing my best to just not include it in an 
+area I can control. At least in this space, my goal is to just turn it all off and focus 
+on cool stuff. _So, no ads here. **Ever**._
+
+Now, yes. I do see the irony in claiming "no ads, no tracking" on a website that 
+conspicuously pushes readers to watch YouTube videos hosted by the very corporation I just 
+criticized. _Remember how I said I don't have an answer for the larger issue?_ It's 
+messy; I wish it was better.
+
+So, why any type of tracking at all here? Honestly, seeing a metric (_at all_) helps me feel 
+like I'm not writing and creating for absolutely no one. It's the most basic of progression
+metrics and that's it.
+
+### Author's Note
+
+> Further research for this post led me to a [blog article from Guillaume C. Marty](https://gu.illau.me/posts/privacy-and-google-analytics/)
+demonstrating how Google Analytics _can be tuned_ for a privacy focus. Allbeit, from 2014.
+Even still, I needed a solution that was more plug-n-play, and wasn't going to require me 
+to potentially play a cat-and-mouse game with Google's changes. So, even though this is a 
+competing argument to the common view of GA, it still shows a need for simple, 
+privacy-focused alternatives.
+> 
+> I found this while reading [Stephanie Hobson's article, on Mozilla Hacks](https://hacks.mozilla.org/2016/01/google-analytics-privacy-and-event-tracking/), 
+where she was describing some interesting challenges and solutions while using GA.
+> 
+> - [https://hacks.mozilla.org/2016/01/google-analytics-privacy-and-event-tracking/](https://hacks.mozilla.org/2016/01/google-analytics-privacy-and-event-tracking/)
+> - [https://gu.illau.me/posts/privacy-and-google-analytics/](https://gu.illau.me/posts/privacy-and-google-analytics/)
+
+## Plausible
+
+I want to be transparent about what the Rushing Labs site is, any data I've gathered from it, 
+and in the future, if/how I'm able to monetize it (for now and the forseeable future, it's 
+"funded" by me). I can't say this model/posture on ads and analytics works for everything or 
+everyone, but I don't know how to yearn for more privacy and transparency online if I don't 
+at least try to live out that example.
+
+So, to implement this, I like that Plausible allows making analytics public with a simple
+configuration. So, that [link](https://plausible.io/rushinglabs.com) I shared earlier?&mdash;yeah 
+it's completely public. Want to know what the top sources leading to the site are? 
+Or browsers used to visit it? Or countries users are coming from? It's there, and nothing 
+is more granular than that. Further, this link is also in the site footer so it's 
+available from every page.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3v9rn29WmPE" 
+title="YouTube video player" frameBorder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+picture-in-picture" allowfullscreen>
+</iframe>
+
+### GitHub Work
+
+- PR&mdash;[https://github.com/meddlin/rushinglabs-blog-nextjs/pull/22](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/22)
+- PR&mdash;[https://github.com/meddlin/rushinglabs-blog-nextjs/pull/33](https://github.com/meddlin/rushinglabs-blog-nextjs/pull/33)
