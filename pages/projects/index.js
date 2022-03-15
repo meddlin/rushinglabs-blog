@@ -73,6 +73,28 @@ const Projects = ({ metadata, projects }) => {
 
                 {/* <div style={{ display: 'flex', flexDirection: 'column' }}>
                     
+                    {metadata && metadata.length > 0 ? (metadata.map( meta => (
+                        <li key={meta.title}>
+                            <p>
+                                <a href={`/projects/${meta.title}`}>
+                                    {meta.title}
+                                </a>
+                            </p>
+                            <p>{meta.summary}</p>
+                            <p>
+                                {meta.links.map( link => (
+                                    <a href={link.url}>{link.text}</a>
+                                ))}
+                            </p>
+                            <p>
+
+                            </p>
+                        </li>
+                    ))) : ''}
+                </ul>
+
+                {/* <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ width: '60%' }}>
                             <h2>Rushing Labs (website)</h2>
