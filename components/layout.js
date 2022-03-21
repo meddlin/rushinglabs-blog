@@ -3,6 +3,7 @@ import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import MenuIcon from './menu-icon';
+import NavbarLinks from './navbar-links';
 
 const name = 'Rushing Labs';
 export const siteTitle = 'Rushing Labs';
@@ -38,28 +39,7 @@ export default function Layout({ children, home }) {
             </Link>
           </h1>
 
-          <div className={styles.navbarLinks}>
-            <h2>
-              <Link href="/blog">
-                <a className={utilStyles.colorInherit}>Blog</a>
-              </Link>
-            </h2>
-            <h2>
-              <Link href="/projects">
-                <a className={utilStyles.colorInherit}>Projects</a>
-              </Link>
-            </h2>
-            <h2>
-              <Link href="/docs">
-                <a className={utilStyles.colorInherit}>Docs</a>
-              </Link>
-            </h2>
-            <h2>
-              <Link href="/about">
-                <a className={utilStyles.colorInherit}>About</a>
-              </Link>
-            </h2>
-          </div>
+          <NavbarLinks />
         </header>
 
         <div className={styles.mainContent}>
