@@ -1,0 +1,60 @@
+
+
+/*
+ * Mobile view media queries
+*/
+@media only screen and (max-width: 399px) {
+        .navbarLinks > h2 {
+            display: none;
+        }
+    }
+
+
+@media only screen and (max-width: 450px) {
+    .navbarLinks > h2 {
+        display: none;
+    }
+}
+
+
+
+/*
+* keeps the article content from overflowing the margins
+* (especially when very wide, code snippets are being converted into <pre> blocks in Markdown)
+*/
+/* .container article {
+    max-width: 100%;
+} */
+
+.header {
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    color: white;
+    padding: 0.5em 1em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    font-weight: 400;
+    font-family: 'Palanquin Dark', sans-serif;
+}
+
+.header > .navbarLinks {
+    margin: 0;
+    display: flex;
+}
+
+.navbarLinks {
+    font-family: 'Palanquin', sans-serif;
+}
+.navbarLinks > h2 {
+    margin: 0 0.7em 0 0.7em;
+}
+.navbarLinks > a {
+    margin: 1em;
+    color: black;
+}

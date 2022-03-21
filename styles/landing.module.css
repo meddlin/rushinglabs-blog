@@ -1,0 +1,15 @@
+.heroImage {
+    border: 1px solid black;
+}
+
+.summaries {
+    border: 1px solid green;
+}
+
+.videoScreenshot {
+    border: 1px solid lightblue;
+}
+
+.blogPosts {
+    border: 1px solid lightcoral;
+}

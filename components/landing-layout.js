@@ -1,7 +1,8 @@
-import NavbarLinks from './navbar-links';
+import LandingNavbarLinks from './landing-navbar-links';
 import Link from 'next/link';
 import MenuIcon from './menu-icon';
 import LayoutHeadLoader from './layout-head-loader';
+import LandingHeader from './landing-header';
 
 import landingLayoutStyles from './landing-layout.module.css';
 import styles from './layout.module.css';
@@ -13,18 +14,7 @@ export default function LandingLayout({ children }) {
     return (
         <div>
             <LayoutHeadLoader />
-
-            <header className={styles.header}>
-                <MenuIcon />
-
-                <h1 className={utilStyles.heading2Xl}>
-                    <Link href="/">
-                    <a className={utilStyles.colorInherit}>{name}</a>
-                    </Link>
-                </h1>
-
-                <NavbarLinks />
-            </header>
+            <LandingHeader />
 
             <div className={landingLayoutStyles.container}>
                 {children}
