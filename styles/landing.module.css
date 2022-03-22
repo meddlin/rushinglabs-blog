@@ -1,14 +1,64 @@
 .heroImage {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content > .summaries {
+    max-width: 50%;
 }
 
 .summaries {
-    border: 1px solid green;
+    /* border: 1px solid green; */
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.summariesSecondary {
+    font-size: 1em;
+    font-weight: 400;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .videoScreenshot {
-    border: 1px solid lightblue;
+    /* border: 1px solid lightblue; */
+
+    display: -webkit-inline-box;
+    position: relative;
 }
+    .videoScreenshot > .explanation {
+        /*
+            For overlaying elements
+            See: https://stackoverflow.com/questions/2941189/how-to-overlay-one-div-over-another-div
+        */
+        color: white;
+        background-color: darkcyan;
+
+        font-size: 1.4em;
+        font-weight: 100;
+        width: 70%;
+        height: 50%;
+        margin-left: 380px;
+        margin-top: 70px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .videoScreenshot > .explanation > p {
+        padding: 1em;
+    }
 
 .blogPosts {
     border: 1px solid lightcoral;
