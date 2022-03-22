@@ -62,7 +62,14 @@
     }
 
 
+.blogPosts > span {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+.blogPosts ul {
+    /* border: 1px solid lightcoral; */
 
-.blogPosts {
-    border: 1px solid lightcoral;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }

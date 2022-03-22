@@ -1,8 +1,22 @@
 import LandingLayout from '../components/landing-layout';
 import styles from '../styles/landing.module.css';
+import utilStyles from '../styles/utils.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
+import Date from '../components/date';
+import { getSortedPostsData } from '../lib/posts';
 
-export default function Home() {
+export async function getStaticProps() {
+	const allPostsData = getSortedPostsData();
+
+	return {
+		props: {
+			previewPosts: allPostsData.slice(0, 5),
+		}
+	}
+}
+
+export default function Home({ previewPosts }) {
 	return (
 		<LandingLayout>
 			<div className={styles.heroImage}>
@@ -68,12 +82,55 @@ export default function Home() {
 				</div>
 
 				<div className={styles.blogPosts}>
+					<span>Recent blog posts</span>
 					<ul>
-						<li>Blog post title...</li>
-						<li>Insert Another Post</li>
-						<li>yet more writing</li>
-						<li>lorem ipsum...</li>
-						<li>blog posts here...</li>
+						{previewPosts.map( ({ id, date, title, preview }) => (
+							<li>
+								<Link href={`/blog/${id}`}>
+									<a>{title}</a>
+								</Link>
+								<br />
+								<small className={utilStyles.subpreview}>
+									{date ? (<Date dateString={date} />) : ''}
+								</small>
+								<p>{preview}</p>
+
+								<Link href={`/blog/${id}`}>
+									<a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
+								</Link>
+							</li>
+						))}
+
+						{/* <li>
+							<a href="">
+								<span>Blog post title...</span>
+							</a>
+							<p>03 / 22 / 2022</p>
+						</li>
+						<li>
+							<a href="">
+							<span>Insert Another Post</span>
+							</a>
+							<p>03 / 22 / 2022</p>
+						</li>
+						<li>
+							<a href="">
+							<span>yet more writing</span>
+							</a>
+							<p>03 / 22 / 2022</p>
+						</li>
+						<li>
+							<a href="">
+							<span>lorem ipsum...</span>
+							</a>
+							<p>03 / 22 / 2022</p>
+						</li>
+						<li>
+							<a href="">
+							<span>blog posts here...</span>
+							</a>
+							<p>03 / 22 / 2022</p>
+						</li> */}
 					</ul>
 				</div>
 			</div>
