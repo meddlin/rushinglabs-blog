@@ -17,7 +17,7 @@ export default function Home() {
 				<div className={styles.summaries}>
 					<p>
 						Hi! I'm Darrien, a software engineer
-						and content creator based in Austin, TX
+						and content creator based in Austin, TX.
 					</p>
 					<div>
 						<Image
@@ -35,11 +35,13 @@ export default function Home() {
 				</div>
 
 				<div className={styles.videoScreenshot}>
-					<Image 
-						src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-josh-sorenson-1714208.jpg"
-						width="513"
-						height="342"
-					/>
+					<a href="https://www.youtube.com/c/RushingLabs">
+						<Image 
+							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-josh-sorenson-1714208.jpg"
+							width="513"
+							height="342"
+						/>
+					</a>
 					<div className={styles.explanation}>
 						<p>
 							This is a video. I talk about stuff in it. 
@@ -47,13 +49,22 @@ export default function Home() {
 						</p>
 					</div>
 				</div>
+
 				<div className={styles.videoScreenshot}>
-					<Image 
-						src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-negative-space-160107.jpg"
-						width="513"
-						height="342"
-					/>
-					<div>video explanation</div>
+					<a href="https://www.youtube.com/c/RushingLabs">
+						<Image 
+							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-negative-space-160107.jpg"
+							width="513"
+							height="342"
+						/>
+					</a>
+					<div className={styles.explanation}
+						style={{ marginLeft: `-160px` }}>
+						<p>
+							Another video. This is an example of one of 
+							my programming tutorials.
+						</p>
+					</div>
 				</div>
 
 				<div className={styles.blogPosts}>
