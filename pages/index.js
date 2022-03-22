@@ -81,8 +81,10 @@ export default function Home({ previewPosts }) {
 					</div>
 				</div>
 
+				<hr style={{ width: `50%`, margin: `2em` }}></hr>
+
 				<div className={styles.blogPosts}>
-					<span>Recent blog posts</span>
+					<span>Check out my recent blog posts</span>
 					<ul>
 						{previewPosts.map( ({ id, date, title, preview }) => (
 							<li>
@@ -93,45 +95,38 @@ export default function Home({ previewPosts }) {
 								<small className={utilStyles.subpreview}>
 									{date ? (<Date dateString={date} />) : ''}
 								</small>
-								<p>{preview}</p>
-
-								<Link href={`/blog/${id}`}>
-									<a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-								</Link>
+								<p className={styles.preview}>{preview}</p>
 							</li>
 						))}
-
-						{/* <li>
-							<a href="">
-								<span>Blog post title...</span>
-							</a>
-							<p>03 / 22 / 2022</p>
-						</li>
-						<li>
-							<a href="">
-							<span>Insert Another Post</span>
-							</a>
-							<p>03 / 22 / 2022</p>
-						</li>
-						<li>
-							<a href="">
-							<span>yet more writing</span>
-							</a>
-							<p>03 / 22 / 2022</p>
-						</li>
-						<li>
-							<a href="">
-							<span>lorem ipsum...</span>
-							</a>
-							<p>03 / 22 / 2022</p>
-						</li>
-						<li>
-							<a href="">
-							<span>blog posts here...</span>
-							</a>
-							<p>03 / 22 / 2022</p>
-						</li> */}
 					</ul>
+				</div>
+
+				<div className={styles.footer}>
+					<div className={styles.socialsBar}>
+						<div>
+							<a href="https://www.youtube.com/c/RushingLabs">
+								<Image src="/icons/YouTube_SVG-icon.svg" width="30" height="30" />
+							</a>
+						</div>
+						<div>
+							<a href="https://www.tiktok.com/@rushinglabs?lang=en">
+								<Image src="/icons/tiktok_SVG-icon.svg" width="30" height="30" />
+							</a>
+						</div>
+						<div>
+							<a href="https://github.com/meddlin">
+								<Image src="/icons/GitHub_SVG-icon.svg" width="30" height="30" />
+							</a>
+						</div>
+						<div>
+							<a href="https://twitter.com/meddlin_dev">
+								<Image src="/icons/Twitter_SVG-icon.svg" width="30" height="30" />
+							</a>
+						</div>
+					</div>
+					<p>Built with <a href="https://nextjs.org/" 
+						style={{ color: `black`, fontWeight: `bold`}}>Next.js</a>
+					</p>
 				</div>
 			</div>
 		</LandingLayout>
