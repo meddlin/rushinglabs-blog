@@ -72,8 +72,8 @@ export default function Home({ previewPosts }) {
 							height="342"
 						/>
 					</a>
-					<div className={styles.explanation}
-						style={{ marginLeft: `-160px` }}>
+					<div className={styles.leftExplanation}
+						>
 						<p>
 							Another video. This is an example of one of 
 							my programming tutorials.
