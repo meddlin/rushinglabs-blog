@@ -4,8 +4,7 @@ import Link from 'next/link';
 
 export default function LandingNavbarLinks({}) {
     return (
-        <div className={styles.navbarLinks}
-            style={{ display: 'flex', flexDirection: 'row' }}>
+        <div className={styles.navbarLinks} style={{ display: 'flex', flexDirection: 'row' }}>
             <h2>
               <Link href="/blog">
                 <a className={utilStyles.colorInherit}>Blog</a>

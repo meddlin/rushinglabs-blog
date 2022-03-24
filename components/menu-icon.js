@@ -21,8 +21,18 @@ export default function MenuIcon() {
             {toggleOpen ? (
                 <ul className={styles.list}>
                     <li className={styles.listItem}>
+                        <Link href="/blog">
+                            <a className={utilStyles.colorInherit}>Blog</a>
+                        </Link>
+                    </li>
+                    <li className={styles.listItem}>
                         <Link href="/projects">
                             <a className={utilStyles.colorInherit}>Projects</a>
+                        </Link>
+                    </li>
+                    <li className={styles.listItem}>
+                        <Link href="/docs">
+                            <a className={utilStyles.colorInherit}>Docs</a>
                         </Link>
                     </li>
                     <li className={styles.listItem}>
