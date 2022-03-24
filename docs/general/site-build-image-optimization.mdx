@@ -1,0 +1,111 @@
+---
+date: "2022-03-23"
+title: "Site Build - Image Optimization"
+published: 'true'
+section: 'general'
+preview: |-
+    Steps taken to optimize images used on the landing page for this site.
+---
+
+
+Before getting into this, it's important to realize _this is an optimization problem._ So,
+we're looking for "adequately good enough" results.
+
+- Without taking too much development time
+- Make simple-as-possible changes
+- Strive for repeatable results/changes
+
+## Quick Tips (tl;dr;)
+
+1. Check Next.js `next/image` docs
+2. Cover your bases, install the `sharp` npm package
+3. Resize images & convert to WebP
+
+
+## Tracking the changes made
+
+This is what it looked starting out. Notice the slow image loading.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pFKevpjBtGE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Next.js `<Image />` component doc
+
+This is good to read just to make sure we're using all of the basic functionality
+that's required.
+
+- [https://nextjs.org/docs/api-reference/next/image](https://nextjs.org/docs/api-reference/next/image)
+
+
+### Check for the `sharp` package
+
+As covered here, this is automatically handled in production for Vercel deployments, but I'm
+adding it anyway just to be safe in case I ever move to another hosting provider.
+
+```bash
+npm install sharp
+```
+
+- [https://nextjs.org/docs/messages/sharp-missing-in-production](https://nextjs.org/docs/messages/sharp-missing-in-production)
+- sharp package: [https://www.npmjs.com/package/sharp](https://www.npmjs.com/package/sharp)
+
+
+### Image Format
+
+Switching to the WebP format could provide some performance benefits over the PNG
+format. However, we need to be wary of browser support before switching our images
+over to this format.
+
+- CanIUse: [https://caniuse.com/webp](https://caniuse.com/webp)
+    - _Note: The only browser to have an issue is Safari on Mac OS Big Sur._
+
+
+### Converting PNG to WebP
+
+I needed to convert PNG to WebP. Seemingly, the easiest way to do this after a cursory Google
+search is to use any of the dozen online auto-converters. However, this is _very_ manual, and 
+we have no controls over quality. (Also, what's happening with my image on their servers?)
+
+**So!** Looking for some way to do this locally, we have [this section](https://developers.google.com/speed/webp) 
+of the [Google Developers](https://developers.google.com/) site on [WebP](https://developers.google.com/speed/webp).
+
+Download the utility, run the following command, and you get your new WebP.
+
+```bash
+cwebp -q 80 image.png -o image.webp
+```
+
+_Note: It would be really nice to configure this utility to the Windows context menu (or automate
+it in some way) to create the ability for batch conversion._ 😎
+
+- Getting Started: [https://developers.google.com/speed/webp/docs/using](https://developers.google.com/speed/webp/docs/using)
+- Pre-compiled utilities: [https://developers.google.com/speed/webp/docs/precompiled](https://developers.google.com/speed/webp/docs/precompiled)
+- Downloads page (notice, newest at the bottom): [https://storage.googleapis.com/downloads.webmproject.org/releases/webp/index.html](https://storage.googleapis.com/downloads.webmproject.org/releases/webp/index.html)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gfvh28vHznc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr />
+
+## References
+
+### StackOverflow post.
+
+- [https://stackoverflow.com/questions/66637391/next-images-components-are-too-slow-to-appear](https://stackoverflow.com/questions/66637391/next-images-components-are-too-slow-to-appear)
+
+Suggested to use the `sharp` package for production deployment. The StackOverflow post 
+recommends using this, and I've included the link to the "Sharp Missing in Production"
+article where they explain more why this is necessary.
+
+_It's automatically handled on Vercel deployments (which I use), but since I want this repeatable 
+on as many deployed environments as possible, I'll add this package anyway._
+
+- [https://nextjs.org/docs/messages/sharp-missing-in-production](https://nextjs.org/docs/messages/sharp-missing-in-production)
+- sharp package: [https://www.npmjs.com/package/sharp](https://www.npmjs.com/package/sharp)
+
+They're suggesting to use the priority prop and make use of 
+the WebP format.
+
+### WebP from Google
+
+- Getting Started: [https://developers.google.com/speed/webp/docs/using](https://developers.google.com/speed/webp/docs/using)
+- Pre-compiled utilities: [https://developers.google.com/speed/webp/docs/precompiled](https://developers.google.com/speed/webp/docs/precompiled)
+- Downloads page (notice, newest at the bottom): [https://storage.googleapis.com/downloads.webmproject.org/releases/webp/index.html](https://storage.googleapis.com/downloads.webmproject.org/releases/webp/index.html)
