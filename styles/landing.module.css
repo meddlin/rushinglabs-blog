@@ -104,6 +104,9 @@
 }
 
 
+/*
+* Everything smaller than 984px
+*/
 @media screen and (max-width: 984px) {
     /* .summaries {
         border: 1px solid red;
@@ -196,6 +199,15 @@
 
     .videoScreenshot {
         max-width: 75%;
+
+        justify-content: center;
+        align-items: center;
+    }
+    .explanation {
+        z-index: 99;
+    }
+    .leftExplanation {
+        z-index: 99;
     }
 
     .blogPosts {
@@ -204,6 +216,81 @@
 }
 
 
+@media screen and (max-width: 550px) {
+    .content > .summaries {
+        max-width: 85%;
+    }
+
+    .videoScreenshot {
+        max-width: 85%;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    .blogPosts {
+        max-width: 85%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .videoScreenshot > .explanation > p, 
+    .videoScreenshot > .leftExplanation > p {
+        padding: 0.5em;
+    }
+}
+
+
+
+/*
+* Everything smaller than 400px
+*/
+@media screen and (max-width: 400px) {
+    .summariesSecondary {
+        font-size: 0.7em;
+    }
+
+    .videoScreenshot > .explanation {
+        font-size: 1.1em;
+    }
+    .videoScreenshot > .leftExplanation {
+        font-size: 1.1em;
+    }
+}
+
+
+@media screen and (max-width: 300px) {
+    .content > .summaries {
+        max-width: 95%;
+    }
+    .videoScreenshot {
+        max-width: 95%;
+    }
+    .blogPosts {
+        max-width: 95%;
+    }
+
+    .summaries > p:first-of-type {
+        font-size: 0.9em;
+        font-weight: 500;
+    }
+
+    .videoScreenshot > .explanation > p, 
+    .videoScreenshot > .leftExplanation > p {
+        font-size: 0.8em;
+        padding: 0.4em;
+        margin: 5px 0 5px 0;
+    }
+
+    .blogPosts > span {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    .blogPosts > ul {
+        font-size: 1em;
+        margin-top: 10px;
+    }
+}
 
 
 
