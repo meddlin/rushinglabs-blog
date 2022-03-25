@@ -1,82 +1,155 @@
-import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
+import LandingLayout from '../components/landing/landing-layout';
+import styles from '../styles/landing.module.css';
+import utilStyles from '../styles/utils.module.css';
+import Image from 'next/image';
 import Link from 'next/link';
 import Date from '../components/date';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData, getAllCategories } from '../lib/posts';
-import config from '../blogConfig';
-import CategoryListing from '../components/category-listing';
+import { getSortedPostsData } from '../lib/posts';
 
 export async function getStaticProps() {
 	const allPostsData = getSortedPostsData();
-	const categoriesList = getAllCategories();
-
-	// Paging information
-	const startIndex = 0;
-	const endIndex = config.postsPerPage;
-	const prevPosts = null;
-	const nextPosts = (endIndex >= allPostsData.length) ? null : 2;
 
 	return {
 		props: {
-			allPostsData: allPostsData.slice(startIndex, endIndex),
-			categoriesList,
-			prevPosts,
-			nextPosts
+			previewPosts: allPostsData.slice(0, 5),
 		}
 	}
+}
 
-};
-
-export default function Home({ allPostsData, categoriesList, prevPosts, nextPosts }) {
+export default function Home({ previewPosts }) {
 	return (
-		<Layout home>
-			<Head>
-				<title>{siteTitle}</title>
-			</Head>
+		<LandingLayout>
+			<div className={styles.heroImage}>
+				{/* <Image 
+					src="https://s3.console.aws.amazon.com/s3/object/meddlin-web?region=us-east-2&prefix=landing-page/website-header-02.png"
+					width="1920"
+					height="520"
+				/> */}
+				<Image 
+					src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/web-header.webp"
+					width="2560"
+					height="520"
+				/>
+			</div>
 
-			<div className={`${utilStyles.horizontal}`}>
-				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.categoriesSection}`}>
-					<b>Categories</b>
-					<CategoryListing categories={categoriesList} />
-				</section>
+			<div className={styles.content}>
+				<div className={styles.summaries}>
+					<p>
+						Hi! I'm Darrien, a software engineer
+						and content creator based in Austin, TX.
+					</p>
+					<div>
+						{/* <Image
+							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/grab-camera_flat-color_1.1.3.png"
+							width="1920"
+							height="1080"
+						/> */}
+						<Image
+							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/grab-camera_flat-color.webp"
+							width="1920"
+							height="1080"
+						/>
+					</div>
+					<p className={styles.summariesSecondary}>
+						With over 8 years in the tech industry, I wanted
+						to create a space to share what I've built,
+						create tutorials to help others, and share some
+						ideas for what I'd like to build in the future.
+					</p>
+				</div>
 
-				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
-					<ul className={utilStyles.list}>
-						{allPostsData.map( ({ id, date, title, preview, section }) => (
-							<li className={utilStyles.listItem} key={id}>
+				<div className={styles.videoScreenshot}>
+					<a href="https://www.youtube.com/c/RushingLabs">
+						{/* <Image 
+							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-josh-sorenson-1714208.jpg"
+							width="513"
+							height="342"
+						/> */}
+						<Image 
+							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/IMG_2231-edited.webp"
+							width="504"
+							height="378"
+						/>
+					</a>
+					<div className={styles.explanation}>
+						<p>
+							<a href="https://www.youtube.com/c/rushinglabs"><b>Rushing Labs</b>
+							</a> on YouTube is where I create tutorials,
+							and share my progress building projects.
+						</p>
+					</div>
+				</div>
+
+				<div className={styles.videoScreenshot}>
+					<a href="https://www.youtube.com/c/RushingLabs">
+						{/* <Image 
+							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-negative-space-160107.jpg"
+							width="513"
+							height="342"
+						/> */}
+						<Image 
+							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-negative-space.webp"
+							width="513"
+							height="342"
+						/>
+					</a>
+					<div className={styles.leftExplanation}
+						>
+						<p>
+							My <a href="https://github.com/meddlin"><b>GitHub</b></a> profile is where you can find
+							a majority of the rest of my online work.
+						</p>
+					</div>
+				</div>
+
+				<hr style={{ width: `50%`, margin: `2em` }}></hr>
+
+				<div className={styles.blogPosts}>
+					<span>Check out my recent blog posts</span>
+					<ul>
+						{previewPosts.map( ({ id, date, title, preview }) => (
+							<li>
 								<Link href={`/blog/${id}`}>
 									<a>{title}</a>
 								</Link>
 								<br />
 								<small className={utilStyles.subpreview}>
-									{section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
-										: ''}
 									{date ? (<Date dateString={date} />) : ''}
 								</small>
-								<p>{preview}</p>
-
-								<Link href={`/blog/${id}`}>
-									<a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-								</Link>
+								<p className={styles.preview}>{preview}</p>
 							</li>
 						))}
 					</ul>
+				</div>
 
-					<section className={`${utilStyles.centeredButtons}`}>
-						{prevPosts !== null && (
-							<Link href={"/blog/pages/" + prevPosts} passHref>
-								<a>« newer</a>
-							</Link>
-						)}
-						{nextPosts !== null && (
-							<Link href={"/blog/pages/" + nextPosts} passHref>
-							<a>older »</a>
-							</Link>
-						)}
-					</section>
-				</section>
+				<div className={styles.footer}>
+					<div className={styles.socialsBar}>
+						<div>
+							<a href="https://www.youtube.com/c/RushingLabs">
+								<Image src="/icons/YouTube_SVG-icon.svg" width="30" height="30" />
+							</a>
+						</div>
+						<div>
+							<a href="https://www.tiktok.com/@rushinglabs?lang=en">
+								<Image src="/icons/tiktok_SVG-icon.svg" width="30" height="30" />
+							</a>
+						</div>
+						<div>
+							<a href="https://github.com/meddlin">
+								<Image src="/icons/GitHub_SVG-icon.svg" width="30" height="30" />
+							</a>
+						</div>
+						<div>
+							<a href="https://twitter.com/meddlin_dev">
+								<Image src="/icons/Twitter_SVG-icon.svg" width="30" height="30" />
+							</a>
+						</div>
+					</div>
+					<p>Built with <a href="https://nextjs.org/" 
+						style={{ color: `black`, fontWeight: `bold`}}>Next.js</a>
+					</p>
+				</div>
 			</div>
-		</Layout>
+		</LandingLayout>
 	);
 }
