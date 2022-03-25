@@ -292,7 +292,15 @@
     }
 }
 
-
+.explanation > p > a, .leftExplanation > p > a {
+    color: white;
+}
+.explanation > p > a:hover, .leftExplanation > p > a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.125em;
+    text-underline-offset: 1.5px;
+    text-decoration-color: #eeeeeea1;
+}
 
 /*
 * Triggers regardless of size, and can override

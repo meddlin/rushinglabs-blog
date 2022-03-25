@@ -66,15 +66,16 @@ export default function Home({ previewPosts }) {
 							height="342"
 						/> */}
 						<Image 
-							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-josh-sorenson.webp"
-							width="513"
-							height="342"
+							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/IMG_2231-edited.webp"
+							width="504"
+							height="378"
 						/>
 					</a>
 					<div className={styles.explanation}>
 						<p>
-							This is a video. I talk about stuff in it. 
-							Including how I've built my home dev space.
+							<a href="https://www.youtube.com/c/rushinglabs"><b>Rushing Labs</b>
+							</a> on YouTube is where I create tutorials,
+							and share my progress building projects.
 						</p>
 					</div>
 				</div>
@@ -95,8 +96,8 @@ export default function Home({ previewPosts }) {
 					<div className={styles.leftExplanation}
 						>
 						<p>
-							Another video. This is an example of one of 
-							my programming tutorials.
+							My <a href="https://github.com/meddlin"><b>GitHub</b></a> profile is where you can find
+							a majority of the rest of my online work.
 						</p>
 					</div>
 				</div>
