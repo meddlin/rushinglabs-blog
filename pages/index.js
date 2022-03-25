@@ -27,7 +27,7 @@ export default function Home({ previewPosts }) {
 				/> */}
 				<Image 
 					src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/web-header.webp"
-					width="1920"
+					width="2560"
 					height="520"
 				/>
 			</div>
