@@ -20,15 +20,12 @@ export default function Home({ previewPosts }) {
 	return (
 		<LandingLayout>
 			<div className={styles.heroImage}>
-				{/* <Image 
-					src="https://s3.console.aws.amazon.com/s3/object/meddlin-web?region=us-east-2&prefix=landing-page/website-header-02.png"
-					width="1920"
-					height="520"
-				/> */}
 				<Image 
 					src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/web-header.webp"
+					alt="Header image, computers on a desk"
 					width="2560"
 					height="520"
+					priority={true}
 				/>
 			</div>
 
@@ -39,13 +36,9 @@ export default function Home({ previewPosts }) {
 						and content creator based in Austin, TX.
 					</p>
 					<div>
-						{/* <Image
-							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/grab-camera_flat-color_1.1.3.png"
-							width="1920"
-							height="1080"
-						/> */}
 						<Image
 							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/grab-camera_flat-color.webp"
+							alt="author selfie"
 							width="1920"
 							height="1080"
 						/>
@@ -60,13 +53,9 @@ export default function Home({ previewPosts }) {
 
 				<div className={styles.videoScreenshot}>
 					<a href="https://www.youtube.com/c/RushingLabs">
-						{/* <Image 
-							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-josh-sorenson-1714208.jpg"
-							width="513"
-							height="342"
-						/> */}
 						<Image 
 							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/IMG_2231-edited.webp"
+							alt="artistic camera"
 							width="504"
 							height="378"
 						/>
@@ -81,20 +70,15 @@ export default function Home({ previewPosts }) {
 				</div>
 
 				<div className={styles.videoScreenshot}>
-					<a href="https://www.youtube.com/c/RushingLabs">
-						{/* <Image 
-							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-negative-space-160107.jpg"
-							width="513"
-							height="342"
-						/> */}
+					<a href="https://github.com/meddlin">
 						<Image 
 							src="https://meddlin-web.s3.us-east-2.amazonaws.com/landing-page/pexels-negative-space.webp"
+							alt="artistic laptop"
 							width="513"
 							height="342"
 						/>
 					</a>
-					<div className={styles.leftExplanation}
-						>
+					<div className={styles.leftExplanation}>
 						<p>
 							My <a href="https://github.com/meddlin"><b>GitHub</b></a> profile is where you can find
 							a majority of the rest of my online work.
