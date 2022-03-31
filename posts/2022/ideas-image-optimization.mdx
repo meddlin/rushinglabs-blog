@@ -1,0 +1,127 @@
+---
+date: "2022-03-26"
+title: "Website Update - Image Optimization Ideas"
+section: ''
+preview: |-
+    While developing the landing page for this site, I was finally confronted with the issue
+    of needing to optimize the image loading behavior. Admittedly, this has been a problem
+    for a while, but I've been ignoring it.
+---
+
+While developing the landing page for this site, I was finally confronted with the issue
+of needing to optimize the image loading behavior. Admittedly, this has been a problem
+for a while, but I've been ignoring it.
+
+> Note: If you want to see the more technical info I documented while working through
+> this, [check out the docs](https://www.rushinglabs.com/docs/general/site-build-image-optimization). 😎
+
+## Starting point
+
+Image loading has been super basic:
+
+1. Upload image to AWS S3
+2. Throw URL in `<Image />` component, [next/image](https://nextjs.org/docs/api-reference/next/image)
+
+> ...And if [used in MDX](https://www.rushinglabs.com/blog/2021/this-site-uses-mdx), 
+use special `<CenteredImage />`...which just passes props to [`<Image />`](https://nextjs.org/docs/api-reference/next/image)
+
+So, that's: loading a PNG from AWS S3, and with no image-resizing, a _shameless_ 3-5MB per 
+image. Horrible for loading times.
+
+## Stumbling Upon WebP
+
+While it was obvious to see that my large images were slowing down the page loading, I wasn't
+sure how to properly optimize images for faster loading times. It seemed obvious to try
+resizing the images smaller, or somehow compressing them to smaller data sizes, but how to do
+this while handling
+
+- page responsiveness
+- different sizes for different viewports
+- keeping up some level of quality
+
+It wasn't long searching around, that I ran into mentions WebP. Turns out Google was working 
+on this problem way back in 2010, [when they acquired On2 Technologies](https://www.on2.com/).
+
+- [https://stackoverflow.com/questions/66637391/next-images-components-are-too-slow-to-appear](https://stackoverflow.com/questions/66637391/next-images-components-are-too-slow-to-appear)
+- [https://www.smashingmagazine.com/2019/10/speed-up-your-website-webp/](https://www.smashingmagazine.com/2019/10/speed-up-your-website-webp/)
+
+## Converting to WebP
+
+_Note: is it possible to get measurable metrics showing difference in loading times 
+between big PNGs and WebPs?_
+
+A quick Google search shows a bunch of quick [conversion](https://cloudconvert.com/webp-converter) 
+[websites](https://ezgif.com/webp-to-jpg) [providing](https://convertio.co/jpg-webp/) 
+some quick 
+and dirty means to get your images converted. I'm sure these sites are pretty harmless, 
+but I don't like the idea of sending images to a remote server for a conversion. So, I 
+went looking for the actual executable that performs the conversion, with the hopes of 
+keeping the process local.
+
+Google hosts the whole thing here
+
+- [Getting Started](https://developers.google.com/speed/webp/docs/using)
+- [Pre-compiled Binaries](https://developers.google.com/speed/webp/docs/precompiled)
+
+Which gave me exactly what I wanted&mdash;a CLI-based tool to perform local image 
+conversions.
+
+<CenteredImage 
+    width="962"
+    height="260"
+    layout="responive"
+    alt="screenshot of webp CLI conversion"
+    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2022_image-optimization/webp-conversion-example.png"
+/>
+
+For a simple way to run this, try the following command. I've found that it works just 
+as well for JPGs, too.
+
+<MyHighlighter language="bash">
+{` cwebp -q 80 image.png -o image.webp `}
+</MyHighlighter>
+
+## Performance Gains?
+
+_Demonstrate what the performance gains are._
+
+## Future Features
+
+Now that I have way to convert images from a CLI-based tool. There's a couple things I would
+like to try incorporating into this process.
+
+- Windows context-menu conversion tie-in
+- VSCode plugin
+
+### Why?
+I write all of my blog posts within VS Code, and most of the time on my main workstation. So, 
+incorporating images typically involves downloading stock images, or transferring from a camera, 
+and then uploading to AWS. Adding another step for conversion feels tedious, so anything to 
+automate the process is great!
+
+### Context-menu
+
+It would be awsome if I could just _right-click, convert_ an image right from within Windows file explorer. 
+Integrating new tools into the Windows-context menu seems to require creating a key in 
+the registry, under: `HKEY_CLASSES_ROOT > Directory > Background > shell`.  I haven't attempted this yet,
+but it appears to be a straight-forward way to have image conversion on-hand, without manually
+entering the command each time I need it.
+
+This registry key could be manually configured, or handled with a specially-built Windows installer, or
+a Powershell script. 
+
+[https://lifehacker.com/add-any-application-to-the-windows-context-menu-1627589106](https://lifehacker.com/add-any-application-to-the-windows-context-menu-1627589106)
+
+### VSCode Extension
+
+Since I write these blog posts from within VSCode, incorporating a VSCode extension might be more 
+convenient. This might still require configuring a path for the extension to use the CLI tool, 
+and somehow selecting the image to be converted, from with VSCode, but at least more of the process 
+would be avaiable without leaving VSCode.
+
+[https://code.visualstudio.com/api/get-started/your-first-extension](https://code.visualstudio.com/api/get-started/your-first-extension)
+
+
+All in all, I hope sharing this helps if you're having similar issues optimizing images for 
+your websites, and it helps me get one step closer to my ideal of writing blog posts, using Next.js,
+from an iPad 🤷‍♂️
