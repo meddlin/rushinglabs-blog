@@ -33,7 +33,7 @@ image. Horrible for loading times.
 While it was obvious to see that my large images were slowing down the page loading, I wasn't
 sure how to properly optimize images for faster loading times. It seemed obvious to try
 resizing the images smaller, or somehow compressing them to smaller data sizes, but how to do
-this while handling
+this while handling:
 
 - page responsiveness
 - different sizes for different viewports
@@ -46,9 +46,6 @@ on this problem way back in 2010, [when they acquired On2 Technologies](https://
 - [https://www.smashingmagazine.com/2019/10/speed-up-your-website-webp/](https://www.smashingmagazine.com/2019/10/speed-up-your-website-webp/)
 
 ## Converting to WebP
-
-_Note: is it possible to get measurable metrics showing difference in loading times 
-between big PNGs and WebPs?_
 
 A quick Google search shows a bunch of quick [conversion](https://cloudconvert.com/webp-converter) 
 [websites](https://ezgif.com/webp-to-jpg) [providing](https://convertio.co/jpg-webp/) 
@@ -83,7 +80,11 @@ as well for JPGs, too.
 
 ## Performance Gains?
 
-_Demonstrate what the performance gains are._
+All I can say about measurable performance gains for now is...the page feels much faster. I
+tried to load the different images on the page, and test the capture the different loading 
+times within my browser's dev tools but the results weren't consistent. The best explanation
+I have for now is [Next.js is performing some default optimization](https://nextjs.org/docs/api-reference/next/image#loader-configuration) 
+that I'm not sure how to properly test.
 
 ## Future Features
 
@@ -94,6 +95,7 @@ like to try incorporating into this process.
 - VSCode plugin
 
 ### Why?
+
 I write all of my blog posts within VS Code, and most of the time on my main workstation. So, 
 incorporating images typically involves downloading stock images, or transferring from a camera, 
 and then uploading to AWS. Adding another step for conversion feels tedious, so anything to 
