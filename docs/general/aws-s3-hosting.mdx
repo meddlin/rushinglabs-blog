@@ -1,0 +1,36 @@
+---
+date: "2021-04-02"
+title: "AWS S3 Hosting Permissions"
+published: 'true'
+section: 'general'
+preview: |-
+    Describing permissions access changes to hosting objects (images) from
+    AWS S3.
+---
+
+Ref: [https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteAccessPermissionsReqd.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteAccessPermissionsReqd.html)
+
+I switched over to "bucket control", away from ACLs, and had to write my
+first Bucket Policy.
+
+To setup a new S3 Bucket with publicly accessible images for website
+
+- Disable "Block all public access"
+- Create a new bucket policy with this policy below
+
+<MyHighlighter language="javascript">
+{`
+   "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::Bucket-Name/*"
+        }
+    ] 
+`}
+</MyHighlighter>
+
+_Note: Replace `Bucket-Name` with the name of your bucket._

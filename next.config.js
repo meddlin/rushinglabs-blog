@@ -15,6 +15,9 @@ module.exports = withMDX({
         ignoreDuringBuilds: true,
     },
     images: {
-        domains: ['meddlin-web.s3.us-east-2.amazonaws.com']
+        domains: [
+            'meddlin-web.s3.us-east-2.amazonaws.com',
+            'rushinglabs-docs.s3.us-east-2.amazonaws.com'
+        ]
     }
 })
