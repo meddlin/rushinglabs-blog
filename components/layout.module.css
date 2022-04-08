@@ -1,3 +1,5 @@
+
+
 /*
  * Mobile view media queries
 */
@@ -42,7 +44,7 @@
 .container {
     display: flex;
     justify-content: center;
-    margin: 0 25% 0 25%;
+    margin: 0 12% 0 12%;
 }
 
 

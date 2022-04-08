@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import SocialsHorizontal from '../../components/socials-horizontal';
 import utilStyles from '../../styles/utils.module.css';
-import styles from '../../styles/about.module.css';
+import styles from '../../styles/projects.module.css';
 import { getAllProjects } from "../../lib/projects";
 import { projectsMeta } from '../../projectsConfig';
 
@@ -37,12 +37,25 @@ const Projects = ({ metadata, projects }) => {
             </Head>
 
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
-                <ul>
+                <ul className={styles.listParent}>
                     {metadata && metadata.length > 0 ? 
                         (metadata.map( meta => (
                             (meta.published ? (
                                 <li key={meta.title}>
-                                    <div>
+                                    <div style={{ display: `flex`, flexDirection: `row` }}>
+                                        <div style={{ maxWidth: `65%` }}>
+                                            <p>
+                                                <a href={`/projects/${meta.title}`}>
+                                                    {meta.title}
+                                                </a>
+                                            </p>
+                                            <p>{meta.summary}</p>
+                                            <p className={styles.projectLinks}>
+                                                {meta.links.map( link => (
+                                                    <a href={link.url}>{link.text}</a>
+                                                ))}
+                                            </p>
+                                        </div>
                                         {meta.images && (meta.images.length && meta.images[0].url !== '') > 0 ? (
                                             <Image 
                                                 src={meta.images[0].url}
@@ -51,19 +64,6 @@ const Projects = ({ metadata, projects }) => {
                                                 width={meta.images[0].width}
                                             />
                                         ) : ''}
-                                        <div>
-                                            <p>
-                                                <a href={`/projects/${meta.title}`}>
-                                                    {meta.title}
-                                                </a>
-                                            </p>
-                                            <p>{meta.summary}</p>
-                                            <p>
-                                                {meta.links.map( link => (
-                                                    <a href={link.url}>{link.text}</a>
-                                                ))}
-                                            </p>
-                                        </div>
                                     </div>
                                 </li>
                             ) : '')
