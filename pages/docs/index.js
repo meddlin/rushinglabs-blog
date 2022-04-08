@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Layout, { siteTitle } from '../../components/layout';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
+import docsStyles from '../../styles/docs.module.css';
 import { getAllDocsSections, getPostsFromDocsSubdir, getSortedDocsPostsData } from '../../lib/docs';
 
 export async function getStaticProps() {
@@ -47,7 +48,7 @@ function Docs({ docs, chunks, sections }) {
             </Head>
 
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
-                <ul>
+                <ul className={docsStyles.listParent}>
                     {chunks.map( ({section, docs}) => (
                         <li key={section}>
                             <Link href={`/docs/${section}`}>
