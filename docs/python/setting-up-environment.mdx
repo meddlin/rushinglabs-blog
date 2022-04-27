@@ -1,0 +1,99 @@
+---
+date: "2022-04-27"
+title: "Setting up Python, Flask, VSCode Environment"
+published: 'true'
+section: 'python'
+preview: |-
+    Explaining how I setup my development environment for developing and debugging
+    Python Flask API projects in VSCode.
+---
+
+### Getting Started
+
+Ref: [https://www.tutlinks.com/setup-visual-studio-code-for-python-development/](https://www.tutlinks.com/setup-visual-studio-code-for-python-development/)
+
+Start here. It's a good explanation for starting from zero.
+
+- Install Python extension (_see note at end of this page for a specific bug_)
+- (optional) install GitLens, GitHistory extensions
+- Select interpreter
+- Select linter
+
+This also covers creating a `settings.json` for the `./vscode` directory. This is where
+VSCode stores the project-specific configurations for your Python project.
+
+It's very important for consistency, and (if you're using git) can help other project 
+contributors get setup easily. _So, it's best to commit it to the git repo._
+
+
+### Setup Python environment, packages
+
+Ref: [https://www.tutlinks.com/debugging-flask-app-with-vs-code-made-easy/](https://www.tutlinks.com/debugging-flask-app-with-vs-code-made-easy/)
+
+For setting up a Python venv (virtual environment) in your project:
+
+```bash
+# cd [to-your-project-directory]
+python -m venv env
+env\Scripts\activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+> _Note: If you're building a service-based web app (web client + API), and you have both
+pieces in the same repo...make sure you are in the `/api` directory where your Python code 
+exists before executing those instructions._
+
+We need a debug configuration, too. `Ctrl+Shift+D` in VSCode is a shortcut to the debug 
+panel. This will guide you through creating a `launch.json`, in the `./vscode` directory.
+_See? That directory is extra important to be included in the git repo._
+
+`launch.json` holds the debug config for your Python Flask project. More debug configs can
+be added here if, for some reason, you need multiple debug configs on the same project.
+
+Make sure you change the `FLASK_APP` variable to match what you've named the entry point 
+for your Python project. _Default is `app.py`, but we're building an API._
+
+```json
+"env": {
+        "FLASK_APP": "api\\api.py",
+        "FLASK_ENV": "development"
+    },
+```
+
+
+### Writing a `requirements.txt`
+
+- Ref: [https://note.nkmk.me/en/python-pip-install-requirements/](https://note.nkmk.me/en/python-pip-install-requirements/)
+
+Here's an example `requirements.txt`:
+
+```bash
+###### Requirements without Version Specifiers ######
+nose
+nose-cov
+beautifulsoup4
+
+###### Requirements with Version Specifiers ######
+docopt == 0.6.1             # Version Matching. Must be version 0.6.1
+keyring >= 4.1.1            # Minimum version 4.1.1
+coverage != 3.5             # Version Exclusion. Anything except version 3.5
+Mopidy-Dirble ~= 1.1        # Compatible release. Same as >= 1.1, == 1.*
+```
+
+
+### Problem with Python extension for VSCode
+
+- Ref: [https://docs.microsoft.com/en-us/answers/questions/724858/vscode-debugger-not-working-for-python.html](https://docs.microsoft.com/en-us/answers/questions/724858/vscode-debugger-not-working-for-python.html)
+- Ref: [https://stackoverflow.com/questions/71019671/vscode-debugger-stops-suddenly-python](https://stackoverflow.com/questions/71019671/vscode-debugger-stops-suddenly-python)
+
+At some point in the whole setup process, my Python environment started acting weird. The 
+debugger would start and then immediately stop. Somehow `flask` would no longer be detected
+for import. Yet enabling the python `env`, and installing from `pip` would result in all
+packages returning saying they were already installed.
+
+I downgraded the VSCode Python extension to the latest release from 2021, and restarted 
+VSCode, and this seemed to be enough to get things going again. _The two links listed above
+also described similar behavior, and stated this solution worked. Unsure why the bug exists._
+
+- VSCode extension: Python (v2021.12.1559732655)
