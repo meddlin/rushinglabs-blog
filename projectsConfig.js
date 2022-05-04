@@ -73,6 +73,23 @@ module.exports = {
                     url: ''
                 }
             ]
+        },
+        {
+            title: 'game-capture',
+            published: true,
+            summary: 'Explaining how I setup and produce game capture videos',
+            links: [
+                {
+                    text: 'Click Here',
+                    url: 'https://rushinglabs.com/projects/game-capture'
+                }
+            ],
+            images: [
+                {
+                    size: '',
+                    url: ''
+                }
+            ]
         }
     ]
 }
