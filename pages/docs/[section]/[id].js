@@ -15,6 +15,7 @@ import CenteredImage from '../../../components/content-helpers/CenteredImage';
 import Button from '../../../components/button';
 import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import TikTok from '../../../components/embeds/tiktok';
 const MyDocHighlighter = ({ language, children }) => {
     return (
         <SyntaxHighlighter language={language} style={a11yDark}>
@@ -73,7 +74,15 @@ const Doc = (props) => {
             <article className={postStyles.content}>
                 <h1 className={utilStyles.headingX1}>{title}</h1>
                 <Date dateString={date} />
-                <MDXRemote {...mdx} components={{ Button, Image, Link, CenteredImage, SyntaxHighlighter, MyDocHighlighter }} />
+                <MDXRemote {...mdx} components={{ 
+                    Button, 
+                    Image, 
+                    Link, 
+                    CenteredImage, 
+                    SyntaxHighlighter, 
+                    MyDocHighlighter,
+                    TikTok
+                }} />
             </article>
         </Layout>
     );
