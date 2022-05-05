@@ -11,7 +11,7 @@ import { getAllProjectIds, getProjectPage } from '../../../lib/projects';
  */
  import Image from 'next/image';
  import Link from 'next/link';
- import CenteredImage from '../../../components/CenteredImage';
+ import CenteredImage from '../../../components/content-helpers/CenteredImage';
  import Button from '../../../components/button';
  import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
  import SyntaxHighlighter from 'react-syntax-highlighter';
