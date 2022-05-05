@@ -13,7 +13,19 @@ import { Helmet } from 'react-helmet';
 
 const TIKTOK_OEMBED_BASE_URL = `https://www.tiktok.com/oembed`;
 
-export default function TikTok({ url })  {
+/**
+ * 
+ * - url: The URL of the video hosted on TikTok. This will be concatenated
+ *          with `TIKTOK_OEMBED_BASE_URL` to make an oembed API call for 
+ *          the embed code.
+ * - children: Meant to be used for passing in Markdown content. This will
+ *          be converted to JSX by the MDX processing built into the app.
+ *          Regular JSX (children) works just as well, too.
+ * @param {string} url
+ * @param {*} children
+ * @returns 
+ */
+export default function TikTok({ url, children })  {
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState();
     const [html, setHtml] = useState();
@@ -42,11 +54,23 @@ export default function TikTok({ url })  {
             <Helmet>
                 <script id='ttEmbedder' async src={scriptSrc} />
             </Helmet>
-            <div
-                ref={ref}
-                style={{ display: 'flex' }}
-                dangerouslySetInnerHTML={{ __html: html || '' }}
-            />
+            {children ? (
+                <div style={{ display: 'flex' }}>
+                    <div
+                        ref={ref}
+                        style={{ display: 'flex' }}
+                        dangerouslySetInnerHTML={{ __html: html || '' }}
+                    />
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1em' }}>
+                        {children}
+                    </div>
+                </div>) : (
+                <div
+                    ref={ref}
+                    style={{ display: 'flex' }}
+                    dangerouslySetInnerHTML={{ __html: html || '' }}
+                />
+            )}
         </>
     );
 }
