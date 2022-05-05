@@ -11,10 +11,11 @@ import postStyles from '../../../styles/post.module.css';
  */
 import Link from 'next/link';
 import Image from 'next/image';
-import CenteredImage from '../../../components/CenteredImage';
+import CenteredImage from '../../../components/content-helpers/CenteredImage';
 import Button from '../../../components/button';
 import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import TikTok from '../../../components/embeds/tiktok';
 
 const MyHighlighter = ({ language, children }) => {
     return (
@@ -76,7 +77,15 @@ const Post = (props) => {
             <article className={postStyles.content}>
                 <h1 className={utilStyles.headingX1}>{title}</h1>
                 <Date dateString={date} />
-                <MDXRemote {...mdx} components={{ Button, Image, Link, CenteredImage, SyntaxHighlighter, MyHighlighter }} />
+                <MDXRemote {...mdx} components={{ 
+                    Button, 
+                    Image, 
+                    Link, 
+                    CenteredImage, 
+                    SyntaxHighlighter, 
+                    MyHighlighter,
+                    TikTok
+                }} />
             </article>
         </Layout>
     );
