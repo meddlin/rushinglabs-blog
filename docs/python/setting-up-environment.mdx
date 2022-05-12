@@ -82,7 +82,39 @@ Mopidy-Dirble ~= 1.1        # Compatible release. Same as >= 1.1, == 1.*
 ```
 
 
-### Problem with Python extension for VSCode
+### Choosing Environments (Python virtual environment)
+
+Specific to debugging a Python script/app within VSCode, it can be confusing to set the environment
+properly. Sometimes you get weird errors like "cannot import modules" when all modules seemingly have
+been installed after running `pip install -r requirements.txt`.
+
+_After a virtual environment, relative to your project, has been created._
+
+Ref: [https://code.visualstudio.com/docs/python/environments#_work-with-python-interpreters](https://code.visualstudio.com/docs/python/environments#_work-with-python-interpreters)
+
+In VSCode:
+
+- Open the command pallette, `Python: Select Interpreter`
+- From here, you should be able to choose the environment within the project. _Not elsewhere on the system._
+
+Also, make sure to pay attention to setting the environment `env: {...}` variables in `launch.json`
+as mentioned above.
+
+For the example project I was struggling with, the Python project was not at the root of the project. It 
+is under an `api/` directory (i.e. `/api/app.py`). So, relative to VSCode, the `FLASK_APP` variable needs
+to reflect this, hence: `"FLASK_APP": "api\\app.py"`.
+
+```json
+"env": {
+    "FLASK_APP": "api\\app.py",
+    "FLASK_ENV": "development"
+},
+```
+
+Ref: [https://stackoverflow.com/questions/57517874/flask-tutorial-could-not-import-app-in-visual-studio-code-1-37-1](https://stackoverflow.com/questions/57517874/flask-tutorial-could-not-import-app-in-visual-studio-code-1-37-1)
+
+
+### Special Note: Problem with Python extension for VSCode
 
 - Ref: [https://docs.microsoft.com/en-us/answers/questions/724858/vscode-debugger-not-working-for-python.html](https://docs.microsoft.com/en-us/answers/questions/724858/vscode-debugger-not-working-for-python.html)
 - Ref: [https://stackoverflow.com/questions/71019671/vscode-debugger-stops-suddenly-python](https://stackoverflow.com/questions/71019671/vscode-debugger-stops-suddenly-python)
@@ -97,3 +129,8 @@ VSCode, and this seemed to be enough to get things going again. _The two links l
 also described similar behavior, and stated this solution worked. Unsure why the bug exists._
 
 - VSCode extension: Python (v2021.12.1559732655)
+
+
+### Further Reading
+
+- Advanced Visual Studio Code for Python Developers: [https://realpython.com/advanced-visual-studio-code-python/#debugging-your-python-scripts-in-visual-studio-code](https://realpython.com/advanced-visual-studio-code-python/#debugging-your-python-scripts-in-visual-studio-code)
