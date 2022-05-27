@@ -92,7 +92,7 @@ export default function Home({ previewPosts }) {
 					<span>Check out my recent blog posts</span>
 					<ul>
 						{previewPosts.map( ({ id, date, title, preview }) => (
-							<li>
+							<li key={id}>
 								<Link href={`/blog/${id}`}>
 									<a>{title}</a>
 								</Link>
