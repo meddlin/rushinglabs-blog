@@ -1,0 +1,76 @@
+---
+date: "2022-07-27"
+title: "Learning Python CRUD - Initial Choices & Issues"
+section: 'software'
+preview: |-
+    
+---
+
+
+# Flask vs FastAPI
+
+- Flask seems biased towards monolithic apps
+    - it's possible to create REST API/data-only service-based apps, but it 
+    feels like you aren't supposed to.
+- FastAPi has a bend toward asynchronous, service-based APIs
+
+- Not sure if this is actually how either of these frameworks are structured,
+but that is the "feel" I get after working with both of them.
+
+# UUID issue
+
+The `UUID(as_uuid = True)` was necessary in sqlalchemy models.
+
+```python
+id = Column(UUID(as_uuid=True), primary_key = True, default=uuid.uuid4)
+```
+
+# Direct vs. Declarative for sqlalchemy Models
+
+The one thing I would have to say is most difficult about learning Python is the 
+disparate documentation. Documentation certainly exists, but it's not always 
+consistent.
+
+Such, as running into the issue where I needed to know how to declare relationships 
+within my sqlalchemy models: [https://hackersandslackers.com/implement-sqlalchemy-orm/]
+(https://hackersandslackers.com/implement-sqlalchemy-orm/)
+
+Then, I find out the example in that link (directly above) was using the "declarative"
+Table class, and some other tutorial/article guided me towards using a "direct" Table 
+class: [https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html]
+(https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html)
+
+_This is, generally speaking, on top of other examples where I can't really trust the 
+documentation quality of any particular library and there doesn't appear to be a 
+centralized source.
+
+
+
+
+# Debugging FastAPI
+
+Ref: [https://stackoverflow.com/questions/60205056/debug-fastapi-application-in-vscode](https://stackoverflow.com/questions/60205056/debug-fastapi-application-in-vscode)
+
+This is the key configuration we need in `launch.json` for VSCode.
+
+The extra pieces in the `args` section are important.
+
+```json
+"version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: FastAPI",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "cwd": "${workspaceFolder}/<folder to your main.py>",
+      "args": [
+        "main:app",
+        "--reload",
+        "--port", //these arg are optional
+        "3003"
+      ]
+    }
+  ]
+}
+```
