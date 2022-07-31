@@ -13,25 +13,29 @@ preview: |-
 Apparently, we can replace a whole model declaration with field references, and it produces
 more direct SQL in the ORM-produced query.
 
-```python
-res = db.query(Budget).join(Category).filter(Budget.id == Category.budget_id) #.all()
-    print(res)
+<MyHighlighter language="python">
+{`res = db.query(Budget).join(Category).filter(
+    Budget.id == Category.budget_id) #.all()
     return res
-```
+`}
+</MyHighlighter>
 
 This only puts all of the Budget fields in the select clause!
 
-```python
-res = db.query(Budget.name, Category.name).join(Category).filter(Budget.id == Category.budget_id) #.all()
-    print(res)
-    return res
-```
+<MyHighlighter language="python">
+{`res = db.query(Budget.name, Category.name).join(Category).filter(
+        Budget.id == Category.budget_id) #.all()
+print(res)
+return res`}
+</MyHighlighter>
 
-```sql
+<MyHighlighter language="sql">
+{`
 SELECT budget.name AS budget_name, category.name AS category_name   
 FROM budget JOIN category ON budget.id = category.budget_id
 WHERE budget.id = category.budget_id
-```
+`}
+</MyHighlighter>
 
 
 
@@ -56,11 +60,14 @@ example query.
 
 **Example Query**
 
-```python
+<MyHighlighter language="python">
+{` 
 db.query(
     Budget, Category
     ).join(Category).filter(Budget.id == Category.budget_id).first()
-```
+`}
+</MyHighlighter>
+
 
 The first problem I encountered was not being sure how to write a join via the ORM. If we have 
 `.join()` it seems there would be an `.on()`, but no...we use `.filter()` instead. But remember
@@ -130,30 +137,29 @@ for key in res.keys():
 ```
 
 Also, we're using `.label('column name')` on the column selections in our query, to provide a 
-custom name for each column. Without this, the `key` is the same as the column name setup in 
+custom name for each column. Without this, the `key` is the same as the column name in 
 the database. Nomrally this is fine, however it would be difficult to keep track of the differing 
 `Budget.id` and `Category.id` columns, so providing column aliases is necessary.
 
 So, an ugly bit of code, but this is how I was able to manually align the query result data with 
 the column values, and then transform to our models.
 
-```python
+<MyHighlighter language="python">
+{`
 res = db.query(
     # query removed for brevity
 ).first()
-
 keys = [] # setup a list to hold column names
     for key in res.keys():
         keys.append(key) # append each key (i.e. column name) to our new list
-
 mydata = {}                 # setup a dictionary for our column:data, key-value store
 i = 0                       # an index counter
-
-    # This loop assumes there is an equal number of keys, and number of data values returned
-    while i < len(keys):            # iterate over our keys list (the new one)
-        mydata[keys[i]] = res[i]    # each index of `keys[]` will be the key of `mydata`, and the value is pulled from `res[i]`
-        i += 1                      # increment counter
-```
+# This loop assumes there is an equal number of keys, and number of data values returned
+while i < len(keys):            # iterate over our keys list (the new one)
+    mydata[keys[i]] = res[i]    # each index of keys[] will be the key of mydata, and the value is pulled from res[i]
+    i += 1                      # increment counter
+`}
+</MyHighlighter>
 
 ## Accessing Column names, and Handling RMKeyView - multiple rows
 
@@ -187,7 +193,36 @@ However, an `.all()` query is _a series of rows_.
 **Example Query**
 
 ```python
-res = db.query(
-    -- the same field definitions; removed for brevity
+result = db.query(
+    # -- the same field definitions; removed for brevity
 ).join(Category).filter(Budget.id == Category.budget_id).all()
+
+# NOTE: this time result is a set of rows
+
+keys = [] # setup a list to hold column names
+for key in result[0].keys(): # Get keys from the first row in our result set
+    keys.append(key)
+
+mydata = [] # This time we have 
+
+for row in result:
+    i = 0
+    myobj = {}
+    while i < len(keys): # this loop translates each row
+        myobj[keys[i]] = row[i]
+        i += 1
+    
+    mydata.append(myobj) # put our translated object in our new collection
+
+# Then iterate over our new collection to create our objects
+for data in mydata:
+    b = Budget(
+        id = data['budget_id']
+        date_created = data['date_created']
+        # so on...
+        category = Category(
+            id = data['category_id']
+            date_created = data['category_date_created']
+        )
+    )
 ```
