@@ -6,6 +6,19 @@ preview: |-
     
 ---
 
+# Intro
+
+In thinking about my strategy for pulling data from database to client, I came across these 
+two articles. They highlighted a couple key issues for me.
+
+- [Multi-table filters in SQLAlchemy](https://medium.com/shoprunner/multi-table-filters-in-sqlalchemy-d64e2166199f)
+- [Speed up with eager loading in SQLAlchemy](https://engineering.shopspring.com/speed-up-with-eager-loading-in-sqlalchemy-87a176cfd7ad)
+
+Problems:
+
+- **Joins in SQLAlchemy** -> I needed to query data across tables regularly
+- **N+1 Problem** -> Querying for some common pages could produce dozens of DB calls, or complex client logic
+- **Dynamic Data Transformations** -> Joined row-based data from SQL requires transformation into nested JSON-like models
 
 
 # Apparent Query Differences
@@ -39,6 +52,22 @@ WHERE budget.id = category.budget_id
 
 
 
+
+# SQLAlchemy Relationships - Declarative vs. Explicit Schemas
+
+These two articles explain setting up SQLAlchemy table relationships
+
+- [https://hackersandslackers.com/sqlalchemy-data-models/](https://hackersandslackers.com/sqlalchemy-data-models/)
+- [https://hackersandslackers.com/implement-sqlalchemy-orm/](https://hackersandslackers.com/implement-sqlalchemy-orm/)
+
+SQLAlchemy docs for declarative, explicit schemas
+
+Ref: [https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html](https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html)
+
+
+
+
+
 # A Problem -- How to Handle Joins, Mapping Related Data to Nested Models
 
 <!- This is going from the _relational SQL data_ to the nested, document-structure of JSON. For,
@@ -46,6 +75,28 @@ the resulting data models being sent to the client. -!>
 
 [insert (relational data pic) -> (nested data pic)]
 
+
+Essentially, this boils down to "How do we move data from SQLAlchemy models to Pydantic models?"
+And it appears Pydantic's ORM Mode solves the issue, _however_ I couldn't get this working with 
+nested Pydantic models. Also, this transformation needs to work with potentially _sparse_ models. 
+We don't want to be forced to always return full data models to the client, when much less data 
+is needed for the desired page/component.
+
+Ref: [https://pydantic-docs.helpmanual.io/usage/models/#orm-mode-aka-arbitrary-class-instances](https://pydantic-docs.helpmanual.io/usage/models/#orm-mode-aka-arbitrary-class-instances)
+
+
+Many others have had this problem
+
+- [https://twitter.com/anthonypjshaw/status/1411955379781599234?lang=en](https://twitter.com/anthonypjshaw/status/1411955379781599234?lang=en)
+- [https://gitter.im/tiangolo/fastapi?at=5e21f11c7148837898905983](https://gitter.im/tiangolo/fastapi?at=5e21f11c7148837898905983)
+
+I also tossed around the idea of moving to a completely different modeling library: [SQLModel](https://sqlmodel.tiangolo.com/features/)
+
+It looks like a clever layer on top of Pydantic and SQLAlchemy, but I was already 
+learning enough with tutorials & docs made specific to Pydantic and SQLAlchemy. So, 
+I'm steering clear of potentially getting stuck juggling libraries.
+
+Ref: [https://sqlmodel.tiangolo.com/features/](https://sqlmodel.tiangolo.com/features/)
 
 
 
@@ -91,6 +142,14 @@ model data. So, that `Category.budget_id` is important.
 
 But the column names aren't returned directly in our resulting dataset. Presumably, only the 
 values are. 
+
+
+
+
+## Adding the `label()` to columns
+
+Ref: [https://stackoverflow.com/questions/9187530/using-alias-for-select-as-in-sqlalchemy](https://stackoverflow.com/questions/9187530/using-alias-for-select-as-in-sqlalchemy)
+
 
 ## Accessing Column names, and Handling RMKeyView - single row
 
@@ -188,32 +247,27 @@ for row in res:
 ```
 
 
-However, an `.all()` query is _a series of rows_.
+However, an `.all()` query is _a series of rows_. So, we need to alter our 
+data transformation to handle multiple rows.
 
-**Example Query**
+**Example Code**
 
-```python
-result = db.query(
+<MyHighlighter language="python">
+{`result = db.query(
     # -- the same field definitions; removed for brevity
 ).join(Category).filter(Budget.id == Category.budget_id).all()
-
 # NOTE: this time result is a set of rows
-
 keys = [] # setup a list to hold column names
 for key in result[0].keys(): # Get keys from the first row in our result set
     keys.append(key)
-
-mydata = [] # This time we have 
-
+mydata = [] # This time we have a list to hold multiple objects
 for row in result:
     i = 0
     myobj = {}
     while i < len(keys): # this loop translates each row
         myobj[keys[i]] = row[i]
         i += 1
-    
     mydata.append(myobj) # put our translated object in our new collection
-
 # Then iterate over our new collection to create our objects
 for data in mydata:
     b = Budget(
@@ -224,5 +278,5 @@ for data in mydata:
             id = data['category_id']
             date_created = data['category_date_created']
         )
-    )
-```
+    )`}
+</MyHighlighter>
