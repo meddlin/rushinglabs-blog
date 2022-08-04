@@ -51,11 +51,12 @@ centralized source.
 
 Ref: [https://stackoverflow.com/questions/60205056/debug-fastapi-application-in-vscode](https://stackoverflow.com/questions/60205056/debug-fastapi-application-in-vscode)
 
-This is the key configuration we need in `launch.json` for VSCode.
+This is the key configuration we need in `launch.json` for VSCode. The extra pieces in 
+the `args` section are important. Throw this in your `launch.json`, and you should be good 
+to go.
 
-The extra pieces in the `args` section are important.
-
-```json
+<MyHighlighter language="json">
+{`
 "version": "0.2.0",
   "configurations": [
     {
@@ -63,7 +64,7 @@ The extra pieces in the `args` section are important.
       "type": "python",
       "request": "launch",
       "module": "uvicorn",
-      "cwd": "${workspaceFolder}/<folder to your main.py>",
+      "cwd": "\${workspaceFolder}/<folder to your main.py>",
       "args": [
         "main:app",
         "--reload",
@@ -73,4 +74,5 @@ The extra pieces in the `args` section are important.
     }
   ]
 }
-```
+`}
+</MyHighlighter>
