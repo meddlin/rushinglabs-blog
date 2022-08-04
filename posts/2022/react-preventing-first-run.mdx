@@ -1,0 +1,64 @@
+---
+date: "2022-07-27"
+title: "Learning Python CRUD - Data Relations"
+section: 'software'
+preview: |-
+    
+---
+
+Something strange is happening with React. At least, it feels so. Perhaps I just don't keep 
+up with the times anymore.
+
+[Goodby, useEffect: David Khourshid - Real World React](https://www.youtube.com/watch?v=HPoC-k7Rxwo)
+
+
+## What is happening?!
+
+But...why? 
+Why is this different? 
+What was happening before? 
+What possessed you to write this article? 
+
+These are the types of questions flooding my head when I started writing a bit of React code to consume 
+a new API I wrote.
+
+This new pattern for loading data on component mount. `useEffect` runs twice when: Strict 
+Mode is set, and when running the app in development mode. And it's all due to a new feature, 
+not yet available??, in React v18.
+
+[Someone explaining this](https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93)
+
+
+## Skip to the Code 
+
+Exmaple code...for this new pattern for loading data on component mount.
+
+```javascript
+import { useState, useEffect, useRef } from 'react';
+
+export default MyComponent() {
+    const isMounted = useRef(false);
+    const [storage, setStorage] = useState({})
+
+    useEffect(() => {
+        if (isMounted.current) {
+            fetch(url, {
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            })
+            .then(response => response.json())
+            .then(data => setStorage(data))
+        } else {
+            isMounted.current = true;
+        }
+    }, [])
+
+    return (
+        <>
+            <h2>My Component</h2>
+            <div>
+                <p>Storage contains: {storage}</p>
+            </div>
+        </>
+    )
+}
+```
