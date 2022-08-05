@@ -28,10 +28,124 @@ not yet available??, in React v18.
 
 [Someone explaining this](https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93)
 
+## UPDATE: Upon further reflection...
+
+Upon further reflection, it seems React has done this sort of "bleeding-edge-break-things" before. 
+I'm not sure if it is good/bad/just-the-way-things-are, so I'll withold judgement calls. However, 
+my whole reason for mentioning this at all remains the same--React is a difficult technology to 
+keep using without committing yourself to using it on the regular.
+
 
 ## Skip to the Code 
 
 Exmaple code...for this new pattern for loading data on component mount.
+
+```javascript
+import { useState, useEffect, useRef } from 'react';
+
+export default MyComponent() {
+    const isMounted = useRef(false);
+    const [storage, setStorage] = useState({})
+
+    useEffect(() => {
+        if (isMounted.current) {
+            fetch(url, {
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            })
+            .then(response => response.json())
+            .then(data => setStorage(data))
+        } else {
+            isMounted.current = true;
+        }
+    }, [])
+
+    return (
+        <>
+            <h2>My Component</h2>
+            <div>
+                <p>Storage contains: {storage}</p>
+            </div>
+        </>
+    )
+}
+```
+
+## Break it down
+
+We have our component, and upon mounting it we want to load some data in `storage`.
+
+- Setup a component, `MyComponent`
+- Some JSX for the component to render
+- Use `useState` for storing our retrieved data
+
+```javascript
+export default MyComponent() {
+    const [storage, setStorage] = useState({})
+
+    return (
+        <>
+            <h2>My Component</h2>
+            <div>
+                <p>Storage contains: {storage}</p>
+            </div>
+        </>
+    )
+}
+```
+
+That loading happens via `useEffect`. We use this hook to run, automatically, 
+on component load.
+
+- Notice the pattern for `useEffect`: `useEffect(callback, dependency array)`
+- An empty dependency array (`[]`), means the effect is only loaded once**
+
+**NOTE: _React 18, forces this use of `useEffect` to run twice, when: executing 
+in development mode, , and strict mode is enabled._
+
+```javascript
+export default MyComponent() {
+    const [storage, setStorage] = useState({})
+
+    useEffect(() => {
+        fetch(url, {
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        })
+        .then(response => response.json())
+        .then(data => setStorage(data))
+    }, [])
+
+    return (
+        <>
+            <h2>My Component</h2>
+            <div>
+                <p>Storage contains: {storage}</p>
+            </div>
+        </>
+    )
+}
+```
+
+To prevent this _automatic, by default, double execution_ we use the `useRef` 
+hook to create a conditional flag. 
+
+We create a `useRef` instance much how we used `useState`.
+
+```javascript
+/* Rest of component implementation removed for brevity */
+const isMounted = useRef(false);
+
+useEffect(() => { // Establish the "effect" code we want to run on-mount
+    if (isMounted.current) { // if isMounted == true, do our thing
+        // do something
+    } else {
+        isMounted.current = true; // isMounted wasn't true on first run, change it so we're ready
+    }
+}, []) // Don't forget the empty deps array forces a single execution
+```
+
+
+And after adding it, we are back to our original implementation of the 
+component.
 
 ```javascript
 import { useState, useEffect, useRef } from 'react';
