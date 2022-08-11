@@ -1,52 +1,126 @@
 ---
-date: "2022-07-27"
-title: "Learning Python CRUD - Data Relations"
+date: "2022-08-11"
+title: "React is weird...and the lesson I learned"
 section: 'software'
 preview: |-
     
 ---
 
-Something strange is happening with React. At least, it feels so. Perhaps I just don't keep 
-up with the times anymore.
 
-[Goodby, useEffect: David Khourshid - Real World React](https://www.youtube.com/watch?v=HPoC-k7Rxwo)
+It feels like every time I step away from React and come back something has 
+changed. This time it was `useEffect`.
 
+So, my issue was throwing a pretty pedestrian `fetch()` inside of `useEffect()`
+to automatically load data upon first load for a component. _I could've sworn 
+this was a pattern I had used in the past._ But somehow now my `useEffect` 
+logic seems to be executing twice. _**Am I forgetting something?!**_ 
 
-## What is happening?!
+<hr />
 
-But...why? 
-Why is this different? 
-What was happening before? 
-What possessed you to write this article? 
+_Not exactly as Dan Abramov explained 
+[here](https://github.com/facebook/react/issues/24502#issuecomment-1118867879)_, 
+and if you want the `tl;dr` check out this article by [Zachary Lee](https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93). 
+He explains it well.
 
-These are the types of questions flooding my head when I started writing a bit of React code to consume 
-a new API I wrote.
+<hr />
 
-This new pattern for loading data on component mount. `useEffect` runs twice when: Strict 
-Mode is set, and when running the app in development mode. And it's all due to a new feature, 
-not yet available??, in React v18.
-
-[Someone explaining this](https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93)
-
-## UPDATE: Upon further reflection...
-
-Upon further reflection, it seems React has done this sort of "bleeding-edge-break-things" before. 
-I'm not sure if it is good/bad/just-the-way-things-are, so I'll withold judgement calls. However, 
-my whole reason for mentioning this at all remains the same--React is a difficult technology to 
-keep using without committing yourself to using it on the regular.
+[insert an image of the error happening]
 
 
-## Skip to the Code 
+## The Issue 
 
-Exmaple code...for this new pattern for loading data on component mount.
+We'll cover the issue with my code in-depth below, but the short answer is: 
+`useEffect()` now executes twice _because_ React 18 mounts, unmounts, and 
+remounts components by default, when running in development mode with 
+`React.StrictMode` enabled. This is to help developers highlight potential 
+issues with component state logic earlier in development.
 
-```javascript
-import { useState, useEffect, useRef } from 'react';
+So, my issue with this isn't that "React changed"...but that this behavior is 
+removed from the context of _**why**_ it exists. _If a possibly unexpected behavior 
+is going to be running by default to help prevent errors, **specifically in 
+development under Strict Mode**, then shuoldn't a warning also pop by default?_
 
+Perhaps I'm blind, or just not smart enough to know where in the [docs to start 
+reading at](https://beta-reactjs-org-git-effects-fbopensource.vercel.app/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed). 
+But this experience with React is something I've experienced several 
+times, and in the past I always just chalked it up to not being in the ecosystem 
+daily or some type of "JavaScript fatigue". 
+
+**But!** but...this felt different. I thought I had legitimately made an 
+error&mdash;not, encountered a _**different behavior**_ of _**equivalent code**_. So, 
+instead of immediately going to Read-The-Free-Manual, and I started 
+down the road of Googling to find articles, etc. where others explained how 
+they fixed this _seemingly elementary stumbling block I had forgotten._
+
+
+## Discovering, Getting back to the docs -- A Twitter thread
+
+> Here's the Twitter thread on how I found this: [https://twitter.com/meddlin_dev/status/1556904767019958272](https://twitter.com/meddlin_dev/status/1556904767019958272)
+
+No, instead I found a random (but fortunate) [blog article](https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93)
+that pointed me back to the section of the updated docs, I didn't know was 
+going to be worth reviewing.
+
+### Article -> GH issue
+
+In this article, I see Zachary explaining how he stumbled through the double-call, 
+and where he found Dan Abramov explaining it all in a [GitHub issue](https://github.com/facebook/react/issues/24502#issuecomment-1118867879)
+
+Ah. So, we're [ensuring reusable state](https://reactjs.org/docs/strict-mode.html#ensuring-reusable-state). 
+Well, that's certainly a good thing, but that's a weird place to mention it. 🤷‍♂ 
+
+### GH Issue -> Reddit reply
+
+Now, reading Dan Abramov's full reply on the GitHub issue, he references a [Reddit post](https://www.reddit.com/r/reactjs/comments/vi6q6f/comment/iddrjue/).
+
+[https://www.reddit.com/r/reactjs/comments/vi6q6f/comment/iddrjue/](https://www.reddit.com/r/reactjs/comments/vi6q6f/comment/iddrjue/)
+
+The Reddit post is exceptionally thorough, referencing other blog posts, the new 
+React docs beta, and he even provides some explanation for an attempt to consolidate 
+the docs. (Kind of my point. Very thankful it's being addressed! 👍) It's definitely 
+worth a full read if you're working this fetch/useEffect issue.
+
+### Article -> React Docs (BETA)
+
+At the end of Zachary's blog article, and also in Dan's Reddit reply we get references 
+to the new [React Docs Beta](https://beta-reactjs-org-git-effects-fbopensource.vercel.app/): [https://beta-reactjs-org-git-effects-fbopensource.vercel.app/learn/synchronizing-with-effects](https://beta-reactjs-org-git-effects-fbopensource.vercel.app/learn/synchronizing-with-effects)
+
+Again...AWESOME! but holy cow we had to dig for this...
+
+The whole [Synchronizing with Effects](https://beta-reactjs-org-git-effects-fbopensource.vercel.app/learn/synchronizing-with-effects) 
+is worth the read. However...
+
+### This is the part I needed
+
+Skipping down to "Step 3: Add cleanup if needed", in this page of the React Docs Beta, 
+they begin walking through the `useEffect()` issue. It uses a hypothetical ChatRoom application 
+as the backdrop to explain this change surrounding `useEffect`.
+
+
+
+
+
+## Skip to the Code
+
+All that to just use the same old `fetch()` from `useEffect()` with a flag check?! 
+
+Yes. I'm writing a simple app. This is a simple "grab from database" upon component 
+load. It's all local development, so I can handle round trips without a caching 
+layer. And forcing this "flag" condition in the `useEffect` allows me to avoid 
+loading secondary libraries like React Query or `useSWR`, while sticking to typical 
+React-style code, and getting the proof-of-concept done.
+
+But now we understand ___why___.
+
+
+Exmaple code: I found [another article](https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/) 
+explaining how to use `useRef` to avoid fetching if it's the first load for the component.
+
+<MyHighlighter language="javascript">
+{`import { useState, useEffect, useRef } from 'react'
 export default MyComponent() {
     const isMounted = useRef(false);
     const [storage, setStorage] = useState({})
-
     useEffect(() => {
         if (isMounted.current) {
             fetch(url, {
@@ -58,7 +132,6 @@ export default MyComponent() {
             isMounted.current = true;
         }
     }, [])
-
     return (
         <>
             <h2>My Component</h2>
@@ -67,112 +140,52 @@ export default MyComponent() {
             </div>
         </>
     )
-}
-```
+}`}
+</MyHighlighter>
 
-## Break it down
+From the React Docs Beta, they [achieve this slightly differently (Fetching data)](https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/).
 
-We have our component, and upon mounting it we want to load some data in `storage`.
+- The React Docs version produces two network requests, but the first gets ignored.
+- The `useRef` version avoids the secondary network request, but notice the `useRef` flag is scoped 
+to the component, not only the `useEffect()` call. 
 
-- Setup a component, `MyComponent`
-- Some JSX for the component to render
-- Use `useState` for storing our retrieved data
+<MyHighlighter language="javascript">
+{`
+useEffect(() => {
+  let ignore = false;
 
-```javascript
-export default MyComponent() {
-    const [storage, setStorage] = useState({})
-
-    return (
-        <>
-            <h2>My Component</h2>
-            <div>
-                <p>Storage contains: {storage}</p>
-            </div>
-        </>
-    )
-}
-```
-
-That loading happens via `useEffect`. We use this hook to run, automatically, 
-on component load.
-
-- Notice the pattern for `useEffect`: `useEffect(callback, dependency array)`
-- An empty dependency array (`[]`), means the effect is only loaded once**
-
-**NOTE: _React 18, forces this use of `useEffect` to run twice, when: executing 
-in development mode, , and strict mode is enabled._
-
-```javascript
-export default MyComponent() {
-    const [storage, setStorage] = useState({})
-
-    useEffect(() => {
-        fetch(url, {
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        })
-        .then(response => response.json())
-        .then(data => setStorage(data))
-    }, [])
-
-    return (
-        <>
-            <h2>My Component</h2>
-            <div>
-                <p>Storage contains: {storage}</p>
-            </div>
-        </>
-    )
-}
-```
-
-To prevent this _automatic, by default, double execution_ we use the `useRef` 
-hook to create a conditional flag. 
-
-We create a `useRef` instance much how we used `useState`.
-
-```javascript
-/* Rest of component implementation removed for brevity */
-const isMounted = useRef(false);
-
-useEffect(() => { // Establish the "effect" code we want to run on-mount
-    if (isMounted.current) { // if isMounted == true, do our thing
-        // do something
-    } else {
-        isMounted.current = true; // isMounted wasn't true on first run, change it so we're ready
+  async function startFetching() {
+    const json = await fetchTodos(userId);
+    if (!ignore) {
+      setTodos(json);
     }
-}, []) // Don't forget the empty deps array forces a single execution
-```
+  }
+
+  startFetching();
+
+  return () => {
+    ignore = true;
+  };
+}, [userId]);
+`}
+</MyHighlighter>
 
 
-And after adding it, we are back to our original implementation of the 
-component.
 
-```javascript
-import { useState, useEffect, useRef } from 'react';
 
-export default MyComponent() {
-    const isMounted = useRef(false);
-    const [storage, setStorage] = useState({})
+## Credits
 
-    useEffect(() => {
-        if (isMounted.current) {
-            fetch(url, {
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            })
-            .then(response => response.json())
-            .then(data => setStorage(data))
-        } else {
-            isMounted.current = true;
-        }
-    }, [])
+- Why does useEffect run twice in React v18.0?, Zachary Lee
+    - [https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93](https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93)
 
-    return (
-        <>
-            <h2>My Component</h2>
-            <div>
-                <p>Storage contains: {storage}</p>
-            </div>
-        </>
-    )
-}
-```
+- Dan Abramov's (@gaearon) GitHub issue reply
+    - [https://github.com/facebook/react/issues/24502#issuecomment-1118867879](https://github.com/facebook/react/issues/24502#issuecomment-1118867879)
+
+- React Docs, Ensuring reusable state
+    - [https://reactjs.org/docs/strict-mode.html#ensuring-reusable-state](https://reactjs.org/docs/strict-mode.html#ensuring-reusable-state)
+
+- React Docs Beta, Fetching data with cleanup function
+    - [https://beta-reactjs-org-git-effects-fbopensource.vercel.app/learn/synchronizing-with-effects#fetching-data](https://beta-reactjs-org-git-effects-fbopensource.vercel.app/learn/synchronizing-with-effects#fetching-data)
+
+- How to prevent useEffect from running on mount in React, (useRef version)
+    - [https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/](https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/)
