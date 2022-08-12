@@ -3,7 +3,10 @@ date: "2022-08-11"
 title: "React is weird...and the lesson I learned"
 section: 'software'
 preview: |-
-    
+    It feels like every time I step away from React and come back something has 
+    changed. This time it was useEffect. This turns into a walk through learning how an old 
+    data fetching habit led me to see a design flaw and reflect on error messages
+    and documentation.
 ---
 
 
@@ -15,7 +18,7 @@ to automatically load data upon first load for a component. _I could've sworn
 this was a pattern I had used in the past._ But somehow now my `useEffect` 
 logic seems to be executing twice. _**Am I forgetting something?!**_ 
 
-<hr />
+---
 
 _Not exactly as Dan Abramov explained 
 [here](https://github.com/facebook/react/issues/24502#issuecomment-1118867879)_, 
@@ -24,9 +27,14 @@ He explains it well.
 
 _Skip to the [code](#skip-to-the-code)_
 
-<hr />
+---
 
-[insert an image of the error happening]
+<CenteredImage 
+    height="99"
+    width="1159"
+    caption="useEffect firing twice produces this result from a double fetch"
+    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2022-08-12_react-is-weird/08-12-2022_blog-error-pic.png" 
+/>
 
 
 ## The Issue
@@ -50,14 +58,12 @@ daily or some type of "JavaScript fatigue".
 
 **But!** but...this felt different. I thought I had legitimately made an 
 error&mdash;not, encountered a _**different behavior**_ of _**equivalent code**_. So, 
-instead of immediately going to Read-The-Free-Manual, and I started 
-down the road of Googling to find articles, etc. where others explained how 
+instead of immediately going to Read-The-Free-Manual, I started 
+down the road of Googling to find articles, etc. hoping to find where others explained how 
 they fixed this _seemingly elementary stumbling block I had forgotten._
 
 
-## Discovering, Getting back to the docs -- A Twitter thread
-
-> Here's the Twitter thread on how I found this: [https://twitter.com/meddlin_dev/status/1556904767019958272](https://twitter.com/meddlin_dev/status/1556904767019958272)
+## Discovering, Getting back to the docs
 
 No, instead I found a random (but fortunate) [blog article](https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93)
 that pointed me back to the section of the updated docs, I didn't know was 

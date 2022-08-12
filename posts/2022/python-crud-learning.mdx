@@ -6,7 +6,7 @@ preview: |-
     
 ---
 
-# Intro
+## Intro
 
 In thinking about my strategy for pulling data from database to client, I came across these 
 two articles. They highlighted a couple key issues for me.
@@ -21,7 +21,7 @@ Problems:
 - **Dynamic Data Transformations** -> Joined row-based data from SQL requires transformation into nested JSON-like models
 
 
-# Apparent Query Differences
+## Apparent Query Differences
 
 Apparently, we can replace a whole model declaration with field references, and it produces
 more direct SQL in the ORM-produced query.
@@ -29,8 +29,7 @@ more direct SQL in the ORM-produced query.
 <MyHighlighter language="python">
 {`res = db.query(Budget).join(Category).filter(
     Budget.id == Category.budget_id) #.all()
-    return res
-`}
+    return res`}
 </MyHighlighter>
 
 This only puts all of the Budget fields in the select clause!
@@ -51,9 +50,7 @@ WHERE budget.id = category.budget_id
 </MyHighlighter>
 
 
-
-
-# SQLAlchemy Relationships - Declarative vs. Explicit Schemas
+## SQLAlchemy Relationships Declarative vs. Explicit Schemas
 
 These two articles explain setting up SQLAlchemy table relationships
 
@@ -126,14 +123,14 @@ how we mentioned we could specify fields in our query instead of the whole model
 those ORM and Pydantic models were troublesome? Through a series of bugs I found I needed the 
 query to be re-written something like the following:
 
-```python
-db.query(
+<MyHighlighter language="python">
+{`db.query(
     Budget.id,
     Budget.name,
     Category.id,
     Category.budget_id
-    ).join(Category).filter(Budget.id == Category.budget_id).first()
-```
+    ).join(Category).filter(Budget.id == Category.budget_id).first()`}
+</MyHighlighter>
 
 Now, this is wonderful. I'm able to specify the columns I need in SQL to match the fields I need 
 to fulfill in my models. Also (not discussed here) but in the client view this data will 
@@ -146,7 +143,7 @@ values are.
 
 
 
-## Adding the `label()` to columns
+## Adding the label() to columns
 
 Ref: [https://stackoverflow.com/questions/9187530/using-alias-for-select-as-in-sqlalchemy](https://stackoverflow.com/questions/9187530/using-alias-for-select-as-in-sqlalchemy)
 
@@ -155,9 +152,9 @@ Ref: [https://stackoverflow.com/questions/9187530/using-alias-for-select-as-in-s
 
 Ref: [Google Search - "python rmkeyview"](https://www.google.com/search?client=firefox-b-1-d&q=pythom+rmkeyview)
 
-```
-Found column names are accessible in `res.keys()`. This is RMKeyView
-```
+<MyHighlighter language="bash">
+{`Found column names are accessible in \`res.keys()\`. This is RMKeyView`}
+</MyHighlighter>
 
 When querying a single row from SQLAlchemy (notice the `.first()`), we receive, well...a single 
 row. However, that row does not come with columns defined. This is something I struggled with, 
@@ -168,8 +165,8 @@ to ripping data out of the results manually. Please tell me there is a better wa
 
 **Example Query**
 
-```python
-res = db.query(
+<MyHighlighter language="python">
+{`res = db.query(
     Budget.id.label('budget_id'),
     Budget.date_created.label('budget_date_created'),
     Budget.name.label('budget_name'),
@@ -177,23 +174,27 @@ res = db.query(
     Category.date_created.label('category_date_created'),
     Category.name.label('category_name'),
     Category.budget_id.label('category_budget_id')
-).join(Category).filter(Budget.id == Category.budget_id).first()
-```
+).join(Category).filter(Budget.id == Category.budget_id).first()`}
+</MyHighlighter>
 
 This query returns a `sqlalchemy.engine.row.Row` type, and it's indexible. So, accessing our data 
 is pretty straightforward with an index, `res[0]`
 
-```
+<MyHighlighter language="python">
+{`
 res[0] -> UUID('some-data-here')
-```
+`}
+</MyHighlighter>
 
 But to access column names, we have to use `res.keys()`. Here's the problem. `res.keys()` returns an 
 `RMKeyView` type, containing our column names, and _it isn't indexable_, but we can iterate over it.
 
-```python
+<MyHighlighter language="python">
+{`
 for key in res.keys():
     print(key)
-```
+`}
+</MyHighlighter>
 
 Also, we're using `.label('column name')` on the column selections in our query, to provide a 
 custom name for each column. Without this, the `key` is the same as the column name in 
@@ -229,28 +230,25 @@ really understand why.
 
 Instead, we can use an _explicit condition_ for the join. Notice the `.filter()` use goes away.
 
-```python
-res = db.query(
+<MyHighlighter language="python">
+{`res = db.query(
         Budget.id.label('budget_id'),
-
-        # -- more field definitions go here --
-
+        \# -- more field definitions go here --
         Envelope.id.label('envelope_id'),
         Transaction.id.label('transaction_id')
     ).join(Category, Budget.id == Category.budget_id
     ).join(Envelope, Category.id == Envelope.category_id
     ).join(Transaction, Envelope.id == Transaction.envelope_id).all()
-
 for row in res:
-    print(row) # See the RMKeyView, row here
-    print(row.keys()) # See the keys (column names) for the row here
-```
+    print(row) \# See the RMKeyView, row here
+    print(row.keys()) \# See the keys (column names) for the row here`}
+</MyHighlighter>
 
 
 However, an `.all()` query is _a series of rows_. So, we need to alter our 
 data transformation to handle multiple rows.
 
-**Example Code**
+### Example Code
 
 <MyHighlighter language="python">
 {`result = db.query(
