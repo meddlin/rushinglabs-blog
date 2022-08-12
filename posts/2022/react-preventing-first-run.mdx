@@ -22,12 +22,14 @@ _Not exactly as Dan Abramov explained
 and if you want the `tl;dr` check out this article by [Zachary Lee](https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93). 
 He explains it well.
 
+_Skip to the [code](#skip-to-the-code)_
+
 <hr />
 
 [insert an image of the error happening]
 
 
-## The Issue 
+## The Issue
 
 We'll cover the issue with my code in-depth below, but the short answer is: 
 `useEffect()` now executes twice _because_ React 18 mounts, unmounts, and 
@@ -102,13 +104,14 @@ as the backdrop to explain this change surrounding `useEffect`.
 
 ## Skip to the Code
 
-All that to just use the same old `fetch()` from `useEffect()` with a flag check?! 
+_All that to just use the same old `fetch()` from `useEffect()` with a flag check?!_
 
-Yes. I'm writing a simple app. This is a simple "grab from database" upon component 
+Yes. I'm writing a simple app. All I need is a "grab from database" upon component 
 load. It's all local development, so I can handle round trips without a caching 
 layer. And forcing this "flag" condition in the `useEffect` allows me to avoid 
 loading secondary libraries like React Query or `useSWR`, while sticking to typical 
-React-style code, and getting the proof-of-concept done.
+React-style code, and getting the proof-of-concept done. I'll handle those issues later when 
+I get to them.
 
 But now we understand ___why___.
 
@@ -153,16 +156,13 @@ to the component, not only the `useEffect()` call.
 {`
 useEffect(() => {
   let ignore = false;
-
   async function startFetching() {
     const json = await fetchTodos(userId);
     if (!ignore) {
       setTodos(json);
     }
   }
-
   startFetching();
-
   return () => {
     ignore = true;
   };
