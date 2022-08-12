@@ -24,9 +24,9 @@ const H3 = ({ children }) => {
     const anchor = getAnchor(children);
     const link = `#${anchor}`;
     return (
-        <h3 id={anchor}>
+        <h3 id={anchor} style={{ position: `relative` }}>
             {children}
-            <a href={link} className="anchor-link">
+            <a href={link} className={styles.anchor}>
                 §
             </a>
         </h3>
@@ -37,9 +37,9 @@ const H4 = ({ children }) => {
     const anchor = getAnchor(children);
     const link = `#${anchor}`;
     return (
-        <h4 id={anchor}>
+        <h4 id={anchor} style={{ position: `relative` }}>
             {children}
-            <a href={link} className="anchor-link">
+            <a href={link} className={styles.anchor}>
                 §
             </a>
         </h4>
