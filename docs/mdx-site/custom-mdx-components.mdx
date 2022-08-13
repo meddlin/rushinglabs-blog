@@ -1,0 +1,145 @@
+---
+date: "2022-08-12"
+title: "Header Components"
+published: 'true'
+section: 'mdx-site'
+preview: |-
+    Overriding Markdown header elements, via MDX, for section linking.
+---
+
+Ref: [https://tomekdev.com/posts/anchors-for-headings-in-mdx](https://tomekdev.com/posts/anchors-for-headings-in-mdx)
+
+# Reasoning
+
+I wanted to be able to link to individual sections with the blog articles. This meant being able to link 
+to specific sections within the Markdown content. Traditionally, you would do that as described in this 
+Markdown syntax reference, below. However, for some reason this wasn't working with the MDX syntax, and 
+I'm not too sure what the issue was but figured it had something to do with the hyperlinked text needing 
+to pass through MDX -> Markdown -> HTML parsers.
+
+<MyDocHighlighter language="bash">
+{` See the section on [\`your-header\`](#YourHeader) `}
+</MyDocHighlighter>
+
+- Markdown syntax ref: [https://www.markdownguide.org/basic-syntax/#links](https://www.markdownguide.org/basic-syntax/#links)
+
+# Solution
+
+So, writing a new MDX component it is! 
+
+Location: `.\components\content-helpers\anchors.js`
+
+<MyDocHighlighter language="javascript">
+{`function getAnchor(text) {
+    return text
+        .toLowerCase()
+        .replace(/[^a-z0-9 ]/g, '')
+        .replace(/[ ]/g, '-');
+}
+const H2 = ({ children }) => {
+    const anchor = getAnchor(children);
+    const link = \`#\$\{anchor\}\`;
+    return (
+        <h2 id={anchor}>
+            {children}
+            <a href={link} className="anchor-link">
+                §
+            </a>
+        </h2>
+    )
+}
+export default H2;`}
+</MyDocHighlighter>
+
+And then let's repeat that for `<h2>`, `<h3>`, and `<h4>`...
+
+<MyDocHighlighter>
+{`import styles from './anchors.module.css';
+function getAnchor(text) {
+    return text
+        .toLowerCase()
+        .replace(/[^a-z0-9 ]/g, '')
+        .replace(/[ ]/g, '-');
+}
+const H2 = ({ children }) => {
+    const anchor = getAnchor(children);
+    const link = \`#\$\{anchor\}\`;
+    return (
+        <h2 id={anchor} style={{ position: \`relative\` }}>
+            {children}
+            <a href={link} className={styles.anchor}>
+                §
+            </a>
+        </h2>
+    )
+}
+const H3 = ({ children }) => {
+    const anchor = getAnchor(children);
+    const link = \`#\$\{anchor\}\`;
+    return (
+        <h3 id={anchor}>
+            {children}
+            <a href={link} className="anchor-link">
+                §
+            </a>
+        </h3>
+    )
+}
+const H4 = ({ children }) => {
+    const anchor = getAnchor(children);
+    const link = \`\#\$\{anchor\}\`;
+    return (
+        <h4 id={anchor}>
+            {children}
+            <a href={link} className="anchor-link">
+                §
+            </a>
+        </h4>
+    )
+}
+export { H2, H3, H4 };`}
+</MyDocHighlighter>
+
+Notice we're now importing some styles, and we no longer have a `default export` but a collection of 
+named exports: `export { H2, H3, H4 }`.
+
+And here's our styles.
+
+Location: `.\components\content-helpers\anchors.module.css`
+
+<MyDocHighlighter language="css">
+{`.anchor {
+    color: #666;
+    opacity: 0;
+    position: absolute;
+    transform: translate(0.25em, -2px);
+    width: 1em;
+}
+h2:hover .anchor {
+    opacity: 1;
+}`}
+</MyDocHighlighter>
+
+We can then patch this into the necessary parts of the MDX provider for the website.
+
+- `.\pages\blog\[year]\[id].js`
+- `.\pages\docs\[section]\[id].js`
+- `.\pages\projects\[project]\[id].js`
+
+<MyDocHighlighter language="javascript">
+{`import { H2, H3, H4 } from '../../../components/content-helpers/anchors';
+/* ...removed for brevity...*/
+<MDXRemote {...mdx} components={{ 
+    h2: H2,
+    h3: H3,
+    h4: H4,
+    Button, 
+    Image, 
+    Link, 
+    CenteredImage, 
+    SyntaxHighlighter, 
+    MyDocHighlighter,
+    TikTok
+}} />`}
+</MyDocHighlighter>
+

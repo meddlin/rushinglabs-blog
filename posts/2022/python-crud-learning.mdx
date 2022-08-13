@@ -1,0 +1,280 @@
+---
+date: "2022-08-01"
+title: "Learning Python CRUD - Data Relations"
+section: 'software'
+preview: |-
+    
+---
+
+## Intro
+
+In thinking about my strategy for pulling data from database to client, I came across these 
+two articles. They highlighted a couple key issues for me.
+
+- [Multi-table filters in SQLAlchemy](https://medium.com/shoprunner/multi-table-filters-in-sqlalchemy-d64e2166199f)
+- [Speed up with eager loading in SQLAlchemy](https://engineering.shopspring.com/speed-up-with-eager-loading-in-sqlalchemy-87a176cfd7ad)
+
+Problems:
+
+- **Joins in SQLAlchemy** -> I needed to query data across tables regularly
+- **N+1 Problem** -> Querying for some common pages could produce dozens of DB calls, or complex client logic
+- **Dynamic Data Transformations** -> Joined row-based data from SQL requires transformation into nested JSON-like models
+
+
+## Apparent Query Differences
+
+Apparently, we can replace a whole model declaration with field references, and it produces
+more direct SQL in the ORM-produced query.
+
+<MyHighlighter language="python">
+{`res = db.query(Budget).join(Category).filter(
+    Budget.id == Category.budget_id) #.all()
+    return res`}
+</MyHighlighter>
+
+This only puts all of the Budget fields in the select clause!
+
+<MyHighlighter language="python">
+{`res = db.query(Budget.name, Category.name).join(Category).filter(
+        Budget.id == Category.budget_id) #.all()
+print(res)
+return res`}
+</MyHighlighter>
+
+<MyHighlighter language="sql">
+{`
+SELECT budget.name AS budget_name, category.name AS category_name   
+FROM budget JOIN category ON budget.id = category.budget_id
+WHERE budget.id = category.budget_id
+`}
+</MyHighlighter>
+
+
+## SQLAlchemy Relationships Declarative vs. Explicit Schemas
+
+These two articles explain setting up SQLAlchemy table relationships
+
+- [https://hackersandslackers.com/sqlalchemy-data-models/](https://hackersandslackers.com/sqlalchemy-data-models/)
+- [https://hackersandslackers.com/implement-sqlalchemy-orm/](https://hackersandslackers.com/implement-sqlalchemy-orm/)
+
+SQLAlchemy docs for declarative, explicit schemas
+
+Ref: [https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html](https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html)
+
+
+
+
+
+# A Problem -- How to Handle Joins, Mapping Related Data to Nested Models
+
+<!- This is going from the _relational SQL data_ to the nested, document-structure of JSON. For,
+the resulting data models being sent to the client. -!>
+
+[insert (relational data pic) -> (nested data pic)]
+
+
+Essentially, this boils down to "How do we move data from SQLAlchemy models to Pydantic models?"
+And it appears Pydantic's ORM Mode solves the issue, _however_ I couldn't get this working with 
+nested Pydantic models. Also, this transformation needs to work with potentially _sparse_ models. 
+We don't want to be forced to always return full data models to the client, when much less data 
+is needed for the desired page/component.
+
+Ref: [https://pydantic-docs.helpmanual.io/usage/models/#orm-mode-aka-arbitrary-class-instances](https://pydantic-docs.helpmanual.io/usage/models/#orm-mode-aka-arbitrary-class-instances)
+
+
+Many others have had this problem
+
+- [https://twitter.com/anthonypjshaw/status/1411955379781599234?lang=en](https://twitter.com/anthonypjshaw/status/1411955379781599234?lang=en)
+- [https://gitter.im/tiangolo/fastapi?at=5e21f11c7148837898905983](https://gitter.im/tiangolo/fastapi?at=5e21f11c7148837898905983)
+
+I also tossed around the idea of moving to a completely different modeling library: [SQLModel](https://sqlmodel.tiangolo.com/features/)
+
+It looks like a clever layer on top of Pydantic and SQLAlchemy, but I was already 
+learning enough with tutorials & docs made specific to Pydantic and SQLAlchemy. So, 
+I'm steering clear of potentially getting stuck juggling libraries.
+
+Ref: [https://sqlmodel.tiangolo.com/features/](https://sqlmodel.tiangolo.com/features/)
+
+
+
+## Problem Queries - Joins
+
+For any query only touching a single table, the SQLAlchemy + Pydantic + FastAPI combination is 
+pretty slick. Needing to _nearly_ duplicate models for Pydantic and SQLAlchemy is questionable,
+but the rest works pretty well.
+
+However, joins are different. At least, they were in my experience. First, let's look at an 
+example query.
+
+**Example Query**
+
+<MyHighlighter language="python">
+{` 
+db.query(
+    Budget, Category
+    ).join(Category).filter(Budget.id == Category.budget_id).first()
+`}
+</MyHighlighter>
+
+
+The first problem I encountered was not being sure how to write a join via the ORM. If we have 
+`.join()` it seems there would be an `.on()`, but no...we use `.filter()` instead. But remember
+how we mentioned we could specify fields in our query instead of the whole model, and some of 
+those ORM and Pydantic models were troublesome? Through a series of bugs I found I needed the 
+query to be re-written something like the following:
+
+<MyHighlighter language="python">
+{`db.query(
+    Budget.id,
+    Budget.name,
+    Category.id,
+    Category.budget_id
+    ).join(Category).filter(Budget.id == Category.budget_id).first()`}
+</MyHighlighter>
+
+Now, this is wonderful. I'm able to specify the columns I need in SQL to match the fields I need 
+to fulfill in my models. Also (not discussed here) but in the client view this data will 
+eventually be displayed in, we need to show a realtionship between the `Budget` and `Category`
+model data. So, that `Category.budget_id` is important.
+
+But the column names aren't returned directly in our resulting dataset. Presumably, only the 
+values are. 
+
+
+
+
+## Adding the label() to columns
+
+Ref: [https://stackoverflow.com/questions/9187530/using-alias-for-select-as-in-sqlalchemy](https://stackoverflow.com/questions/9187530/using-alias-for-select-as-in-sqlalchemy)
+
+
+## Accessing Column names, and Handling RMKeyView - single row
+
+Ref: [Google Search - "python rmkeyview"](https://www.google.com/search?client=firefox-b-1-d&q=pythom+rmkeyview)
+
+<MyHighlighter language="bash">
+{`Found column names are accessible in \`res.keys()\`. This is RMKeyView`}
+</MyHighlighter>
+
+When querying a single row from SQLAlchemy (notice the `.first()`), we receive, well...a single 
+row. However, that row does not come with columns defined. This is something I struggled with, 
+but eventually found a messy solution via several StackOverflow pages. 
+
+_Note: There is likely a cleaner way to do this. I couldn't find it...So, gave up and resolved 
+to ripping data out of the results manually. Please tell me there is a better way to do this._
+
+**Example Query**
+
+<MyHighlighter language="python">
+{`res = db.query(
+    Budget.id.label('budget_id'),
+    Budget.date_created.label('budget_date_created'),
+    Budget.name.label('budget_name'),
+    Category.id.label('category_id'),
+    Category.date_created.label('category_date_created'),
+    Category.name.label('category_name'),
+    Category.budget_id.label('category_budget_id')
+).join(Category).filter(Budget.id == Category.budget_id).first()`}
+</MyHighlighter>
+
+This query returns a `sqlalchemy.engine.row.Row` type, and it's indexible. So, accessing our data 
+is pretty straightforward with an index, `res[0]`
+
+<MyHighlighter language="python">
+{`
+res[0] -> UUID('some-data-here')
+`}
+</MyHighlighter>
+
+But to access column names, we have to use `res.keys()`. Here's the problem. `res.keys()` returns an 
+`RMKeyView` type, containing our column names, and _it isn't indexable_, but we can iterate over it.
+
+<MyHighlighter language="python">
+{`
+for key in res.keys():
+    print(key)
+`}
+</MyHighlighter>
+
+Also, we're using `.label('column name')` on the column selections in our query, to provide a 
+custom name for each column. Without this, the `key` is the same as the column name in 
+the database. Nomrally this is fine, however it would be difficult to keep track of the differing 
+`Budget.id` and `Category.id` columns, so providing column aliases is necessary.
+
+So, an ugly bit of code, but this is how I was able to manually align the query result data with 
+the column values, and then transform to our models.
+
+<MyHighlighter language="python">
+{`
+res = db.query(
+    # query removed for brevity
+).first()
+keys = [] # setup a list to hold column names
+    for key in res.keys():
+        keys.append(key) # append each key (i.e. column name) to our new list
+mydata = {}                 # setup a dictionary for our column:data, key-value store
+i = 0                       # an index counter
+# This loop assumes there is an equal number of keys, and number of data values returned
+while i < len(keys):            # iterate over our keys list (the new one)
+    mydata[keys[i]] = res[i]    # each index of keys[] will be the key of mydata, and the value is pulled from res[i]
+    i += 1                      # increment counter
+`}
+</MyHighlighter>
+
+## Accessing Column names, and Handling RMKeyView - multiple rows
+
+Ref: [https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_working_with_joins.htm](https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_working_with_joins.htm)
+But I actually needed to join several tables together, not just `Budget` and `Category`, and 
+using this same `join() + filter()` broke when repeating it for several tables, but I didn't 
+really understand why.
+
+Instead, we can use an _explicit condition_ for the join. Notice the `.filter()` use goes away.
+
+<MyHighlighter language="python">
+{`res = db.query(
+        Budget.id.label('budget_id'),
+        \# -- more field definitions go here --
+        Envelope.id.label('envelope_id'),
+        Transaction.id.label('transaction_id')
+    ).join(Category, Budget.id == Category.budget_id
+    ).join(Envelope, Category.id == Envelope.category_id
+    ).join(Transaction, Envelope.id == Transaction.envelope_id).all()
+for row in res:
+    print(row) \# See the RMKeyView, row here
+    print(row.keys()) \# See the keys (column names) for the row here`}
+</MyHighlighter>
+
+
+However, an `.all()` query is _a series of rows_. So, we need to alter our 
+data transformation to handle multiple rows.
+
+### Example Code
+
+<MyHighlighter language="python">
+{`result = db.query(
+    # -- the same field definitions; removed for brevity
+).join(Category).filter(Budget.id == Category.budget_id).all()
+# NOTE: this time result is a set of rows
+keys = [] # setup a list to hold column names
+for key in result[0].keys(): # Get keys from the first row in our result set
+    keys.append(key)
+mydata = [] # This time we have a list to hold multiple objects
+for row in result:
+    i = 0
+    myobj = {}
+    while i < len(keys): # this loop translates each row
+        myobj[keys[i]] = row[i]
+        i += 1
+    mydata.append(myobj) # put our translated object in our new collection
+# Then iterate over our new collection to create our objects
+for data in mydata:
+    b = Budget(
+        id = data['budget_id']
+        date_created = data['date_created']
+        # so on...
+        category = Category(
+            id = data['category_id']
+            date_created = data['category_date_created']
+        )
+    )`}
+</MyHighlighter>

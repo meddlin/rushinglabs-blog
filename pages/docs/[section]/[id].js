@@ -16,6 +16,7 @@ import Button from '../../../components/button';
 import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import TikTok from '../../../components/embeds/tiktok';
+import { H2, H3, H4 } from '../../../components/content-helpers/anchors';
 const MyDocHighlighter = ({ language, children }) => {
     return (
         <SyntaxHighlighter language={language} style={a11yDark}>
@@ -75,6 +76,9 @@ const Doc = (props) => {
                 <h1 className={utilStyles.headingX1}>{title}</h1>
                 <Date dateString={date} />
                 <MDXRemote {...mdx} components={{ 
+                    h2: H2,
+                    h3: H3,
+                    h4: H4,
                     Button, 
                     Image, 
                     Link, 
