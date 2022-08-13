@@ -28,7 +28,7 @@ Not quite.
 
 Something happened between issuing the `DROP` command, and exiting the "presumed"-stuck CLI, causing the table to not completely drop. So, when followed up with `create table location (...)` the CRDB threw an error because "relations" of a table by the same name already existed. _And we surely can't have two tables of the same name, right?!_ Leading me to the strange error in the screenshot above. A quick (and bewildered) Google search later led me to an interesting edge-case of distributed database design I had never considered.
 
-### `DROP` isn't transactional
+### DROP isn't transactional
 
 As referenced here, [on the Cockroach Labs forum](https://forum.cockroachlabs.com/t/schema-inconsistency/500), someone else found themselves in a similar situation where these weird "relations" were hanging around in memory even though the supposed table was gone.
 
