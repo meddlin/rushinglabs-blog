@@ -3,11 +3,30 @@ date: "2022-07-27"
 title: "Learning Python CRUD - Initial Choices & Issues"
 section: 'software'
 preview: |-
-    
+    Upon starting a new job, I was challenged by for the first time being in a place 
+    that doesn't use any language I have previous/extensive experience in. So, I 
+    thought it would be interesting to capture some first impressions about 
+    getting into Python and these frameworks. Learning curve and mistakes imminent...
 ---
 
+## Learning a new thing 
 
-# Flask vs FastAPI
+Upon starting a new job, I was challenged by for the first time being in a place 
+that doesn't use any language I have previous/extensive experience in. And we 
+have quite the variety too: mostly Python, Java, JavaScript...and sparse bash, 
+Powershell, PHP, PL-SQL, and a few others.
+
+**But!** our infosec team has chosen to standardize on Python for any new tooling 
+that needs writing, so here's to me diving into Python by trying to build a small 
+web app. Ideally, I'd like to build a little budgeting app (the UI similar to
+EveryDollar), but with a few extra features for pulling in email receipts and 
+balancing records from my bank.
+
+So, I thought it would be interesting to capture some first impressions about 
+getting into Python and these frameworks. Learning curve and mistakes imminent...
+
+
+## Flask vs FastAPI
 
 - Flask seems biased towards monolithic apps
     - it's possible to create REST API/data-only service-based apps, but it 
@@ -17,41 +36,51 @@ preview: |-
 - Not sure if this is actually how either of these frameworks are structured,
 but that is the "feel" I get after working with both of them.
 
-# UUID issue
+## UUID issue
 
-The `UUID(as_uuid = True)` was necessary in sqlalchemy models.
+Describing UUIDs as `UUID(as_uuid = True)` was necessary in sqlalchemy models.
 
 <MyHighlighter language="python">
 {` id = Column(UUID(as_uuid=True), primary_key = True, default=uuid.uuid4) `}
 </MyHighlighter>
 
-# Direct vs. Declarative for sqlalchemy Models
+This piece stumped me for a bit. Specifically because, to me, `Column(UUID)` 
+looks like it should describe the data type for this column just fine. Primary 
+key is fine. Setting a default for the server is fine. But why specify a `UUID`
+is going to be written `as_uuid=True`...what else would it be?? I'm sure there's 
+a good reason, but it stumped me for a bit, lol
+
+
+## Direct vs. Declarative for sqlalchemy Models
 
 The one thing I would have to say is most difficult about learning Python is the 
 disparate documentation. Documentation certainly exists, but it's not always 
-consistent.
+consistent. Admittedly, I think I've been spoiled by the C#/.NET ecosystem that I 
+started programming in. There isn't the same type of relationship between tools and 
+docs in Python as there is with Visual Studio + Intellisense + Microsoft Docs + 
+.NET libaries & APIs. Not a detriment to Python, but increased the learning curve 
+for me.
 
 Such, as running into the issue where I needed to know how to declare relationships 
-within my sqlalchemy models: [https://hackersandslackers.com/implement-sqlalchemy-orm/]
-(https://hackersandslackers.com/implement-sqlalchemy-orm/)
+within my sqlalchemy models: [https://hackersandslackers.com/implement-sqlalchemy-orm/](https://hackersandslackers.com/implement-sqlalchemy-orm/)
 
 Then, I find out the example in that link (directly above) was using the "declarative"
 Table class, and some other tutorial/article guided me towards using a "direct" Table 
-class: [https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html]
-(https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html)
-
-_This is, generally speaking, on top of other examples where I can't really trust the 
-documentation quality of any particular library and there doesn't appear to be a 
-centralized source.
+class: [https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html](https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html)
 
 
 
 
-# Debugging FastAPI
+## Debugging FastAPI
 
 Ref: [https://stackoverflow.com/questions/60205056/debug-fastapi-application-in-vscode](https://stackoverflow.com/questions/60205056/debug-fastapi-application-in-vscode)
 
-This is the key configuration we need in `launch.json` for VSCode. The extra pieces in 
+More on that topic of tools + language ecosystem integration, debugging always seems to be 
+a questionable area. Debugging a simple Python script couldn't be easier: (1) load in VS Code, 
+(2) set breakpoints, (3) run. However, using a framework like Flask, Fast API, or anything else 
+seems to mean finding a debug configuration, and loading that into your editor.
+
+So here's the configuration needed for FastAPI, in `launch.json`, for VSCode. The extra pieces in 
 the `args` section are important. Throw this in your `launch.json`, and you should be good 
 to go.
 
@@ -76,3 +105,12 @@ to go.
 }
 `}
 </MyHighlighter>
+
+## Conclusion
+
+Overall, having used Python sparingly before diving into these web frameworks, it definitely required 
+less effort than I expected to get something functional on screen. That aspect of Python continues to 
+amaze me. Whether it's web frameworks, AI/ML tooling, or scripts, Python always seems to require 
+minimal _developer-hand-written code_ to produce what you want on screen. But to build a full-featured,
+robust, secure API-driven web application...I don't know if I would want to commit to doing so in Python.
+The feeling of a full ecosystem, tooling, docs, and support just doesn't seem to be there.
