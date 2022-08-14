@@ -4,7 +4,7 @@ import styles from '../styles/about.module.css';
 
 function About() {
     return (
-        <Layout home>
+        <Layout home footerDisplay={false}>
             <div className={styles.mainContent}>
                 <p>
                     I love programming and tinkering with computers, and I'm currently working as an

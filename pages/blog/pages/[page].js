@@ -55,7 +55,7 @@ export async function getStaticPaths() {
 
 const PostsPage = ({ posts, categoriesList, prevPosts, nextPosts }) => {
     return (
-        <Layout home>
+        <Layout home footerDisplay={true}>
             <div className={`${utilStyles.horizontal}`}>
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.categoriesSection}`}>
                     <h2 className={utilStyles.headingLg}>Categories</h2>

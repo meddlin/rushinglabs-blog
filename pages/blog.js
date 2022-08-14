@@ -30,7 +30,7 @@ export async function getStaticProps() {
 
 export default function BlogHome({ allPostsData, categoriesList, prevPosts, nextPosts }) {
     return (
-        <Layout home>
+        <Layout home footerDisplay={true}>
             <Head>
 				<title>{siteTitle}</title>
 			</Head>
