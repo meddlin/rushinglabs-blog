@@ -42,7 +42,7 @@ export async function getStaticProps() {
 
 function Docs({ docs, chunks, sections }) {
     return (
-        <Layout>
+        <Layout footerDisplay={true}>
             <Head>
                 <title>{siteTitle}</title>
             </Head>

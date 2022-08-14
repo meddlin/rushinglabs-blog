@@ -31,7 +31,7 @@ export async function getStaticProps() {
 
 const Projects = ({ metadata, projects }) => {
     return (
-        <Layout>
+        <Layout footerDisplay={true}>
             <Head>
                 <title>{siteTitle}</title>
             </Head>

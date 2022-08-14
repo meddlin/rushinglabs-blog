@@ -2,7 +2,7 @@ import Layout from '../components/layout';
 
 function Analytics() {
     return (
-        <Layout home>
+        <Layout home footerDisplay={true}>
             <iframe 
                 plausible-embed="true" 
                 src="https://plausible.io/share/rushinglabs.com?auth=gYNG7F_iwkkg2A9WQJyxx&embed=true&theme=light" 
