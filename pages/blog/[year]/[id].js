@@ -11,12 +11,13 @@ import postStyles from '../../../styles/post.module.css';
  */
 import Link from 'next/link';
 import Image from 'next/image';
-import CenteredImage from '../../../components/content-helpers/CenteredImage';
+import { CenteredImage, LeftImage } from '../../../components/content-helpers/CenteredImage';
 import Button from '../../../components/button';
 import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import TikTok from '../../../components/embeds/tiktok';
 import { H2, H3, H4 } from '../../../components/content-helpers/anchors';
+import MyModal from '../../../components/content-helpers/my-modal';
 
 const MyHighlighter = ({ language, children }) => {
     return (
@@ -86,9 +87,11 @@ const Post = (props) => {
                     Image, 
                     Link, 
                     CenteredImage, 
+                    LeftImage,
                     SyntaxHighlighter, 
                     MyHighlighter,
-                    TikTok                    
+                    TikTok
+                    // ,MyModal              
                 }} />
             </article>
         </Layout>
