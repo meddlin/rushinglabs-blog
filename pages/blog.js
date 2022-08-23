@@ -43,24 +43,27 @@ export default function BlogHome({ allPostsData, categoriesList, prevPosts, next
 
 				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
 					<ul className={utilStyles.list}>
-						{allPostsData.map( ({ id, date, title, preview, section }) => (
-							<li className={utilStyles.listItem} key={id}>
-								<Link href={`/blog/${id}`}>
-									<a>{title}</a>
-								</Link>
-								<br />
-								<small className={utilStyles.subpreview}>
-									{section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
-										: ''}
-									{date ? (<Date dateString={date} />) : ''}
-								</small>
-								<p>{preview}</p>
-
-								<Link href={`/blog/${id}`}>
-									<a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-								</Link>
-							</li>
-						))}
+						{allPostsData.map( ({ id, date, title, preview, section, published }) => {
+							return published && published == true ? (
+								<li className={utilStyles.listItem} key={id}>
+									<Link href={`/blog/${id}`}>
+										<a>{title}</a>
+									</Link>
+									<br />
+									<small className={utilStyles.subpreview}>
+										{section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
+											: ''}
+										{date ? (<Date dateString={date} />) : ''}
+									</small>
+									<p>{preview}</p>
+		
+									<Link href={`/blog/${id}`}>
+										<a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
+									</Link>
+									</li>
+							) : '';
+						}
+						)}
 					</ul>
 
 					<section className={`${utilStyles.centeredButtons}`}>
