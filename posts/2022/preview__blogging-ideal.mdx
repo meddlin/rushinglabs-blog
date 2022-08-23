@@ -1,0 +1,75 @@
+---
+date: "2022-08-18"
+title: A Blogging Ideal
+section: ''
+published: false
+preview: |- 
+    This is what I wish my blogging experience could be. And I havenn't found it yet, 
+    so I'm building it.
+---
+
+## Intro
+
+I bought an iPad because it looked like the perfect "almost computer". It checks all these boxes 
+I didn't know I had. A great touchscreen experience. Fully-featured apps. A _magic_ keyboard! Even 
+pencil support! It is the perfect tool for nearly every possible task I use a computer for.
+
+Except coding.
+
+Why just use a traditional laptop, right? It runs any binary, can handle nearly any web development 
+task. _And most any computing task._ Except...limited touchscreen for easier photo manipulation. Most have 
+no pencil support for drawing capabilities. And it's heavier, less battery life, larger package, etc. 
+
+I still had computers at home, and could definitely get my hands on a laptop should I need to eject from 
+my iPad idea. So, I set off to see if I could solve this "coding on an iPad" problem.
+
+## What Do I Want?
+
+Most of what I'm looking for is web development. It can largely be achieved with a text editor and (some 
+type of) live preview mechanism. And by far, the most web development I still do these days is for my 
+personal website. Blogging mostly. Authoring MDX files.
+
+It'd be great if I could do this from the convenience of an iPad, right?
+
+## So, blogging.
+
+Yes, but why MDX? Well, let's back up.
+
+The original idea for this was for Markdown. Editing Markdown on an iPad is pretty straightforward,
+and doing so within VSCode's web editor is possible on an iPad. And if that doesn't work then 
+there are a few git client apps, and a couple Markdown editor apps too. (EDITOR'S NOTE: add links 
+to apps for the git, Markdown apps)
+
+Problem solved, right? Hardly.
+
+- Writing Markdown for prose content
+- Handle images (centering, left-, and right-aligned)
+- Captions, credits, alt-text for images
+- Syntax highlighting
+- Interactive code demonstrations
+
+...explain the rest of how I found myself needing to edit MDX from an iPad
+
+
+
+## VSCode Extensions
+
+If this is all going to be possible directly from VS Code--or as much as possible--then we're going 
+to need a few extensions.
+
+### Front Matter - Headless CMS
+
+[https://frontmatter.codes/](https://frontmatter.codes/)
+
+An extension that attempts to be a full-blown CMS directly inside the VS Code editor. In my experience 
+it works great from a local install. You even get a preview panel directly embedded in VSCode, via a 
+URL pointing at your local instance. But the whole extension isn't available in VS Code for web. So, 
+it's a non-starter for the iPad experience.
+
+### AWS Console
+
+This is a full iOS/iPadOS app for managing your AWS services. So, it's plenty for S3 😜
+
+There is an "AWS Toolkit" extension for VS Code, but (_again_) it's only available for local installs...
+so it's not much help trying to keep everything in VS Code for web. But since we're ultimately trying 
+to bring all of this functionality to the iPad, at least _something_ is available.
