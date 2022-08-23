@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function CenteredImage({ srcUrl, height, width, alt, caption, imageCredit, imageCreditLink }) {
+export default function CenteredImage({ srcUrl, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
 
     return (
         <div style={{ display: `flex`, justifyContent: `center`, alignItems: `center`, flexDirection: `column` }}>
@@ -8,7 +8,9 @@ export default function CenteredImage({ srcUrl, height, width, alt, caption, ima
                 <Image src={srcUrl}
                     height={height}
                     width={width}
-                    alt={alt} />
+                    alt={alt}
+                    placeholder={placeholder}
+                    blurDataURL={blurDataURL} />
             </div>
             {caption ? (<p>
                 <i>
