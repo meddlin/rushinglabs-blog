@@ -17,7 +17,7 @@ import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import TikTok from '../../../components/embeds/tiktok';
 import { H2, H3, H4 } from '../../../components/content-helpers/anchors';
-import MyModal from '../../../components/content-helpers/my-modal';
+// import MyModal from '../../../components/content-helpers/my-modal';
 
 const MyHighlighter = ({ language, children }) => {
     return (
@@ -92,7 +92,7 @@ const Post = (props) => {
                     SyntaxHighlighter, 
                     MyHighlighter,
                     TikTok
-                    // ,MyModal              
+                    // ,MyModal
                 }} />
             </article>
         </Layout>
