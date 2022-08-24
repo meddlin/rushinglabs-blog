@@ -7,12 +7,12 @@ import Image from 'next/image';
  * - ImageContainer is not exported because it is only supposed to be an internal utility to these image 
  *      management components
  */
-function ImageContainer({ children, srcUrl, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
+function ImageContainer({ children, src, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
     return (
         <div style={{ display: `flex`, justifyContent: `center`, alignItems: `center`, flexDirection: `column` }}>
             <div style={{ filter: `drop-shadow(0.15rem 0.25rem 0.45rem darkgrey)` }}>
                 <div style={{ filter: `drop-shadow(0.15rem 0.25rem 0.45rem darkgrey)` }}>
-                    <Image src={srcUrl}
+                    <Image src={src}
                         height={height}
                         width={width}
                         alt={alt}
@@ -35,14 +35,17 @@ function ImageContainer({ children, srcUrl, height, width, alt, caption, imageCr
 }
 
 /**
+ * CenteredImage
+ * - An image component for center-aligned images, and no slots for children content. 
+ * - All caption and image credit information is rendered directly beneath the image, center-aligned too.
  * 
  * @param {*} param0 
  * @returns 
  */
-function CenteredImage({ srcUrl, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
+function CenteredImage({ src, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
     return (
         <ImageContainer
-            srcUrl={srcUrl}
+            src={src}
             height={height}
             width={width}
             placeholder={placeholder}
@@ -56,11 +59,17 @@ function CenteredImage({ srcUrl, height, width, alt, caption, imageCredit, image
     );
 }
 
-function LeftImage({ children, srcUrl, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
+/**
+ * LeftImage
+ * - An image component with left-aligned image, and content to the right.
+ * @param {*} param0 
+ * @returns 
+ */
+function LeftImage({ children, src, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
     return (
         <div style={{ display: `flex`, justifyContent: `flex-start`, alignItems: `center`, flexDirection: `row` }}>
             <ImageContainer
-                srcUrl={srcUrl}
+                src={src}
                 height={height}
                 width={width}
                 placeholder={placeholder}
@@ -79,14 +88,20 @@ function LeftImage({ children, srcUrl, height, width, alt, caption, imageCredit,
     );
 }
 
-function RightImage({ children, srcUrl, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
+/**
+ * RightImage
+ * - An image component with right-aligned image, and content to the left.
+ * @param {*} param0 
+ * @returns 
+ */
+function RightImage({ children, src, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
     return (
         <div style={{ display: `flex`, justifyContent: `flex-end`, alignItems: `center`, flexDirection: `row` }}>
             <div style={{ minWidth: `30%`, marginRight: `1em` }}>
                 {children}
             </div>
             <ImageContainer
-                srcUrl={srcUrl}
+                src={src}
                 height={height}
                 width={width}
                 placeholder={placeholder}
