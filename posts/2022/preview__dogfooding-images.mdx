@@ -1,0 +1,39 @@
+---
+date: "2022-09-01"
+title: Dogfooding - Reviewing how I add images to the site
+section: 
+published: false
+preview: |- 
+    Taking a closer look at what process I follow to add images (and other content) to the site. And 
+    (potentially) finding ways to make it better.
+---
+
+While pulling together the [Pedernales Falls hiking](/link-goes-here) post, I realized my process for 
+creating and adding images (or really any content) to the site needed to change.
+
+Process to create content for website:
+
+- Capture
+- Ingest and review
+- (opt.) Edit
+- Convert to compressed web formats
+- Upload to CMS (AWS S3)
+- Link to page
+
+
+## Convert to Compressed Web Format(s)
+
+webp
+
+We have this really cool utility, `cwebp`. It works great. It's distributed as a binary for x86, and 
+seemingly limited to running on a local PC.
+
+Bummer.
+
+### Other Notes
+
+- On PC: Bulk-renaming would be nice -- _Is there a utility for this?_
+- On PC: Do we have a naming convention for tracking image files?
+- Be aware: original, orig. quality w/ smaller pixel size, smaller pixel size w/ compressed (webp), 
+thumbnail, blur thumbnail?
+- How do we bulk compress using `cwebp`?
