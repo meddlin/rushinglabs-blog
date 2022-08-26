@@ -12,6 +12,7 @@ import postStyles from '../../../styles/post.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CenteredImage, LeftImage, RightImage } from '../../../components/content-helpers/images';
+import { Video } from '../../../components/content-helpers/video';
 import Button from '../../../components/button';
 import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -89,6 +90,7 @@ const Post = (props) => {
                     CenteredImage, 
                     LeftImage,
                     RightImage,
+                    Video,
                     SyntaxHighlighter, 
                     MyHighlighter,
                     TikTok
