@@ -1,0 +1,87 @@
+---
+date: "2022-09-26"
+title: "Setup Basic GitLab Server"
+published: 'true'
+section: 'application server'
+preview: |-
+    How to setup a basic GitLab server
+---
+
+## Intro
+
+Previously, I tried to build an all-in-one server with Unraid. As Unraid is purpose-built first to be a
+file server, and has applications, VMs, and container support tacked on...I thought it might be a worthwhile 
+effort. It was _sort of_ successful.
+
+I'm still slowly doing more video production, but with that comes increased data storage demands. Currenly, 
+I'm hovering around 3.5TB in total data to be stored. Definitely enough to safely fit on an external drive! I
+wanted to start delving into running a home server, though. I've also had ideas for a while of what could be 
+done running my own media server. Also...I'd like to try out running an at-home GitLab server.
+
+The details are outside the scope of this brief guide&mdash;however, the concept of CI/CD pipelines intrigue 
+me. GitHub has made taken great leaps lately offering impressive features, and even enabling GitHub Actions 
+on code repos without payment. Could we replicate this on our own hardware? Further, is it possible to 
+introduce improved SDLC practices, directly integrated into a CI/CD pipeline? Code + automatic testing, yes...
+but what about: architecture diagrams, documentation, threat modeling, code attestation, security testing, 
+or even new faked data stubs? All kept within source control? All (more or less) automated?
+
+_This calls for a server!_ And Unraid proved problematic for anything (like GitLab) requiring fair amount of 
+configuration.
+
+## An "Intro" Server
+
+I originally wanted to utilize Unraid because it's like a "hypervisor-lite". Another popular choice in this 
+area is TrueNAS, but I wasn't ready to commit to it's more robust filesystem. _I needed turn-key; go play._
+
+So, as soon as Unraid started giving me problems stopping VMs, and I was having difficulty troubleshooting a 
+broken GitLab Docker startup...I turned to Windows.
+
+### Windows PC
+
+A basic Windows install on a spare gaming PC.
+
+### Enable RDP
+
+This is purely for easier administration.
+
+- Enable Hyper-V
+  - Create "external network switch" (for outside of host access)
+  - Create Ubuntu VM
+    - Enable SSH
+    - Install Docker
+    - Configure SSH to run on non-22 port
+
+- GitLab
+  - Run GitLab from Docker container
+  - Get root password for GitLab
+
+## Install GitLab: Docker
+
+[https://docs.gitlab.com/ee/install/docker.html#pre-configure-docker-container](https://docs.gitlab.com/ee/install/docker.html#pre-configure-docker-container)
+
+## Directory Permissions for GitLab home directory
+
+[https://www.pluralsight.com/blog/it-ops/linux-file-permissions](https://www.pluralsight.com/blog/it-ops/linux-file-permissions)
+
+## Installing, Configuring SSH
+
+[https://linuxize.com/post/how-to-enable-ssh-on-ubuntu-20-04/](https://linuxize.com/post/how-to-enable-ssh-on-ubuntu-20-04/)
+
+### Run SSH on different port
+
+Need to edit `/etc/ssh/sshd_config`. Then run `service sshd restart`
+
+This is necessary because GitLab needs port 22 for SSH access. So, one of these services needs to be 
+sent to a different port. _It's easier to configure system SSH once, rather than risk GitLab needing
+more attention upon upgrades, etc._
+
+- [https://askubuntu.com/questions/264046/how-to-run-the-ssh-server-on-a-port-other-than-22](https://askubuntu.com/questions/264046/how-to-run-the-ssh-server-on-a-port-other-than-22)
+- [https://docs.rackspace.com/support/how-to/change-the-ssh-port-in-the-linux-ubuntu-operating-system/](https://docs.rackspace.com/support/how-to/change-the-ssh-port-in-the-linux-ubuntu-operating-system/)
+
+
+## root password for GitLab
+
+- docker exec + grep command
+  - `sudo docker exec -it gitlab bash`
+  - `grep 'Password:' /etc/gitlab/initial_root_password`
+  - [https://forum.gitlab.com/t/default-root-password/59677/4](https://forum.gitlab.com/t/default-root-password/59677/4)
