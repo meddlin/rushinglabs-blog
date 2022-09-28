@@ -1,0 +1,44 @@
+---
+date: "2022-08-29"
+title: "How blog posts are built"
+published: 'true'
+section: 'general'
+preview: |-
+    How /lib/posts is used to build the blog posts.
+---
+
+List of functions
+
+- `getAllFiles(dirPath, arrayOfFiles)`
+
+
+- `getAllFilesWithYearInfo = function(dirPath)`
+    - calls `getAllFiles()`
+
+- `getAllCategories()` 
+
+- `getPostsFromDocsSubdir(directory)`
+    - calls `getAllFiles()`
+
+- `getCategoryPosts(category)`
+    - `getAllFilesWithYearInfo()`
+
+
+
+- `getAllPostIds()`
+    - calls `getAllFiles()`
+
+
+
+This is the main logic used
+- `getSortedPostsData()`
+    - calls `getAllFiles()`
+
+
+
+
+
+Get a specific post's data
+- `getPostData(year, id)`
+    - reads 
+    - frontMatter
