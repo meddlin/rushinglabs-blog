@@ -1,0 +1,101 @@
+---
+date: "2022-08-25"
+title: "Image Components"
+published: 'true'
+section: 'mdx-site'
+preview: |-
+    Creating custom image components for right, left aligned content with respect
+    to the images.
+---
+
+Location: `/components/content-helpers/images.js`
+
+These components wrap the [`next/image`](https://nextjs.org/docs/api-reference/next/image) component with help of the 
+`<ImageContainer />` utility component, to allow for easy Markdown authoring while providing all of the advantages of 
+[`next/image`](https://nextjs.org/docs/api-reference/next/image).
+
+## Left Image
+
+Component code
+
+<MyDocHighlighter language="javascriopt">
+{`
+function LeftImage({ children, src, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
+    return (
+        <div style={{ display: \`flex\`, justifyContent: \`flex-start\`, alignItems: \`center\`, flexDirection: \`row\` }}>
+            <ImageContainer
+                src={src}
+                height={height}
+                width={width}
+                placeholder={placeholder}
+                blurDataURL={blurDataURL}
+                alt={alt}
+                caption={caption}
+                imageCredit={imageCredit}
+                imageCreditLink={imageCreditLink}
+            />
+            <div style={{ minWidth: \`30%\`, marginLeft: \`1em\` }}>
+                {children}
+            </div>
+        </div>
+    );
+}
+`}
+</MyDocHighlighter>
+
+Example usage
+
+<MyDocHighlighter language="javascriopt">
+{` <LeftImage
+    src="https://meddlin-web.s3.us-east-2.amazonaws.com/2022-08-23_pedernales-falls/IMG_2753__q50.webp"
+    width="4032"
+    height="3024"
+    alt="Large boulders with rounded divets texture stretching from foreground to background"
+    caption="These boulders are IN the riverbed! At least 8-10 ft tall.">
+Your content goes here! 😀
+</LeftImage> `}
+</MyDocHighlighter>
+
+
+
+## Right Image
+
+Component code
+
+<MyDocHighlighter language="javascript">
+{`
+function RightImage({ children, src, height, width, alt, caption, imageCredit, imageCreditLink, placeholder, blurDataURL }) {
+    return (
+        <div style={{ display: \`flex\`, justifyContent: \`flex-end\`, alignItems: \`center\`, flexDirection: \`row\` }}>
+            <div style={{ minWidth: \`30%\`, marginRight: \`1em\` }}>
+                {children}
+            </div>
+            <ImageContainer
+                src={src}
+                height={height}
+                width={width}
+                placeholder={placeholder}
+                blurDataURL={blurDataURL}
+                alt={alt}
+                caption={caption}
+                imageCredit={imageCredit}
+                imageCreditLink={imageCreditLink}
+            />
+        </div>
+    );
+}
+`}
+</MyDocHighlighter>
+
+Example usage
+
+<MyDocHighlighter language="javascriopt">
+{` <RightImage
+    src="https://meddlin-web.s3.us-east-2.amazonaws.com/2022-08-23_pedernales-falls/IMG_2753__q50.webp"
+    width="4032"
+    height="3024"
+    alt="Large boulders with rounded divets texture stretching from foreground to background"
+    caption="These boulders are IN the riverbed! At least 8-10 ft tall.">
+Your content goes here! 😀
+</RightImage> `}
+</MyDocHighlighter>

@@ -21,7 +21,7 @@ Even more so for a technical blog such as anything involving code.
 [https://mdxjs.com/](https://mdxjs.com/)
 
 <CenteredImage 
-    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-12_site-uses-mdx/logan-weaver-unsplash_small.jpg"
+    src="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-12_site-uses-mdx/logan-weaver-unsplash_small.jpg"
     height="640"
     width="430"
     alt="fancy window w/ rather pertinent text"
@@ -103,11 +103,11 @@ _Then_ I'm able to share the code here, using the
 <MyHighlighter language="javascript">
 {`
 import Image from 'next/image';
-export default function CenteredImage({ srcUrl, height, width, alt, caption, imageCredit, imageCreditLink }) {
+export default function CenteredImage({ src, height, width, alt, caption, imageCredit, imageCreditLink }) {
     return (
         <div className={utils.center}>
             <div>
-                <Image src={srcUrl}
+                <Image src={src}
                     height={height}
                     width={width}
                     alt={alt} />
@@ -229,7 +229,7 @@ Thus, if I want a preview open while I write blog posts, I need the site running
 open to see it.
 
 <CenteredImage 
-    srcUrl="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-12_site-uses-mdx/mdx-preview-problem.png"
+    src="https://meddlin-web.s3.us-east-2.amazonaws.com/2021-12_site-uses-mdx/mdx-preview-problem.png"
     height="599"
     width="579"
 />

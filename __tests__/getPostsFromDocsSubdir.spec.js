@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 
 /**
  * getPostsFromDocsSubdir
@@ -17,6 +18,11 @@ describe("Docs - Get all docs underneath a specific /docs subdir", () => {
      *   }
      * ]
      */
+
+         const value = 1;
+         const expected = 0;
+ 
+         expect(value).toEqual(expected);
     });
 
     test("it should return the posts for one section", () => {
@@ -27,6 +33,10 @@ describe("Docs - Get all docs underneath a specific /docs subdir", () => {
         /**
          * [{ section: '', docs: ['', '']}]
          */
+
+         const value = 1;
+         const expected = 0;
+ 
+         expect(value).toEqual(expected);
     })
-})
 })
