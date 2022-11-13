@@ -46,4 +46,4 @@ const H4 = ({ children }) => {
     )
 }
 
-export { H2, H3, H4 };
+export { H2, H3, H4, getAnchor };
