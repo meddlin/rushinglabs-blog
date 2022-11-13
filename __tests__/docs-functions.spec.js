@@ -1,5 +1,5 @@
+import '@testing-library/jest-dom'
 import { docsDirectory, getAllDocsIds, getPostsFromDocsSubdir } from "../lib/docs";
-
 
 /**
  * getPostsFromDocsSubdir
@@ -21,12 +21,18 @@ import { docsDirectory, getAllDocsIds, getPostsFromDocsSubdir } from "../lib/doc
     // Retrieving all posts from top-level /docs directory
     // should still work.
     test("it should include all sections' posts", () => {
-        
+        const value = 1;
+        const expected = 0;
+
+        expect(value).toEqual(expected);
     })
 
     // Metadata for each post should be standardized
     test("it should have a standard metadata structure", () => {
+        const value = 1;
+        const expected = 0;
 
+        expect(value).toEqual(expected);
     });
 });
 
