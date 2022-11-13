@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import Layout from '../../../components/layout';
-import { siteTitle } from '../components/layout-head-loader';
+import { siteTitle } from '../../../components/layout-head-loader';
 import Date from '../../../components/date';
 import CategoryListing from '../../../components/category-listing';
 import { getCategoryPosts, getAllCategories } from '../../../lib/posts';

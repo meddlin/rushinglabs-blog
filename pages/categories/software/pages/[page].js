@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Layout from '../../../../components/layout';
-import { siteTitle } from '../components/layout-head-loader';
+import { siteTitle } from '../../../../components/layout-head-loader';
 import CategoryListing from '../../../../components/category-listing';
 import Date from '../../../../components/date';
 import Link from 'next/link';
