@@ -1,0 +1,34 @@
+---
+date: "2022-08-25"
+title: "Video Components"
+published: 'true'
+section: 'mdx-site'
+preview: |-
+    Creating custom video components for embedded HTML5/Webm video
+---
+
+Location: `/components/content-helpers/video.js`
+
+Component code
+
+<MyDocHighlighter language="javascriopt">
+{`
+function Video({ children, src, width }) {
+    width = width !== undefined || "" ? width : "100%";
+    return (
+        <video controls width={width}>
+            <source src={src}
+                type="video/webm" />
+        </video>
+    );
+}
+`}
+</MyDocHighlighter>
+
+Example usage
+
+<MyDocHighlighter language="javascriopt">
+{` <Video 
+    src="https://meddlin-web.s3.us-east-2.amazonaws.com/2022-08-23_pedernales-falls/pedernales-water.webm" 
+    width="100%" /> `}
+</MyDocHighlighter>

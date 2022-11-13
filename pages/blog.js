@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
+import Layout from '../components/layout';
+import { siteTitle } from '../components/layout-head-loader';
 import Link from 'next/link';
-import Date from '../components/date';
+import Post from '../components/post'
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData, getAllCategories } from '../lib/posts';
 import config from '../blogConfig';
@@ -28,6 +29,7 @@ export async function getStaticProps() {
 
 };
 
+
 export default function BlogHome({ allPostsData, categoriesList, prevPosts, nextPosts }) {
     return (
         <Layout home footerDisplay={true}>
@@ -43,27 +45,7 @@ export default function BlogHome({ allPostsData, categoriesList, prevPosts, next
 
 				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
 					<ul className={utilStyles.list}>
-						{allPostsData.map( ({ id, date, title, preview, section, published }) => {
-							return published && published == true ? (
-								<li className={utilStyles.listItem} key={id}>
-									<Link href={`/blog/${id}`}>
-										<a>{title}</a>
-									</Link>
-									<br />
-									<small className={utilStyles.subpreview}>
-										{section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
-											: ''}
-										{date ? (<Date dateString={date} />) : ''}
-									</small>
-									<p>{preview}</p>
-		
-									<Link href={`/blog/${id}`}>
-										<a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-									</Link>
-									</li>
-							) : '';
-						}
-						)}
+						{allPostsData.filter(post => post.published).map(post => <Post key={post.id} {...post} />)}
 					</ul>
 
 					<section className={`${utilStyles.centeredButtons}`}>

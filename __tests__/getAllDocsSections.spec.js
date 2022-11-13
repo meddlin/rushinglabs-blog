@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import { getAllDocsSections } from "../lib/docs";
 
 

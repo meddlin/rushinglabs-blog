@@ -4,9 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import MenuIcon from './menu-icon';
 import NavbarLinks from './navbar-links';
-import LayoutHeadLoader from './layout-head-loader';
-
-const name = 'Rushing Labs';
+import LayoutHeadLoader, { siteTitle } from './layout-head-loader';
 
 export default function Layout({ children, home, footerDisplay }) {
     return (
@@ -18,7 +16,7 @@ export default function Layout({ children, home, footerDisplay }) {
 
           <h1 className={utilStyles.heading2Xl}>
             <Link href="/">
-              <a className={utilStyles.colorInherit}>{name}</a>
+              <a className={utilStyles.colorInherit}>{siteTitle}</a>
             </Link>
           </h1>
 

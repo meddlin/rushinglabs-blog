@@ -1,0 +1,68 @@
+---
+date: "2022-08-30"
+title: "How to debug this project"
+published: 'true'
+section: 'general'
+preview: |-
+    How to set a breakpoint, and start this project in debug mode.
+---
+
+Ref: [https://nextjs.org/docs/advanced-features/debugging](https://nextjs.org/docs/advanced-features/debugging)
+
+Ref: [https://tymick.me/blog/debug-nextjs-with-vs-code](https://tymick.me/blog/debug-nextjs-with-vs-code)
+This page was also helpful. It's basically the same as Vercel's docs, but showed me I wasn't missing 
+anything obvious.
+
+From Vercel's docs for debugging Next.js, add the following code to a `launch.json`
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Next.js: debug server-side",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev"
+    },
+    {
+      "name": "Next.js: debug client-side",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:3000"
+    },
+    {
+      "name": "Next.js: debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    }
+  ]
+}
+```
+
+## Script config difference
+
+You may think it necessary to update the `scripts` section of your `package.json`, to reflect 
+a debug step _and then_ point the `launch.json` server-side config at this debug command. However, 
+this was a weird point for me...that didn't work.
+
+In [Server-side code section](https://nextjs.org/docs/advanced-features/debugging#server-side-code) 
+of the Vercel docs, they mention adding the `NODE_OPTIONS='--inspect'` to the startup script, but 
+leaving this off worked better for me.
+
+
+## Weird hooking-in, startup behavrior
+
+Set breakpoints in `getStaticProps()` for a page, and any downstream functions that need debugging.
+
+- Without setting an initial breakpoint in `getStaticProps`, I wasn't always able to get downstream 
+breakpoints to fire.
+- Often it was necessary to skip past (F5) some "built JavaScript noise", for the debugger to properly 
+setup, then a page refresh was possible, _and then_ the set breakpoints would hit.
