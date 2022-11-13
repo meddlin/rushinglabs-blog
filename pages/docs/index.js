@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Layout, { siteTitle } from '../../components/layout';
+import Layout from '../../components/layout';
+import { siteTitle } from '../components/layout-head-loader';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 import docsStyles from '../../styles/docs.module.css';

@@ -1,4 +1,5 @@
-import Layout, { siteTitle } from "../../components/layout";
+import Layout from "../../components/layout";
+import { siteTitle } from '../components/layout-head-loader';
 import Head from 'next/head';
 import Image from 'next/image';
 import SocialsHorizontal from '../../components/socials-horizontal';
