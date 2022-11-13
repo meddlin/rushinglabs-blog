@@ -6,6 +6,7 @@
     "dev": "next dev",
     "test": "jest",
     "test-watch": "jest --watch",
+    "coverage": "jest --collectCoverage --",
     "lint": "next lint",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "debug-test-unix": "node --inspect-brk node_modules/.bin/jest --runInBand",
