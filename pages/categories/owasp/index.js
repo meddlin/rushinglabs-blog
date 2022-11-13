@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Head from 'next/head';
-import Layout, { siteTitle } from '../../../components/layout';
+import Layout from '../../../components/layout';
+import { siteTitle } from '../../../components/layout-head-loader';
 import { getPostsFromDocsSubdir } from '../../../lib/posts';
 import config from '../../../blogConfig';
 
