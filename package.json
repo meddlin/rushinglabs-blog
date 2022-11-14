@@ -17,8 +17,8 @@
     "export": "next export"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^2.1.5",
+    "@mdx-js/loader": "^2.1.5",
     "@next/mdx": "^13.0.3",
     "cross-env": "^7.0.3",
     "date-fns": "^2.17.0",
