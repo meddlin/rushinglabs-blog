@@ -1,0 +1,131 @@
+---
+date: "2022-11-13"
+title: "GitHub Repo Specification"
+published: 'true'
+section: 'general'
+preview: |-
+    Describing a checklist of items to cover when creating new repos in GitHub. This 
+    take's advantage of some key security and CI features built directly into GitHub.
+---
+
+This checklist was built out originally for projects I was building with Next.js (hence, 
+the Vercel tie-in). However, much of this applies to any GitHub repo, or can be adapted 
+for other tech stacks.
+
+_I was striving for a nice automated development workflow, using all built-in GitHub tools._
+
+## GitHub Repo Checklist
+
+- [ ] Basic Stuff
+- [ ] General Features
+- [ ] Setup Projects (optional)
+- [ ] Branch protection
+- [ ] Pages
+- [ ] Code security and analysis (Settings)
+- [ ] Connect to Vercel
+- [ ] GitHub Actions: Code QL Analysis
+- [ ] GitHub Actions: Dependency Review
+- [ ] GitHub Actions: Semgrep (actively testing)
+- [ ] GitHub Actions: Linter
+- [ ] GitHub Actions: Jest - run unit tests
+- [ ] GitHub Actions: Jest - code coverage report
+
+### Basic Stuff
+
+- Make the `README.md` meaningful
+- Set a `FUNDING.yml` (optional)
+- Set a `CODE-OF-CONDUCT.yml` (optional)
+
+### General Features
+
+_Settings > General_
+
+Enable the following:
+
+- Features
+    - Wikis
+    - Issues
+    - Discussions (optional)
+    - Projects (optional)
+
+- Pull Requests
+    - Allow squash merging
+
+- Always suggest updating pull request branches
+- Automatically delete head branches
+
+- Pushes
+    - Limit how many branches and tags can be updated in a single push
+    - Up to 3
+
+### Setup Projects (optional)
+
+_For smaller projects, this is likely overkill. However, GitHub has some pretty capable
+project management features built-in and this configuration works for me._
+
+Configure the following views:
+
+- Table
+- Board
+- Milestone Grouping
+- Category
+
+### Branch Protection
+
+Settings > Branches > Branch protection rules
+
+- Check "Require a pull request before merging"
+
+### Pages 
+
+Settings > Pages
+
+- Source: Deploy from a branch
+- Branch: Enable pages on the default branch from the `/docs` directory
+- Check "Enforce HTTPS"
+
+### Code security and analysis
+
+_Settings > Code security and analysis_
+
+Enable the following:
+
+- Private vulnerability reporting
+- Dependency graph
+- Dependabot
+    - Dependabot alerts
+    - Dependabot security updates
+    - Dependabot version updates (setup `dependabot-version-updates.yml` file)
+- Code scanning
+    - Set "Check failure" to "High or higher/Only errors"
+- Secret scanning
+
+### Connect to Vercel
+
+For Next.js projects, connect them to Vercel for automatic preview and production deployments.
+
+[https://vercel.com/dashboard](https://vercel.com/dashboard)
+
+### GitHub Actions
+
+#### Code QL Analysis
+
+[https://github.com/actions/starter-workflows/blob/main/code-scanning/codeql.yml](https://github.com/actions/starter-workflows/blob/main/code-scanning/codeql.yml)
+
+#### Dependency Review
+
+Docs: [https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review#dependency-review-enforcement](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review#dependency-review-enforcement)
+
+Source code: [https://github.com/actions/dependency-review-action](https://github.com/actions/dependency-review-action)
+
+#### Linter
+
+Mega-Lint: [https://github.com/marketplace/actions/megalinter](https://github.com/marketplace/actions/megalinter)
+
+#### Jest: run unit tests
+
+[https://blog.dennisokeeffe.com/blog/2021-10-27-jest-with-github-actions](https://blog.dennisokeeffe.com/blog/2021-10-27-jest-with-github-actions)
+
+#### Jest: code coverage report
+
+[https://github.com/marketplace/actions/jest-coverage-report](https://github.com/marketplace/actions/jest-coverage-report)
