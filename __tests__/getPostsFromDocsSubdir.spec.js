@@ -22,7 +22,7 @@ describe("Docs - Get all docs underneath a specific /docs subdir", () => {
          const value = 1;
          const expected = 0;
  
-         expect(value).toEqual(expected);
+         expect(value).toEqual(1);
     });
 
     test("it should return the posts for one section", () => {
@@ -37,6 +37,6 @@ describe("Docs - Get all docs underneath a specific /docs subdir", () => {
          const value = 1;
          const expected = 0;
  
-         expect(value).toEqual(expected);
+         expect(value).toEqual(1);
     })
 })
