@@ -1,10 +1,17 @@
 import Link from 'next/link'
+import Image from 'next/image';
 import Date from './date'
 import utilStyles from '../styles/utils.module.css'
 
-export default function Post({ id, date, title, preview, section }) {
+export default function Post({ id, date, title, preview, previewImage, section }) {
   return (
     <li className={utilStyles.listItem}>
+      
+      {/* If previewImage exists, then display it -- else, leave blank. */}
+      {previewImage && previewImage !== undefined ? 
+        (<Image src={previewImage} width="500" height="350" />) 
+        : ''}
+
       <Link href={`/blog/${id}`}>
         <a>{title}</a>
       </Link>
