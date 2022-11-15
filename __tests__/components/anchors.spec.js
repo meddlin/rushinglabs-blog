@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { getAnchor } from '../components/content-helpers/anchors';
+import { getAnchor } from '../../components/content-helpers/anchors';
 
 describe("Anchors should be created from Markdown headers", () => {
     test("it should contain dashes", () => {
