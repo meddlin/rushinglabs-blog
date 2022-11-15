@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 import { docsDirectory, getAllDocsIds, getPostsFromDocsSubdir } from "../lib/docs";
 
 /**
@@ -40,15 +40,15 @@ import { docsDirectory, getAllDocsIds, getPostsFromDocsSubdir } from "../lib/doc
 /**
  * getAllDocsIds
  */
-describe("Docs - Retrieve all id's for each docs post", () => {
-    test("it should return an array of file paths to posts", () => {
-        const input = getAllDocsIds();
-        const output = [''];
+// describe("Docs - Retrieve all id's for each docs post", () => {
+//     test("it should return an array of file paths to posts", () => {
+//         const input = getAllDocsIds();
+//         const output = [''];
 
-        // Each filename needs to end in .mdx
-        // expect()
+//         // Each filename needs to end in .mdx
+//         // expect()
 
-        // Each filename needs to exist in the filesystem
-        // expect() 
-    });
-})
+//         // Each filename needs to exist in the filesystem
+//         // expect() 
+//     });
+// })
