@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image';
 import Date from './date'
 import utilStyles from '../styles/utils.module.css'
+import PostPreviewImage from './post-preview-image';
 
 export default function Post({ 
   id, 
@@ -22,21 +23,13 @@ export default function Post({
       
       <div className="flex flex-col">
         <div className="justify-center items-center">
-            <div className="flex flex-col">
-              <div>
-                {(previewImage && previewImage !== undefined) 
-                  && (previewImageWidth && previewImageWidth !== undefined) 
-                  && (previewImageHeight && previewImageHeight !== undefined) ? 
-                  (<a href={articleLink}>
-                    <Image src={previewImage} width={previewImageWidth} height={previewImageHeight} />
-                  </a>) 
-                  : ''}
-              </div>
-              {(previewImageCreditText && previewImageCreditText !== undefined) 
-                && (previewImageCreditUrl && previewImageCreditUrl !== undefined) ? 
-                (<a href={previewImageCreditUrl}><span className="text-sm italic text-gray-400">{previewImageCreditText}</span></a>) 
-                : ''}
-            </div>
+            <PostPreviewImage 
+              articleLink={articleLink}
+              previewImage={previewImage} 
+              previewImageWidth={previewImageWidth}
+              previewImageHeight={previewImageHeight} 
+              previewImageCreditText={previewImageCreditText}
+              previewImageCreditUrl={previewImageCreditUrl} />
         </div>
         <Link href={articleLink}>
           <a>{title}</a>
