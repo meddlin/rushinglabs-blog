@@ -3,19 +3,42 @@ import Image from 'next/image';
 import Date from './date'
 import utilStyles from '../styles/utils.module.css'
 
-export default function Post({ id, date, title, preview, previewImage, previewImageWidth, previewImageHeight, section }) {
+export default function Post({ 
+  id, 
+  date, 
+  title, 
+  preview, 
+  previewImage, 
+  previewImageWidth, 
+  previewImageHeight, 
+  previewImageCreditText,
+  previewImageCreditUrl,
+  section 
+}) {
+  const articleLink = `/blog/${id}`;
+
   return (
     <li className={utilStyles.listItem}>
       
       <div className="flex flex-col">
         <div className="justify-center items-center">
-          {(previewImage && previewImage !== undefined) 
-            && (previewImageWidth && previewImageWidth !== undefined) 
-            && (previewImageHeight && previewImageHeight !== undefined) ? 
-            (<Image src={previewImage} width={previewImageWidth} height={previewImageHeight} />) 
-            : ''}
+            <div className="flex flex-col">
+              <div>
+                {(previewImage && previewImage !== undefined) 
+                  && (previewImageWidth && previewImageWidth !== undefined) 
+                  && (previewImageHeight && previewImageHeight !== undefined) ? 
+                  (<a href={articleLink}>
+                    <Image src={previewImage} width={previewImageWidth} height={previewImageHeight} />
+                  </a>) 
+                  : ''}
+              </div>
+              {(previewImageCreditText && previewImageCreditText !== undefined) 
+                && (previewImageCreditUrl && previewImageCreditUrl !== undefined) ? 
+                (<a href={previewImageCreditUrl}><span className="text-sm italic text-gray-400">{previewImageCreditText}</span></a>) 
+                : ''}
+            </div>
         </div>
-        <Link href={`/blog/${id}`}>
+        <Link href={articleLink}>
           <a>{title}</a>
         </Link>
       </div>
