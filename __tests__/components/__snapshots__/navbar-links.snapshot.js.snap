@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<div>
+  <div
+    class="navbarLinks"
+  >
+    <h2>
+      <a
+        class="text-xl font-bold underline text-inherit"
+        href="/blog"
+      >
+        Blog
+      </a>
+    </h2>
+    <h2>
+      <a
+        class="text-xl font-bold underline text-inherit"
+        href="/projects"
+      >
+        Projects
+      </a>
+    </h2>
+    <h2>
+      <a
+        class="text-xl font-bold underline text-inherit"
+        href="/docs"
+      >
+        Docs
+      </a>
+    </h2>
+    <h2>
+      <a
+        class="text-xl font-bold underline text-inherit"
+        href="/about"
+      >
+        About
+      </a>
+    </h2>
+  </div>
+</div>
+`;

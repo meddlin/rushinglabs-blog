@@ -7,22 +7,22 @@ export default function NavbarLinks({}) {
         <div className={styles.navbarLinks}>
             <h2>
               <Link href="/blog">
-                <a className={utilStyles.colorInherit}>Blog</a>
+                <a className="text-xl font-bold underline text-inherit">Blog</a>
               </Link>
             </h2>
             <h2>
               <Link href="/projects">
-                <a className={utilStyles.colorInherit}>Projects</a>
+                <a className="text-xl font-bold underline text-inherit">Projects</a>
               </Link>
             </h2>
             <h2>
               <Link href="/docs">
-                <a className={utilStyles.colorInherit}>Docs</a>
+                <a className="text-xl font-bold underline text-inherit">Docs</a>
               </Link>
             </h2>
             <h2>
               <Link href="/about">
-                <a className={utilStyles.colorInherit}>About</a>
+                <a className="text-xl font-bold underline text-inherit">About</a>
               </Link>
             </h2>
           </div>

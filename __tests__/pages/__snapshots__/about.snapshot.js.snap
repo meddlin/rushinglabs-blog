@@ -29,7 +29,7 @@ exports[`renders About page unchanged 1`] = `
       >
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold underline text-inherit"
             href="/blog"
           >
             Blog
@@ -37,7 +37,7 @@ exports[`renders About page unchanged 1`] = `
         </h2>
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold underline text-inherit"
             href="/projects"
           >
             Projects
@@ -45,7 +45,7 @@ exports[`renders About page unchanged 1`] = `
         </h2>
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold underline text-inherit"
             href="/docs"
           >
             Docs
@@ -53,7 +53,7 @@ exports[`renders About page unchanged 1`] = `
         </h2>
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold underline text-inherit"
             href="/about"
           >
             About
