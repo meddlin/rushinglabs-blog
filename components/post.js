@@ -3,24 +3,31 @@ import Image from 'next/image';
 import Date from './date'
 import utilStyles from '../styles/utils.module.css'
 
-export default function Post({ id, date, title, preview, previewImage, section }) {
+export default function Post({ id, date, title, preview, previewImage, previewImageWidth, previewImageHeight, section }) {
   return (
     <li className={utilStyles.listItem}>
       
-      {/* If previewImage exists, then display it -- else, leave blank. */}
-      {previewImage && previewImage !== undefined ? 
-        (<Image src={previewImage} width="500" height="350" />) 
-        : ''}
+      <div className="flex flex-col">
+        <div className="justify-center items-center">
+          {(previewImage && previewImage !== undefined) 
+            && (previewImageWidth && previewImageWidth !== undefined) 
+            && (previewImageHeight && previewImageHeight !== undefined) ? 
+            (<Image src={previewImage} width={previewImageWidth} height={previewImageHeight} />) 
+            : ''}
+        </div>
+        <Link href={`/blog/${id}`}>
+          <a>{title}</a>
+        </Link>
+      </div>
 
-      <Link href={`/blog/${id}`}>
-        <a>{title}</a>
-      </Link>
       <br />
+
       <small className={utilStyles.subpreview}>
         {section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
           : ''}
         {date ? (<Date dateString={date} />) : ''}
       </small>
+
       <p>{preview}</p>
 
       <Link href={`/blog/${id}`}>
