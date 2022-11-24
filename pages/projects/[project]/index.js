@@ -1,3 +1,4 @@
+import escapeHTML from 'escape-html';
 import Layout from '../../../components/layout';
 import { getPostsFromProjectsSubdir, getAllProjects } from '../../../lib/projects';
 
@@ -35,7 +36,7 @@ const ProjectsSection = ({ projectTitle, posts }) => {
                 {
                     posts.map( post => (
                         <li key={post.title}>
-                            <a href={`/projects/${projectTitle}/${post.id}`}>
+                            <a href={`/projects/${escapeHTML(projectTitle)}/${escapeHTML(post.id)}`}>
                                 {post.title}
                             </a>
                         </li>
