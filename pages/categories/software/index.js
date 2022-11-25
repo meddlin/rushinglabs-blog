@@ -8,6 +8,7 @@ import { getCategoryPosts, getAllCategories } from '../../../lib/posts';
 import { capitalizeFirstLetter } from '../../../lib/text-utils';
 import utilStyles from '../../../styles/utils.module.css';
 import config from '../../../blogConfig';
+import escapeHTML from 'escape-html';
 
 const _section_ = 'software';
 
@@ -45,24 +46,26 @@ export default function SoftwareSection({ posts, prevPosts, nextPosts, categorie
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
                     <ul className={utilStyles.list}>
                         {(posts && posts.length > 0) ? (
-                            posts.map( ({ id, year, date, title, preview, section }) => (
-                                <li className={utilStyles.listItem} key={id}>
-                                    <Link href={`/blog/${year}/${id}`}>
-                                        <a>{title}</a>
-                                    </Link>
-                                    <br />
-                                    <small className={utilStyles.subpreview}>
-                                    {section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
-                                            : ''}
-                                        <Date dateString={date} />
-                                    </small>
-                                    <p>{preview}</p>
-
-                                    <Link href={`/blog/${id}`}>
-                                        <a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-                                    </Link>
-                                </li>
-                            ))
+                            posts.map( ({ id, year, date, title, preview, section, published }) => {
+                                return published && published == true ? (
+                                    <li className={utilStyles.listItem} key={id}>
+                                        <Link href={`/blog/${escapeHTML(year)}/${escapeHTML(id)}`}>
+                                            <a>{title}</a>
+                                        </Link>
+                                        <br />
+                                        <small className={utilStyles.subpreview}>
+                                        {section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
+                                                : ''}
+                                            <Date dateString={date} />
+                                        </small>
+                                        <p>{preview}</p>
+    
+                                        <Link href={`/blog/${escapeHTML(id)}`}>
+                                            <a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
+                                        </Link>
+                                    </li>
+                                ) : '';
+                            })
                         ) : ''}
                     </ul>
 
