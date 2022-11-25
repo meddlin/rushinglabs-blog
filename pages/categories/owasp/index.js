@@ -4,6 +4,7 @@ import Layout from '../../../components/layout';
 import { siteTitle } from '../../../components/layout-head-loader';
 import { getPostsFromDocsSubdir } from '../../../lib/posts';
 import config from '../../../blogConfig';
+import escapeHTML from 'escape-html';
 
 const _section_ = 'owasp';
 
@@ -38,7 +39,7 @@ export default function OwaspSection ({ posts }) {
                     {(posts && posts.length > 0) ? (
                         posts.map( ({id, year, date, title, preview}) => (
                             <li>
-                                <Link href={`/docs/${_section_}/${id}`}>
+                                <Link href={`/docs/${escapeHTML(_section_)}/${escapeHTML(id)}`}>
                                     <a>{id}</a>
                                 </Link>
                             </li>
