@@ -1,3 +1,4 @@
+import escapeHTML from 'escape-html';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/layout';
@@ -52,14 +53,14 @@ function Docs({ docs, chunks, sections }) {
                 <ul className={docsStyles.listParent}>
                     {chunks.map( ({section, docs}) => (
                         <li key={section}>
-                            <Link href={`/docs/${section}`}>
+                            <Link href={`/docs/${escapeHTML(section)}`}>
                                 <a><h3>{section}</h3></a>
                             </Link>
                             {docs && docs.length > 0 ? (
                                 <ul className={utilStyles.list}>
                                     {docs.map( doc => (
                                         <li className={utilStyles.listItem} key={doc.id}>
-                                            <Link href={`/docs/${section}/${doc.id}`}>
+                                            <Link href={`/docs/${escapeHTML(section)}/${escapeHTML(doc.id)}`}>
                                                 <a>{doc.title}</a>
                                             </Link>
                                             <small className={utilStyles.subpreview}>
