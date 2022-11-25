@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Layout from '../../../components/layout';
 import utilStyles from '../../../styles/utils.module.css';
 import { getAllDocsSections, getPostsFromDocsSubdir } from '../../../lib/docs';
+import escapeHTML from 'escape-html';
 
 export async function getStaticProps({ params }) {
     /**
@@ -42,7 +43,7 @@ function DocsSection({ docs, section }) {
                 <ul>
                     {docs && docs.length > 0 ? docs.map( doc => (
                         <li key={doc.id}>
-                            <Link href={`/docs/${section}/${doc.id}`}>
+                            <Link href={`/docs/${escapeHTML(section)}/${escapeHTML(doc.id)}`}>
                                 <a>{doc.id}</a>
                             </Link>
                         </li>
