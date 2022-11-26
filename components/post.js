@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Date from './date'
 import utilStyles from '../styles/utils.module.css'
 import PostPreviewImage from './post-preview-image';
+import escapeHTML from 'escape-html';
 
 export default function Post({ 
   id, 
@@ -16,7 +17,7 @@ export default function Post({
   previewImageCreditUrl,
   section 
 }) {
-  const articleLink = `/blog/${id}`;
+  const articleLink = `/blog/${escapeHTML(id)}`;
 
   return (
     <li className={utilStyles.listItem}>
