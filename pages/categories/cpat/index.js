@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout from '../../../components/layout';
 import { siteTitle } from '../../../components/layout-head-loader';
-import Date from '../../../components/date';
+import Post from '../../../components/post';
 import CategoryListing from '../../../components/category-listing';
 import { getCategoryPosts, getAllCategories } from '../../../lib/posts';
 import { allCaps } from '../../../lib/text-utils';
@@ -44,26 +44,10 @@ export default function CpatSection({ posts, prevPosts, nextPosts, categoriesLis
 
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
                     <ul className={utilStyles.list}>
-                        {(posts && posts.length > 0) ? (
-                            posts.map( ({ id, year, date, title, preview, section }) => (
-                                <li className={utilStyles.listItem} key={id}>
-                                    <Link href={`/blog/${year}/${id}`}>
-                                        <a>{title}</a>
-                                    </Link>
-                                    <br />
-                                    <small className={utilStyles.subpreview}>
-                                    {section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
-                                            : ''}
-                                        <Date dateString={date} />
-                                    </small>
-                                    <p>{preview}</p>
-
-                                    <Link href={`/blog/${year}/${id}`}>
-                                        <a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-                                    </Link>
-                                </li>
-                            ))
-                        ) : ''}
+                    {posts && posts.length > 0 ? 
+                                posts.filter(post => post.published)
+                                    .map(post => <Post key={post.id} {...post} />) 
+                                    : ''}
                     </ul>
 
                     <section>

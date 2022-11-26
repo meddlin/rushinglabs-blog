@@ -1,11 +1,12 @@
 import Link from 'next/link'
-import Image from 'next/image';
 import Date from './date'
 import utilStyles from '../styles/utils.module.css'
 import PostPreviewImage from './post-preview-image';
+import escapeHTML from 'escape-html';
 
 export default function Post({ 
   id, 
+  year,
   date, 
   title, 
   preview, 
@@ -16,7 +17,7 @@ export default function Post({
   previewImageCreditUrl,
   section 
 }) {
-  const articleLink = `/blog/${id}`;
+  const articleLink = `/blog/${escapeHTML(year)}/${escapeHTML(id)}`;
 
   return (
     <li className={utilStyles.listItem}>
@@ -46,7 +47,7 @@ export default function Post({
 
       <p>{preview}</p>
 
-      <Link href={`/blog/${id}`}>
+      <Link href={`/blog/${escapeHTML(year)}/${escapeHTML(id)}`}>
         <a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
       </Link>
     </li>
