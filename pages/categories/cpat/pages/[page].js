@@ -70,17 +70,7 @@ const CpatSectionPage = ({ posts, prevPosts, nextPosts, categoriesList }) => {
 
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                     <ul className={utilStyles.list}>
-                        {posts.map( ({ id, year, date, title }) => (
-                            <li className={utilStyles.listItem} key={id}>
-                                <Link href={`/blog/${year}/${id}`}>
-                                    <a>{title}</a>
-                                </Link>
-                                <br />
-                                <small className={utilStyles.lightText}>
-                                    <Date dateString={date} />
-                                </small>
-                            </li>
-                        ))}
+                        {posts.filter(post => post.published).map(post => <Post key={post.id} {...post} />)}
                     </ul>
 
                     <section>

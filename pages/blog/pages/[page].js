@@ -1,6 +1,7 @@
 
 import Layout from '../../../components/layout';
-import Date from '../../../components/date';
+import Post from '../../../components/post';
+import CategoryListing from '../../../components/category-listing';
 import Link from 'next/link';
 import utilStyles from '../../../styles/utils.module.css';
 import { getSortedPostsData, getAllCategories } from '../../../lib/posts';
@@ -58,44 +59,13 @@ const PostsPage = ({ posts, categoriesList, prevPosts, nextPosts }) => {
         <Layout home footerDisplay={true}>
             <div className={`${utilStyles.horizontal}`}>
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.categoriesSection}`}>
-                    <h2 className={utilStyles.headingLg}>Categories</h2>
-                    <ul>
-                        {categoriesList.map((section) => {
-                            return (
-                                <li key={section}>
-                                    <Link href={`/categories/${section}`}>
-                                        {section}
-                                    </Link>
-                                </li>
-                            );
-                        })}
-                    </ul>
+                    <b>Categories</b>
+                    <CategoryListing categories={categoriesList} />
                 </section>
 
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
                     <ul className={utilStyles.list}>
-                        {posts.map( ({ id, date, title, preview, section, published }) => {
-                            return published && published == true ? (
-                                <li className={utilStyles.listItem} key={id}>
-                                    <Link href={`/blog/${id}`}>
-                                        <a>{title}</a>
-                                    </Link>
-                                    <br />
-                                    <small className={utilStyles.subpreview}>
-                                        {section ? (<text>
-                                            <a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
-                                            : ''}
-                                        <Date dateString={date} />
-                                    </small>
-                                    <p>{preview}</p>
-
-                                    <Link href={`/blog/${id}`}>
-                                        <a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-                                    </Link>
-                                </li>
-                            ) : '';
-                        }
-                        )}
+                        {posts.filter(post => post.published).map(post => <Post key={post.id} {...post} />)}
                     </ul>
 
                     <section className={`${utilStyles.centeredButtons}`}>

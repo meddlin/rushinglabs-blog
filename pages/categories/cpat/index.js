@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout from '../../../components/layout';
 import { siteTitle } from '../../../components/layout-head-loader';
-import CategoryPost from '../../../components/category-post';
+import Post from '../../../components/post';
 import CategoryListing from '../../../components/category-listing';
 import { getCategoryPosts, getAllCategories } from '../../../lib/posts';
 import { allCaps } from '../../../lib/text-utils';
@@ -46,7 +46,7 @@ export default function CpatSection({ posts, prevPosts, nextPosts, categoriesLis
                     <ul className={utilStyles.list}>
                     {posts && posts.length > 0 ? 
                                 posts.filter(post => post.published)
-                                    .map(post => <CategoryPost key={post.id} {...post} />) 
+                                    .map(post => <Post key={post.id} {...post} />) 
                                     : ''}
                     </ul>
 

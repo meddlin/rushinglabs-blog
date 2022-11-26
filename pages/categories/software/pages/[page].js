@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Layout from '../../../../components/layout';
 import { siteTitle } from '../../../../components/layout-head-loader';
 import CategoryListing from '../../../../components/category-listing';
-import Date from '../../../../components/date';
+import Post from '../../../../components/post';
 import Link from 'next/link';
 import utilStyles from '../../../../styles/utils.module.css';
 import { getCategoryPosts, getAllCategories } from '../../../../lib/posts';
@@ -70,17 +70,7 @@ const SoftwareSectionPage = ({ categoriesList, posts, prevPosts, nextPosts }) =>
 
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                     <ul className={utilStyles.list}>
-                        {posts.map( ({ id, year, date, title }) => (
-                            <li className={utilStyles.listItem} key={id}>
-                                <Link href={`/blog/${year}/${id}`}>
-                                    <a>{title}</a>
-                                </Link>
-                                <br />
-                                <small className={utilStyles.lightText}>
-                                    <Date dateString={date} />
-                                </small>
-                            </li>
-                        ))}
+                    {posts.filter(post => post.published).map(post => <Post key={post.id} {...post} />)}
                     </ul>
 
                     <section>

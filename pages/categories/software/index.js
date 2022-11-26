@@ -2,15 +2,11 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout from '../../../components/layout';
 import { siteTitle } from '../../../components/layout-head-loader';
-import Date from '../../../components/date';
 import Post from '../../../components/post';
 import CategoryListing from '../../../components/category-listing';
 import { getCategoryPosts, getAllCategories } from '../../../lib/posts';
-import { capitalizeFirstLetter } from '../../../lib/text-utils';
 import utilStyles from '../../../styles/utils.module.css';
 import config from '../../../blogConfig';
-import escapeHTML from 'escape-html';
-import CategoryPost from '../../../components/category-post';
 
 const _section_ = 'software';
 
@@ -55,7 +51,7 @@ export default function SoftwareSection({ posts, prevPosts, nextPosts, categorie
                          */}
                         {posts && posts.length > 0 ? 
                             posts.filter(post => post.published)
-                                .map(post => <CategoryPost key={post.id} {...post} />) 
+                                .map(post => <Post key={post.id} {...post} />) 
                                 : ''}
 
                     </ul>
