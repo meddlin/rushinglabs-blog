@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Layout from '../../../../components/layout';
 import { siteTitle } from '../../../../components/layout-head-loader';
 import CategoryListing from '../../../../components/category-listing';
-import Date from '../../../../components/date';
+import Post from '../../../../components/post';
 import utilStyles from '../../../../styles/utils.module.css';
 import { getCategoryPosts, getAllCategories } from '../../../../lib/posts';
 import { calculateSectionPagingInfo } from '../../../../lib/paging';
