@@ -20,36 +20,22 @@ export default function Post({
   const articleLink = `/blog/${escapeHTML(year)}/${escapeHTML(id)}`;
 
   return (
-    <li className={utilStyles.listItem}>
+    <li className='mb-10'>
       
       <div className="flex flex-col">
-        <div className="justify-center items-center">
-            <PostPreviewImage 
-              articleLink={articleLink}
-              previewImage={previewImage} 
-              previewImageWidth={previewImageWidth}
-              previewImageHeight={previewImageHeight} 
-              previewImageCreditText={previewImageCreditText}
-              previewImageCreditUrl={previewImageCreditUrl} />
-        </div>
         <Link href={articleLink}>
-          <a>{title}</a>
+          <a className="grow text-base text-black">{title}</a>
         </Link>
+
+        <span className="text-sm italic">
+          {section ? (
+              <a href={`/categories/${section}`} 
+                className="text-slate-700 decoration-indigo-500">{section}</a>
+            ) : ''}
+        </span>
       </div>
 
-      <br />
-
-      <small className={utilStyles.subpreview}>
-        {section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
-          : ''}
-        {date ? (<Date dateString={date} />) : ''}
-      </small>
-
-      <p>{preview}</p>
-
-      <Link href={`/blog/${escapeHTML(year)}/${escapeHTML(id)}`}>
-        <a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-      </Link>
+      <p className="text-sm text-slate-700">{preview}</p>
     </li>
   )
 }

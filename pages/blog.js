@@ -43,9 +43,11 @@ export default function BlogHome({ allPostsData, categoriesList, prevPosts, next
 					<CategoryListing categories={categoriesList} />
 				</section>
 
-				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
+				<section className={`${utilStyles.headingMd}`}>
 					<ul className={utilStyles.list}>
-						{allPostsData.filter(post => post.published).map(post => <Post key={post.id} {...post} />)}
+						{allPostsData.filter(post => post.published).map(
+							post => <Post key={post.id} {...post} />
+						)}
 					</ul>
 
 					<section className={`${utilStyles.centeredButtons}`}>
