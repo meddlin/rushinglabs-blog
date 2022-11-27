@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import escapeHTML from 'escape-html';
 
-export default function Post({ 
+export default function PostPreview({ 
   id, 
   year,
   title, 

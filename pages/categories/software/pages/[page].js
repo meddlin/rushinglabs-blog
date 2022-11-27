@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Layout from '../../../../components/layout';
 import { siteTitle } from '../../../../components/layout-head-loader';
 import CategoryListing from '../../../../components/category-listing';
-import Post from '../../../../components/post';
+import PostPreview from '../../../../components/post-preview';
 import Link from 'next/link';
 import utilStyles from '../../../../styles/utils.module.css';
 import { getCategoryPosts, getAllCategories } from '../../../../lib/posts';
@@ -70,7 +70,7 @@ const SoftwareSectionPage = ({ categoriesList, posts, prevPosts, nextPosts }) =>
 
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                     <ul className={utilStyles.list}>
-                    {posts.filter(post => post.published).map(post => <Post key={post.id} {...post} />)}
+                    {posts.filter(post => post.published).map(post => <PostPreview key={post.id} {...post} />)}
                     </ul>
 
                     <section>

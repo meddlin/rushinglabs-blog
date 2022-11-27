@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Post unchanged 1`] = `
+exports[`renders PostPreview unchanged 1`] = `
 <div>
   <li
     class="mb-10"
