@@ -4,6 +4,7 @@ import utilStyles from '../styles/utils.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import Date from '../components/date';
+import Footer from '../components/footer';
 import { getSortedPostsData } from '../lib/posts';
 
 export async function getStaticProps() {
@@ -106,33 +107,7 @@ export default function Home({ previewPosts }) {
 					</ul>
 				</div>
 
-				<div className={styles.footer}>
-					<div className={styles.socialsBar}>
-						<div>
-							<a href="https://www.youtube.com/c/RushingLabs">
-								<Image src="/icons/YouTube_SVG-icon.svg" width="30" height="30" />
-							</a>
-						</div>
-						<div>
-							<a href="https://www.tiktok.com/@rushinglabs?lang=en">
-								<Image src="/icons/tiktok_SVG-icon.svg" width="30" height="30" />
-							</a>
-						</div>
-						<div>
-							<a href="https://github.com/meddlin">
-								<Image src="/icons/GitHub_SVG-icon.svg" width="30" height="30" />
-							</a>
-						</div>
-						<div>
-							<a href="https://twitter.com/meddlin_dev">
-								<Image src="/icons/Twitter_SVG-icon.svg" width="30" height="30" />
-							</a>
-						</div>
-					</div>
-					<p>Built with <a href="https://nextjs.org/" 
-						style={{ color: `black`, fontWeight: `bold`}}>Next.js</a>
-					</p>
-				</div>
+				<Footer />
 			</div>
 		</LandingLayout>
 	);
