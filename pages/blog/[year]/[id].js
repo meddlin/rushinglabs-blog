@@ -18,6 +18,7 @@ import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import TikTok from '../../../components/embeds/tiktok';
 import { H2, H3, H4 } from '../../../components/content-helpers/anchors';
+import Paragraph from '../../../components/content-helpers/paragraph';
 // import MyModal from '../../../components/content-helpers/my-modal';
 
 const MyHighlighter = ({ language, children }) => {
@@ -102,6 +103,7 @@ const Post = ({ postData }) => {
                         h2: H2,
                         h3: H3,
                         h4: H4,
+                        p: Paragraph,
                         Button, 
                         Image, 
                         Link, 
