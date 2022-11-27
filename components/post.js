@@ -1,55 +1,24 @@
-import Link from 'next/link'
-import Date from './date'
-import utilStyles from '../styles/utils.module.css'
-import PostPreviewImage from './post-preview-image';
+import Link from 'next/link';
 import escapeHTML from 'escape-html';
 
 export default function Post({ 
   id, 
   year,
-  date, 
   title, 
-  preview, 
-  previewImage, 
-  previewImageWidth, 
-  previewImageHeight, 
-  previewImageCreditText,
-  previewImageCreditUrl,
-  section 
+  preview
 }) {
   const articleLink = `/blog/${escapeHTML(year)}/${escapeHTML(id)}`;
 
   return (
-    <li className={utilStyles.listItem}>
+    <li className='mb-10'>
       
       <div className="flex flex-col">
-        <div className="justify-center items-center">
-            <PostPreviewImage 
-              articleLink={articleLink}
-              previewImage={previewImage} 
-              previewImageWidth={previewImageWidth}
-              previewImageHeight={previewImageHeight} 
-              previewImageCreditText={previewImageCreditText}
-              previewImageCreditUrl={previewImageCreditUrl} />
-        </div>
         <Link href={articleLink}>
-          <a>{title}</a>
+          <a className="grow text-base text-black">{title}</a>
         </Link>
       </div>
 
-      <br />
-
-      <small className={utilStyles.subpreview}>
-        {section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
-          : ''}
-        {date ? (<Date dateString={date} />) : ''}
-      </small>
-
-      <p>{preview}</p>
-
-      <Link href={`/blog/${escapeHTML(year)}/${escapeHTML(id)}`}>
-        <a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-      </Link>
+      <p className="text-sm text-slate-700">{preview}</p>
     </li>
   )
 }
