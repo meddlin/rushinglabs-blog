@@ -16,8 +16,8 @@ export default function NavbarLinks({}) {
               </Link>
             </h2>
             <h2>
-              <Link href="/docs">
-                <a className="text-xl font-bold underline text-inherit">Docs</a>
+              <Link href="https://www.youtube.com/@rushinglabs">
+                <a className="text-xl font-bold underline text-inherit">YouTube</a>
               </Link>
             </h2>
             <h2>

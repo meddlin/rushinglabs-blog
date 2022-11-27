@@ -1,5 +1,4 @@
 import styles from '../layout.module.css';
-import utilStyles from '../../styles/utils.module.css';
 import Link from 'next/link';
 
 export default function LandingNavbarLinks({}) {
@@ -16,8 +15,8 @@ export default function LandingNavbarLinks({}) {
               </Link>
             </h2>
             <h2>
-              <Link href="/docs">
-                <a className="text-xl font-bold underline text-inherit">Docs</a>
+              <Link href="https://www.youtube.com/@rushinglabs">
+                <a className="text-xl font-bold underline text-inherit">YouTube</a>
               </Link>
             </h2>
             <h2>
