@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders H2 unchanged 1`] = `
+<div>
+  <h2
+    class="relative text-xl mt-6"
+    id="this-is-a-test"
+  >
+    this is a test
+    <a
+      class="anchor"
+      href="#this-is-a-test"
+    >
+      §
+    </a>
+  </h2>
+</div>
+`;
+
+exports[`renders H3 unchanged 1`] = `
+<div>
+  <h3
+    class="relative text-xl mt-4"
+    id="this-is-a-test"
+  >
+    this is a test
+    <a
+      class="anchor"
+      href="#this-is-a-test"
+    >
+      §
+    </a>
+  </h3>
+</div>
+`;
+
+exports[`renders H4 unchanged 1`] = `
+<div>
+  <h4
+    class="relative text-xl mt-4"
+    id="this-is-a-test"
+  >
+    this is a test
+    <a
+      class="anchor"
+      href="#this-is-a-test"
+    >
+      §
+    </a>
+  </h4>
+</div>
+`;
