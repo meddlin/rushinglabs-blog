@@ -1,6 +1,5 @@
-
 import Layout from '../../../components/layout';
-import Post from '../../../components/post';
+import PostPreview from '../../../components/post-preview';
 import CategoryListing from '../../../components/category-listing';
 import Link from 'next/link';
 import utilStyles from '../../../styles/utils.module.css';
@@ -65,7 +64,7 @@ const PostsPage = ({ posts, categoriesList, prevPosts, nextPosts }) => {
 
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
                     <ul className={utilStyles.list}>
-                        {posts.filter(post => post.published).map(post => <Post key={post.id} {...post} />)}
+                        {posts.filter(post => post.published).map(post => <PostPreview key={post.id} {...post} />)}
                     </ul>
 
                     <section className={`${utilStyles.centeredButtons}`}>
