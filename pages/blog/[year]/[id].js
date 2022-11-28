@@ -14,29 +14,13 @@ import Image from 'next/image';
 import { CenteredImage, LeftImage, RightImage } from '../../../components/content-helpers/images';
 import { Video } from '../../../components/content-helpers/video';
 import Button from '../../../components/button';
-import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
-import SyntaxHighlighter from 'react-syntax-highlighter';
 import TikTok from '../../../components/embeds/tiktok';
 import { getAnchor, H2, H3, H4 } from '../../../components/content-helpers/header-anchors';
 import Paragraph from '../../../components/content-helpers/paragraph';
 import Anchor from '../../../components/content-helpers/anchor';
 import CodeElement from '../../../components/content-helpers/code-element';
 // import MyModal from '../../../components/content-helpers/my-modal';
-
-const MyHighlighter = ({ language, children, showLineNumbers, showInlineLineNumbers }) => {
-    return (
-        <SyntaxHighlighter 
-            className="text-xs" // Tailwind classes here
-
-            language={language} 
-            style={a11yDark} 
-            showLineNumbers={showLineNumbers ? true : false}
-            showInlineLineNumbers={showInlineLineNumbers ? true : false}
-        >
-                {children}
-        </SyntaxHighlighter>
-    );
-}
+import MyHighlighter from '../../../components/content-helpers/my-highlighter';
 
 
 /**
@@ -122,7 +106,6 @@ const Post = ({ postData }) => {
                         LeftImage,
                         RightImage,
                         Video,
-                        SyntaxHighlighter, 
                         MyHighlighter,
                         TikTok
                         // ,MyModal
