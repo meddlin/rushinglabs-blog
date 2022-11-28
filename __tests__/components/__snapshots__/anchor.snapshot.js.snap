@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Anchor unchanged 1`] = `
+<div>
+  <a
+    class=" underline underline-offset-1 decoration-solid decoration-slate-400 decoration-1 hover:decoration-indigo-500 hover:decoration-2"
+    href="https://rushinglabs.com"
+  >
+    this is a test
+  </a>
+</div>
+`;
