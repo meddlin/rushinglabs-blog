@@ -1,4 +1,4 @@
-import styles from './anchors.module.css';
+import styles from './header-anchors.module.css';
 
 function getAnchor(text) {
     return text

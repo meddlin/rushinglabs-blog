@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { H2, H3, H4 } from '../../components/content-helpers/anchors';
+import { H2, H3, H4 } from '../../components/content-helpers/header-anchors';
 
 it('renders H2 unchanged', () => {
     const { container } = render(<H2>this is a test</H2>);
