@@ -23,10 +23,17 @@ import Anchor from '../../../components/content-helpers/anchor';
 import CodeElement from '../../../components/content-helpers/code-element';
 // import MyModal from '../../../components/content-helpers/my-modal';
 
-const MyHighlighter = ({ language, children }) => {
+const MyHighlighter = ({ language, children, showLineNumbers, showInlineLineNumbers }) => {
+
+
     return (
-        <SyntaxHighlighter language={language} style={a11yDark}>
-            {children}
+        <SyntaxHighlighter className="text-xs"
+            language={language} 
+            style={a11yDark} 
+            showLineNumbers={showLineNumbers ? true : false}
+            showInlineLineNumbers={showInlineLineNumbers ? true : false}
+        >
+                {children}
         </SyntaxHighlighter>
     );
 }
