@@ -16,7 +16,11 @@ import { getAllProjectIds, getProjectPage } from '../../../lib/projects';
  import { docco, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
  import SyntaxHighlighter from 'react-syntax-highlighter';
  import TikTok from '../../../components/embeds/tiktok';
- import { H2, H3, H4 } from '../../../components/content-helpers/anchors';
+ import { H2, H3, H4 } from '../../../components/content-helpers/header-anchors';
+ import Paragraph from '../../../components/content-helpers/paragraph';
+ import Anchor from '../../../components/content-helpers/anchor';
+ import CodeElement from '../../../components/content-helpers/code-element';
+ 
  const MyDocHighlighter = ({ language, children }) => {
      return (
          <SyntaxHighlighter language={language} style={a11yDark}>
@@ -64,6 +68,9 @@ const ProjectPage = (props) => {
                     h2: H2,
                     h3: H3,
                     h4: H4,
+                    p: Paragraph,
+                    a: Anchor,
+                    code: CodeElement,
                     Button, 
                     Image, 
                     Link, 
