@@ -24,10 +24,10 @@ import CodeElement from '../../../components/content-helpers/code-element';
 // import MyModal from '../../../components/content-helpers/my-modal';
 
 const MyHighlighter = ({ language, children, showLineNumbers, showInlineLineNumbers }) => {
-
-
     return (
-        <SyntaxHighlighter className="text-xs"
+        <SyntaxHighlighter 
+            className="text-xs" // Tailwind classes here
+
             language={language} 
             style={a11yDark} 
             showLineNumbers={showLineNumbers ? true : false}
