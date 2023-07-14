@@ -3,11 +3,11 @@
 exports[`renders homepage unchanged 1`] = `
 <div>
   <div
-    class="navbarLinks"
+    class="flex flex-row navbarLinks"
   >
     <h2>
       <a
-        class="text-xl font-bold underline text-inherit"
+        class="text-xl font-bold no-underline text-inherit"
         href="/blog"
       >
         Blog
@@ -15,7 +15,7 @@ exports[`renders homepage unchanged 1`] = `
     </h2>
     <h2>
       <a
-        class="text-xl font-bold underline text-inherit"
+        class="text-xl font-bold no-underline text-inherit"
         href="/projects"
       >
         Projects
@@ -23,15 +23,15 @@ exports[`renders homepage unchanged 1`] = `
     </h2>
     <h2>
       <a
-        class="text-xl font-bold underline text-inherit"
-        href="/docs"
+        class="text-xl font-bold no-underline text-inherit"
+        href="https://www.youtube.com/@rushinglabs"
       >
-        Docs
+        YouTube
       </a>
     </h2>
     <h2>
       <a
-        class="text-xl font-bold underline text-inherit"
+        class="text-xl font-bold no-underline text-inherit"
         href="/about"
       >
         About

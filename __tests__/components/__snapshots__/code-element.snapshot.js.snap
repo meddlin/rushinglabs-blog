@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders CodeElement unchanged 1`] = `
+<div>
+  <code
+    class=" text-xs bg-slate-200 rounded px-px "
+  >
+    this is a test
+  </code>
+</div>
+`;

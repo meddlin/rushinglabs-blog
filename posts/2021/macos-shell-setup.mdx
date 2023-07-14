@@ -42,25 +42,25 @@ Ref: [https://stackoverflow.com/questions/43417162/which-shell-i-am-using-in-mac
 
 Of course, StackOverflow has the answer. Short answer is, `zsh` is likely your default. To verify, you can check from Terminal's menubar by Terminal -> Preferences -> General, or running the following:
 
-<SyntaxHighlighter language="bash">
+<MyHighlighter language="bash">
 {`
 # for currently running
 ps -o comm= $$
 # for default
 echo $SHELL
 `}
-</SyntaxHighlighter>
+</MyHighlighter>
 
 
 ### False Start, need a profile
 
 After determining my shell, I then attempted to install `nvm` (to better manage `npm`).
 
-<SyntaxHighlighter language="bash">
+<MyHighlighter language="bash">
 {`
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 `}
-</SyntaxHighlighter>
+</MyHighlighter>
 
 However, this is where I received an error stating I didn't have a shell profile available.
 

@@ -15,9 +15,9 @@ const PostPreviewImage = ({
             {(previewImage && previewImage !== undefined) 
                 && (previewImageWidth && previewImageWidth !== undefined) 
                 && (previewImageHeight && previewImageHeight !== undefined) ? 
-                (<Link href={articleLink}>
-                <Image src={previewImage} width={previewImageWidth} height={previewImageHeight} />
-                </Link>) 
+                (
+                    <Image src={previewImage} width={previewImageWidth} height={previewImageHeight} />
+                ) 
                 : ''}
             </div>
             {(previewImageCreditText && previewImageCreditText !== undefined) 

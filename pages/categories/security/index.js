@@ -2,10 +2,9 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout from '../../../components/layout';
 import { siteTitle } from '../../../components/layout-head-loader';
-import Date from '../../../components/date';
+import PostPreview from '../../../components/post-preview';
 import CategoryListing from '../../../components/category-listing';
 import { getCategoryPosts, getAllCategories } from '../../../lib/posts';
-import { capitalizeFirstLetter } from '../../../lib/text-utils';
 import utilStyles from '../../../styles/utils.module.css';
 import config from '../../../blogConfig';
 
@@ -44,26 +43,10 @@ export default function SecuritySection({ posts, prevPosts, nextPosts, categorie
 
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
                     <ul className={utilStyles.list}>
-                        {(posts && posts.length > 0) ? (
-                            posts.map( ({ id, year, date, title, preview, section }) => (
-                                <li className={utilStyles.listItem} key={id}>
-                                    <Link href={`/blog/${year}/${id}`}>
-                                        <a>{title}</a>
-                                    </Link>
-                                    <br />
-                                    <small className={utilStyles.subpreview}>
-                                    {section ? (<text><a href={`/categories/${section}`}>{section}</a>&nbsp;&mdash;&nbsp;</text>) 
-                                            : ''}
-                                        <Date dateString={date} />
-                                    </small>
-                                    <p>{preview}</p>
-
-                                    <Link href={`/blog/${id}`}>
-                                        <a className={utilStyles.readMoreLink}>Read More &mdash;&gt;</a>	
-                                    </Link>
-                                </li>
-                            ))
-                        ) : ''}
+                        {posts && posts.length > 0 ? 
+                                posts.filter(post => post.published)
+                                    .map(post => <PostPreview key={post.id} {...post} />) 
+                                    : ''}
                     </ul>
 
                     <section>

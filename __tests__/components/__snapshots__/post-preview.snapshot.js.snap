@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders PostPreview unchanged 1`] = `
+<div>
+  <li
+    class="mb-10"
+  >
+    <div
+      class="flex flex-col"
+    >
+      <a
+        class="grow text-base text-black"
+        href="/blog/undefined/undefined"
+      />
+    </div>
+    <p
+      class="text-sm text-slate-700"
+    />
+  </li>
+</div>
+`;
