@@ -1,4 +1,4 @@
-import styles from './anchors.module.css';
+import styles from './header-anchors.module.css';
 
 function getAnchor(text) {
     return text
@@ -11,7 +11,7 @@ const H2 = ({ children }) => {
     const anchor = getAnchor(children);
     const link = `#${anchor}`;
     return (
-        <h2 id={anchor} style={{ position: `relative` }}>
+        <h2 id={anchor} className="relative text-xl mt-6">
             {children}
             <a href={link} className={styles.anchor}>
                 §
@@ -24,7 +24,7 @@ const H3 = ({ children }) => {
     const anchor = getAnchor(children);
     const link = `#${anchor}`;
     return (
-        <h3 id={anchor} style={{ position: `relative` }}>
+        <h3 id={anchor} className="relative text-lg mt-4">
             {children}
             <a href={link} className={styles.anchor}>
                 §
@@ -37,7 +37,7 @@ const H4 = ({ children }) => {
     const anchor = getAnchor(children);
     const link = `#${anchor}`;
     return (
-        <h4 id={anchor} style={{ position: `relative` }}>
+        <h4 id={anchor} className="relative text-base mt-4">
             {children}
             <a href={link} className={styles.anchor}>
                 §

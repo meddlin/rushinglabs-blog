@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Footer unchanged 1`] = `
+<div>
+  <div
+    class="w-full h-32 mt-12 flex flex-col justify-center items-center bg-inherit mb-24"
+  >
+    <div
+      class="flex flex-row text-xs border-t-2 border-t-gray mt-24"
+    >
+      <div
+        class="flex flex-col mx-16 mt-4"
+      >
+        <a
+          class="py-2"
+          href="https://rushinglabs.com"
+        >
+          Home
+        </a>
+        <a
+          class="py-2"
+          href="https://rushinglabs.com/about"
+        >
+          About
+        </a>
+        <a
+          class="py-2"
+          href="https://linktr.ee/rushinglabs"
+        >
+          Links
+        </a>
+      </div>
+      <div
+        class="flex flex-col mx-16 mt-4"
+      >
+        <a
+          class="py-2"
+          href="https://github.com/meddlin"
+        >
+          GitHub
+        </a>
+        <a
+          class="py-2"
+          href="https://youtube.com/@rushinglabs"
+        >
+          YouTube
+        </a>
+        <a
+          class="py-2"
+          href="https://twitter.com/meddlin_dev"
+        >
+          Twitter
+        </a>
+        <a
+          class="py-2"
+          href="https://www.tiktok.com/@rushinglabs"
+        >
+          TikTok
+        </a>
+      </div>
+      <div
+        class="flex flex-col mx-16 mt-4"
+      >
+        <a
+          class="py-2"
+          href="https://kit.co/meddlin"
+        >
+          Gear
+        </a>
+        <a
+          class="py-2"
+          href="https://www.youtube.com/channel/UC_y1S4qIDJ9G0CU2EzVeDtw"
+        >
+          Gaming
+        </a>
+        <a
+          class="py-2"
+          href="https://plausible.io/rushinglabs.com"
+        >
+          Analytics
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

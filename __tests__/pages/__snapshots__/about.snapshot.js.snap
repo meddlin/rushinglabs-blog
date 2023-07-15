@@ -25,11 +25,11 @@ exports[`renders About page unchanged 1`] = `
         </a>
       </h1>
       <div
-        class="navbarLinks"
+        class="flex flex-row navbarLinks"
       >
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold no-underline text-inherit"
             href="/blog"
           >
             Blog
@@ -37,7 +37,7 @@ exports[`renders About page unchanged 1`] = `
         </h2>
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold no-underline text-inherit"
             href="/projects"
           >
             Projects
@@ -45,15 +45,15 @@ exports[`renders About page unchanged 1`] = `
         </h2>
         <h2>
           <a
-            class="colorInherit"
-            href="/docs"
+            class="text-xl font-bold no-underline text-inherit"
+            href="https://www.youtube.com/@rushinglabs"
           >
-            Docs
+            YouTube
           </a>
         </h2>
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold no-underline text-inherit"
             href="/about"
           >
             About
@@ -92,7 +92,7 @@ exports[`renders About page unchanged 1`] = `
                     <img
                       alt=""
                       aria-hidden="true"
-                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                     />
                   </span>
@@ -118,7 +118,7 @@ exports[`renders About page unchanged 1`] = `
                     <img
                       alt=""
                       aria-hidden="true"
-                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                     />
                   </span>
@@ -144,7 +144,7 @@ exports[`renders About page unchanged 1`] = `
                     <img
                       alt=""
                       aria-hidden="true"
-                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                     />
                   </span>
@@ -170,7 +170,7 @@ exports[`renders About page unchanged 1`] = `
                     <img
                       alt=""
                       aria-hidden="true"
-                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                     />
                   </span>
@@ -196,7 +196,7 @@ exports[`renders About page unchanged 1`] = `
                     <img
                       alt=""
                       aria-hidden="true"
-                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                     />
                   </span>
@@ -214,13 +214,87 @@ exports[`renders About page unchanged 1`] = `
           </p>
         </div>
       </div>
-      <a
-        href="https://plausible.io/rushinglabs.com"
-      >
-        RushingLabs - Analytics
-      </a>
     </div>
-    
+    <div
+      class="w-full h-32 mt-12 flex flex-col justify-center items-center bg-inherit mb-24"
+    >
+      <div
+        class="flex flex-row text-xs border-t-2 border-t-gray mt-24"
+      >
+        <div
+          class="flex flex-col mx-16 mt-4"
+        >
+          <a
+            class="py-2"
+            href="https://rushinglabs.com"
+          >
+            Home
+          </a>
+          <a
+            class="py-2"
+            href="https://rushinglabs.com/about"
+          >
+            About
+          </a>
+          <a
+            class="py-2"
+            href="https://linktr.ee/rushinglabs"
+          >
+            Links
+          </a>
+        </div>
+        <div
+          class="flex flex-col mx-16 mt-4"
+        >
+          <a
+            class="py-2"
+            href="https://github.com/meddlin"
+          >
+            GitHub
+          </a>
+          <a
+            class="py-2"
+            href="https://youtube.com/@rushinglabs"
+          >
+            YouTube
+          </a>
+          <a
+            class="py-2"
+            href="https://twitter.com/meddlin_dev"
+          >
+            Twitter
+          </a>
+          <a
+            class="py-2"
+            href="https://www.tiktok.com/@rushinglabs"
+          >
+            TikTok
+          </a>
+        </div>
+        <div
+          class="flex flex-col mx-16 mt-4"
+        >
+          <a
+            class="py-2"
+            href="https://kit.co/meddlin"
+          >
+            Gear
+          </a>
+          <a
+            class="py-2"
+            href="https://www.youtube.com/channel/UC_y1S4qIDJ9G0CU2EzVeDtw"
+          >
+            Gaming
+          </a>
+          <a
+            class="py-2"
+            href="https://plausible.io/rushinglabs.com"
+          >
+            Analytics
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

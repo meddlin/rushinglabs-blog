@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<div>
+  <div
+    class="flex flex-row navbarLinks"
+  >
+    <h2>
+      <a
+        class="text-xl font-bold no-underline text-inherit"
+        href="/blog"
+      >
+        Blog
+      </a>
+    </h2>
+    <h2>
+      <a
+        class="text-xl font-bold no-underline text-inherit"
+        href="/projects"
+      >
+        Projects
+      </a>
+    </h2>
+    <h2>
+      <a
+        class="text-xl font-bold no-underline text-inherit"
+        href="https://www.youtube.com/@rushinglabs"
+      >
+        YouTube
+      </a>
+    </h2>
+    <h2>
+      <a
+        class="text-xl font-bold no-underline text-inherit"
+        href="/about"
+      >
+        About
+      </a>
+    </h2>
+  </div>
+</div>
+`;

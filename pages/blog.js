@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Layout from '../components/layout';
 import { siteTitle } from '../components/layout-head-loader';
 import Link from 'next/link';
-import Post from '../components/post'
+import PostPreview from '../components/post-preview'
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData, getAllCategories } from '../lib/posts';
 import config from '../blogConfig';
@@ -43,9 +43,11 @@ export default function BlogHome({ allPostsData, categoriesList, prevPosts, next
 					<CategoryListing categories={categoriesList} />
 				</section>
 
-				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.postsSection}`}>
+				<section className={`${utilStyles.headingMd}`}>
 					<ul className={utilStyles.list}>
-						{allPostsData.filter(post => post.published).map(post => <Post key={post.id} {...post} />)}
+						{allPostsData.filter(post => post.published).map(
+							post => <PostPreview key={post.id} {...post} />
+						)}
 					</ul>
 
 					<section className={`${utilStyles.centeredButtons}`}>

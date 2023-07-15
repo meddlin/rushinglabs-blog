@@ -6,6 +6,7 @@ import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 import recipesStyles from '../../styles/recipes.module.css';
 import { getAllRecipesSections, getPostsFromRecipesSubdir, getSortedRecipesPostsData } from '../../lib/recipes';
+import escapeHTML from 'escape-html';
 
 export async function getStaticProps() {
     const recipesData = getSortedRecipesPostsData();
@@ -39,14 +40,14 @@ function Recipes({ docs, chunks, sections }) {
                 <ul className={recipesStyles.listParent}>
                     {chunks.map( ({section, docs}) => (
                         <li key={section}>
-                            <Link href={`/recipes/${section}`}>
+                            <Link href={`/recipes/${escapeHTML(section)}`}>
                                 <a><h3>{section}</h3></a>
                             </Link>
                             {docs && docs.length > 0 ? (
                                 <ul className={utilStyles.list}>
                                     {docs.map( doc => (
                                         <li className={utilStyles.listItem} key={doc.id}>
-                                            <Link href={`/recipes/${section}/${doc.id}`}>
+                                            <Link href={`/recipes/${escapeHTML(section)}/${escapeHTML(doc.id)}`}>
                                                 <a>{doc.title}</a>
                                             </Link>
                                             <small className={utilStyles.subpreview}>

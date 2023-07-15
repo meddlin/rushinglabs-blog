@@ -1,28 +1,27 @@
 import styles from '../layout.module.css';
-import utilStyles from '../../styles/utils.module.css';
 import Link from 'next/link';
 
 export default function LandingNavbarLinks({}) {
     return (
-        <div className={styles.navbarLinks} style={{ display: 'flex', flexDirection: 'row' }}>
+          <div className={`flex flex-row ${styles.navbarLinks}`}>
             <h2>
               <Link href="/blog">
-                <a className={utilStyles.colorInherit}>Blog</a>
+                <a className="text-xl font-bold no-underline text-inherit">Blog</a>
               </Link>
             </h2>
             <h2>
               <Link href="/projects">
-                <a className={utilStyles.colorInherit}>Projects</a>
+                <a className="text-xl font-bold no-underline text-inherit">Projects</a>
               </Link>
             </h2>
             <h2>
-              <Link href="/docs">
-                <a className={utilStyles.colorInherit}>Docs</a>
+              <Link href="https://www.youtube.com/@rushinglabs">
+                <a className="text-xl font-bold no-underline text-inherit">YouTube</a>
               </Link>
             </h2>
             <h2>
               <Link href="/about">
-                <a className={utilStyles.colorInherit}>About</a>
+                <a className="text-xl font-bold no-underline text-inherit">About</a>
               </Link>
             </h2>
           </div>

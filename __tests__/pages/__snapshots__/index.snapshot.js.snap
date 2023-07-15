@@ -30,7 +30,7 @@ exports[`renders homepage unchanged 1`] = `
       >
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold underline text-inherit"
             href="/blog"
           >
             Blog
@@ -38,7 +38,7 @@ exports[`renders homepage unchanged 1`] = `
         </h2>
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold underline text-inherit"
             href="/projects"
           >
             Projects
@@ -46,7 +46,7 @@ exports[`renders homepage unchanged 1`] = `
         </h2>
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold underline text-inherit"
             href="/docs"
           >
             Docs
@@ -54,7 +54,7 @@ exports[`renders homepage unchanged 1`] = `
         </h2>
         <h2>
           <a
-            class="colorInherit"
+            class="text-xl font-bold underline text-inherit"
             href="/about"
           >
             About
@@ -77,7 +77,7 @@ exports[`renders homepage unchanged 1`] = `
             <img
               alt=""
               aria-hidden="true"
-              src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%272560%27%20height=%27520%27/%3e"
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjU2MCIgaGVpZ2h0PSI1MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
               style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
             />
           </span>
@@ -89,6 +89,7 @@ exports[`renders homepage unchanged 1`] = `
             srcset="/_next/image?url=https%3A%2F%2Fmeddlin-web.s3.us-east-2.amazonaws.com%2Flanding-page%2Fweb-header.webp&w=3840&q=75 1x"
             style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
           />
+          <noscript />
         </span>
       </div>
       <div
@@ -110,7 +111,7 @@ exports[`renders homepage unchanged 1`] = `
                 <img
                   alt=""
                   aria-hidden="true"
-                  src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%271920%27%20height=%271080%27/%3e"
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIvPg=="
                   style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                 />
               </span>
@@ -145,7 +146,7 @@ exports[`renders homepage unchanged 1`] = `
                 <img
                   alt=""
                   aria-hidden="true"
-                  src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27504%27%20height=%27378%27/%3e"
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTA0IiBoZWlnaHQ9IjM3OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                   style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                 />
               </span>
@@ -189,7 +190,7 @@ exports[`renders homepage unchanged 1`] = `
                 <img
                   alt=""
                   aria-hidden="true"
-                  src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27513%27%20height=%27342%27/%3e"
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEzIiBoZWlnaHQ9IjM0MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                   style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                 />
               </span>
@@ -249,7 +250,7 @@ exports[`renders homepage unchanged 1`] = `
                     <img
                       alt=""
                       aria-hidden="true"
-                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                     />
                   </span>
@@ -276,7 +277,7 @@ exports[`renders homepage unchanged 1`] = `
                     <img
                       alt=""
                       aria-hidden="true"
-                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                     />
                   </span>
@@ -303,7 +304,7 @@ exports[`renders homepage unchanged 1`] = `
                     <img
                       alt=""
                       aria-hidden="true"
-                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                     />
                   </span>
@@ -330,7 +331,7 @@ exports[`renders homepage unchanged 1`] = `
                     <img
                       alt=""
                       aria-hidden="true"
-                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
                     />
                   </span>
