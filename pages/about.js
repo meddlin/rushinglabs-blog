@@ -7,8 +7,8 @@ function About() {
         <Layout home footerDisplay={false}>
             <div className={styles.mainContent}>
                 <p>
-                    I love programming and tinkering with computers, and I'm currently working as an
-                    AppSec Engineer. I've been employed in the tech industry since 2013, and have held 
+                    I love programming and tinkering with computers, and I&apos;m currently working as an
+                    AppSec Engineer. I&apos;ve been employed in the tech industry since 2013, and have held 
                     multiple software engineering positions interacting with various technology spanning 
                     across COBOL, .NET/C#, JavaScript, and even a little Python sprinkled in.
                 </p>

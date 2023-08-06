@@ -51,23 +51,21 @@ const Projects = ({ metadata, projects }) => {
 												</p>
 												<p>{meta.summary}</p>
 												<p className={styles.projectLinks}>
-													{meta.links.map(link => (
-														<a href={link.url}>{link.text}</a>
-													))}
+													{meta.links.map(
+														(link, idx) => ( <a href={link.url} key={idx}>{link.text}</a> )
+													)}
 												</p>
 											</div>
 											{meta.images &&
-											(meta.images.length && meta.images[0].url !== '') >
-												0 ? (
-												<Image
-													src={meta.images[0].url}
-													alt={meta.images[0].alt}
-													height={meta.images[0].height}
-													width={meta.images[0].width}
-												/>
-											) : (
-												''
-											)}
+												(meta.images.length && meta.images[0].url !== '') >
+													0 ? (
+													<Image
+														src={meta.images[0].url}
+														alt={meta.images[0].alt}
+														height={meta.images[0].height}
+														width={meta.images[0].width}
+													/> ) : ( '' )
+											}
 										</div>
 									</li>
 								) : (

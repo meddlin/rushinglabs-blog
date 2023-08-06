@@ -33,7 +33,7 @@ export default function Home({ previewPosts }) {
 			<div className={styles.content}>
 				<div className={styles.summaries}>
 					<p>
-						Hi! I'm Darrien, a software engineer
+						Hi! I&apos;m Darrien, a software engineer
 						and content creator based in Austin, TX.
 					</p>
 					<div>
@@ -46,9 +46,9 @@ export default function Home({ previewPosts }) {
 					</div>
 					<p className={styles.summariesSecondary}>
 						With over 8 years in the tech industry, I wanted
-						to create a space to share what I've built,
+						to create a space to share what I&apos;ve built,
 						create tutorials to help others, and share some
-						ideas for what I'd like to build in the future.
+						ideas for what I&apos;d like to build in the future.
 					</p>
 				</div>
 
