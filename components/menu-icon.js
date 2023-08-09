@@ -22,22 +22,22 @@ export default function MenuIcon() {
                 <ul className={styles.list}>
                     <li className={styles.listItem}>
                         <Link href="/blog">
-                            <a className={utilStyles.colorInherit}>Blog</a>
+                            <span className={utilStyles.colorInherit}>Blog</span>
                         </Link>
                     </li>
                     <li className={styles.listItem}>
                         <Link href="/projects">
-                            <a className={utilStyles.colorInherit}>Projects</a>
+                            <span className={utilStyles.colorInherit}>Projects</span>
                         </Link>
                     </li>
                     <li className={styles.listItem}>
                         <Link href="/docs">
-                            <a className={utilStyles.colorInherit}>Docs</a>
+                            <span className={utilStyles.colorInherit}>Docs</span>
                         </Link>
                     </li>
                     <li className={styles.listItem}>
                         <Link href="/about">
-                            <a className={utilStyles.colorInherit}>About</a>
+                            <span className={utilStyles.colorInherit}>About</span>
                         </Link>
                     </li>
                 </ul>) : ''}

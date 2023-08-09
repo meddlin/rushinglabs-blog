@@ -16,7 +16,7 @@ export default function Layout({ children, home, footerDisplay }) {
 
           <h1 className={utilStyles.heading2Xl}>
             <Link href="/">
-              <a className={utilStyles.colorInherit}>{siteTitle}</a>
+              <span className={utilStyles.colorInherit}>{siteTitle}</span>
             </Link>
           </h1>
 

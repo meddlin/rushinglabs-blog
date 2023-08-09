@@ -14,7 +14,7 @@ export default function PostPreview({
       
       <div className="flex flex-col">
         <Link href={articleLink}>
-          <a className="grow text-base text-black">{title}</a>
+          <span className="grow text-base text-black">{title}</span>
         </Link>
       </div>
 

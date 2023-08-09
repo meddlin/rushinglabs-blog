@@ -95,7 +95,7 @@ export default function Home({ previewPosts }) {
 						{previewPosts.map( ({ id, date, title, preview }) => (
 							<li key={id}>
 								<Link href={`/blog/${id}`}>
-									<a>{title}</a>
+									{title}
 								</Link>
 								<br />
 								<small className={utilStyles.subpreview}>
