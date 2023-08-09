@@ -10,7 +10,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-            <script async defer data-domain="rushinglabs.com" src="https://plausible.io/js/plausible.js"></script>
+            {/* <script TO INJECT GOES HERE src=""></script> */}
         </Head>
         <body>
           <Main />

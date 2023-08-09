@@ -69,14 +69,10 @@ const PostsPage = ({ posts, categoriesList, prevPosts, nextPosts }) => {
 
                     <section className={`${utilStyles.centeredButtons}`}>
                         {prevPosts !== null && (
-                            <Link href={"/blog/pages/" + prevPosts} passHref>
-                                <a>« newer</a>
-                            </Link>
+                            <Link href={"/blog/pages/" + prevPosts} passHref>« newer</Link>
                         )}
                         {nextPosts !== null && (
-                            <Link href={"/blog/pages/" + nextPosts} passHref>
-                            <a>older »</a>
-                            </Link>
+                            <Link href={"/blog/pages/" + nextPosts} passHref>older »</Link>
                         )}
                     </section>
                 </section>

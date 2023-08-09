@@ -54,14 +54,14 @@ function Docs({ docs, chunks, sections }) {
                     {chunks.map( ({section, docs}) => (
                         <li key={section}>
                             <Link href={`/docs/${escapeHTML(section)}`}>
-                                <a><h3>{section}</h3></a>
+                                <h3>{section}</h3>
                             </Link>
                             {docs && docs.length > 0 ? (
                                 <ul className={utilStyles.list}>
                                     {docs.map( doc => (
                                         <li className={utilStyles.listItem} key={doc.id}>
                                             <Link href={`/docs/${escapeHTML(section)}/${escapeHTML(doc.id)}`}>
-                                                <a>{doc.title}</a>
+                                                {doc.title}
                                             </Link>
                                             <small className={utilStyles.subpreview}>
                                                 {doc.date ? (<Date dateString={doc.date} />) : ''}

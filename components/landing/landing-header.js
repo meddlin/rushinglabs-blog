@@ -13,7 +13,7 @@ export default function LandingHeader({}) {
 
             <h1 className={utilStyles.heading2Xl}>
                 <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                    {name}
                 </Link>
             </h1>
 

@@ -6,22 +6,22 @@ export default function LandingNavbarLinks({}) {
           <div className={`flex flex-row ${styles.navbarLinks}`}>
             <h2>
               <Link href="/blog">
-                <a className="text-xl font-bold no-underline text-inherit">Blog</a>
+                Blog
               </Link>
             </h2>
             <h2>
               <Link href="/projects">
-                <a className="text-xl font-bold no-underline text-inherit">Projects</a>
+                Projects
               </Link>
             </h2>
             <h2>
               <Link href="https://www.youtube.com/@rushinglabs">
-                <a className="text-xl font-bold no-underline text-inherit">YouTube</a>
+                YouTube
               </Link>
             </h2>
             <h2>
               <Link href="/about">
-                <a className="text-xl font-bold no-underline text-inherit">About</a>
+                About
               </Link>
             </h2>
           </div>

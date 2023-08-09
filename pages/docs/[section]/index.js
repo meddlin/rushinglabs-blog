@@ -44,7 +44,7 @@ function DocsSection({ docs, section }) {
                     {docs && docs.length > 0 ? docs.map( doc => (
                         <li key={doc.id}>
                             <Link href={`/docs/${escapeHTML(section)}/${escapeHTML(doc.id)}`}>
-                                <a>{doc.id}</a>
+                                {doc.id}
                             </Link>
                         </li>
                     )) : 'No docs to show' }

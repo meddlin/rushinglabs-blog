@@ -6,22 +6,22 @@ export default function NavbarLinks({}) {
           <div className={`flex flex-row ${styles.navbarLinks}`}>
             <h2>
               <Link href="/blog">
-                <a className="text-xl font-bold no-underline text-inherit">Blog</a>
+                <span className="text-xl font-bold no-underline text-inherit">Blog</span>
               </Link>
             </h2>
             <h2>
               <Link href="/projects">
-                <a className="text-xl font-bold no-underline text-inherit">Projects</a>
+                <span className="text-xl font-bold no-underline text-inherit">Projects</span>
               </Link>
             </h2>
             <h2>
               <Link href="https://www.youtube.com/@rushinglabs">
-                <a className="text-xl font-bold no-underline text-inherit">YouTube</a>
+                <span className="text-xl font-bold no-underline text-inherit">YouTube</span>
               </Link>
             </h2>
             <h2>
               <Link href="/about">
-                <a className="text-xl font-bold no-underline text-inherit">About</a>
+                <span className="text-xl font-bold no-underline text-inherit">About</span>
               </Link>
             </h2>
           </div>
