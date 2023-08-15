@@ -3,7 +3,6 @@ import Layout from '../components/layout';
 import { siteTitle } from '../components/layout-head-loader';
 import Link from 'next/link';
 import PostPreview from '../components/post-preview'
-import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData, getAllCategories } from '../lib/posts';
 import config from '../blogConfig';
 import CategoryListing from '../components/category-listing';
@@ -37,20 +36,20 @@ export default function BlogHome({ allPostsData, categoriesList, prevPosts, next
 				<title>{siteTitle}</title>
 			</Head>
 
-			<div className={`${utilStyles.horizontal}`}>
-				<section className={`${utilStyles.headingMd} ${utilStyles.padding1px} ${utilStyles.categoriesSection}`}>
+			<div className="flex justify-between">
+				<section className="text-sm">
 					<b>Categories</b>
 					<CategoryListing categories={categoriesList} />
 				</section>
 
-				<section className={`${utilStyles.headingMd}`}>
-					<ul className={utilStyles.list}>
+				<section className="text-md">
+					<ul className="list-none p-0 m-0">
 						{allPostsData.filter(post => post.published).map(
 							post => <PostPreview key={post.id} {...post} />
 						)}
 					</ul>
 
-					<section className={`${utilStyles.centeredButtons}`}>
+					<section className="flex justify-between">
 						{prevPosts !== null && (
 							<Link href={"/blog/pages/" + prevPosts} passHref>« newer</Link>
 						)}
