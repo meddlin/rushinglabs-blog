@@ -24,7 +24,7 @@
     "date-fns": "^2.17.0",
     "escape-html": "^1.0.3",
     "gray-matter": "^4.0.2",
-    "next": "^13.4.13",
+    "next": "^14.0.1",
     "prismjs": "^1.25.0",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
